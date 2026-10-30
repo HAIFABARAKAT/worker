@@ -39,37 +39,40 @@
 
 
 <!-- بداية جزء ٢: تصميم شريط التنقل المصلح والهيدر وشريط الصور المتحرك -->
-        /* تصميم شريط التنقل لضمان بقاء العناصر على سطر واحد */
+<!-- بداية جزء ٢: تصميم شريط التنقل المصلح والهيدر وشريط الصور المتحرك -->
+        /* تصميم شريط التنقل وضمان بقاء الشعار واللغة على سطر واحد في الجوال */
         .navbar {
             background-color: #ffffff;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 15px 20px; /* تقليل الحشو الجانبي ليناسب شاشات الهواتف */
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            flex-wrap: nowrap; /* يمنع نزول العناصر لسطر جديد نهائياً */
+            flex-direction: row !important; /* إجبار العناصر على الاصطفاف أفقياً */
+            flex-wrap: nowrap !important;     /* منع نزول زر اللغة لسطر جديد نهائياً */
+            width: 100%;
         }
 
         .brand-logo {
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: 1.1rem; /* حجم خط موزون لشاشات الهواتف */
             color: #1e3c72;
-            white-space: nowrap; /* يمنع انقسام النص */
+            white-space: nowrap; /* منع انقسام اسم الشركة إلى سطرين */
         }
 
         .lang-switcher-btn {
             background-color: transparent;
             color: #2a5298;
             border: 2px solid #2a5298;
-            padding: 6px 14px;
+            padding: 6px 12px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.9rem;
-            white-space: nowrap; /* يمنع انقسام نص الزر */
+            font-size: 0.85rem;
+            white-space: nowrap; /* منع انقسام نص زر اللغة */
         }
 
         .lang-switcher-btn:hover {
@@ -153,11 +156,12 @@
 
         .slider-btn:hover { background: #fff; }
         
-        /* ضبط مكان أسهم التحريك بناءً على اتجاه الصفحة */
+        /* ضبط مكان أسهم التحريك بناءً على اتجاه الصفحة LTR و RTL */
         html[dir="ltr"] .prev-btn { left: 15px; }
         html[dir="ltr"] .next-btn { right: 15px; }
         html[dir="rtl"] .prev-btn { right: 15px; transform: translateY(-50%) rotate(180deg); }
         html[dir="rtl"] .next-btn { left: 15px; transform: translateY(-50%) rotate(180deg); }
+<!-- نهاية جزء ٢ -->
 <!-- نهاية جزء ٢ -->
 
 
