@@ -362,6 +362,8 @@
 
 <!-- بداية جزء ٤: تصميم نموذج الطلبات والأسئلة الشائعة وزر الواتساب المصلح وإغلاق الترويسة -->
         /* تصميم قسم نموذج الطلبات */
+<!-- بداية جزء ٤: تصميم نموذج الطلبات والأسئلة الشائعة وزر الواتساب المصلح وإغلاق الترويسة -->
+        /* تصميم قسم نموذج الطلبات */
         .form-section {
             background: #fff;
             padding: 40px;
@@ -469,7 +471,7 @@
             transform: rotate(45deg);
         }
 
-        /* تصميم زر الواتساب العائم بعد ضبط الحجم المتناسق لمنع التداخل */
+        /* تصميم زر الواتساب المطور بالأيقونة الحقيقية والحركات الاهتزازية والنبضية */
         .whatsapp-floating-container {
             position: fixed;
             bottom: 30px;
@@ -479,32 +481,39 @@
         html[dir="ltr"] .whatsapp-floating-container { right: 30px; }
         html[dir="rtl"] .whatsapp-floating-container { left: 30px; }
 
-		/* --- تصميم أيقونة الواتساب ثلاثية الأبعاد والمحسنة جداً --- */
+		/* تصميم الزر الدائري الرئيسي الحامل للأيقونة الأصلية الملونة */
 		.whatsapp-main-btn {
-			background: linear-gradient(135deg, #25d366 0%, #075e54 100%) !important; /* تدرج لوني عميق */
-			color: white !important;
+			background: #25d366 !important; /* اللون الرسمي الأخضر الصريح */
 			border: none !important;
-			width: 54px !important;
-			height: 54px !important;
+			width: 60px !important;
+			height: 60px !important;
 			border-radius: 50% !important;
-			font-size: 28px !important;
 			cursor: pointer !important;
-			box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35), inset 0 2px 4px rgba(255,255,255,0.4) !important; /* ظل خارجي وبريق داخلي ثلاثي الأبعاد */
+			box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45) !important;
 			display: flex !important;
 			justify-content: center !important;
 			align-items: center !important;
-			animation: waPulse المحسن 2s infinite !important;
+            /* دمج حركتي النبض الدائري والاهتزاز المستمر لرفع لفت الانتباه التفاعلي */
+			animation: waCustomPulse 2s infinite, waCustomWobble 4s ease-in-out infinite !important;
 			transform: translateZ(0);
+            padding: 0 !important;
 		}
 		
 		.whatsapp-main-btn:hover {
-			transform: scale(1.08); /* تكبير خفيف وتفاعلي عند تمرير الماوس */
-			background: linear-gradient(135deg, #20ba59 0%, #054d44 100%) !important;
+			transform: scale(1.1) rotate(5deg);
+			background: #20ba59 !important;
 		}
+
+        /* محاذاة أيقونة الـ SVG الأصلية بالداخل */
+        .whatsapp-main-btn svg {
+            width: 34px !important;
+            height: 34px !important;
+            display: block;
+        }
 
         .whatsapp-chat-box {
             position: absolute;
-            bottom: 65px;
+            bottom: 75px;
             width: 290px;
             background-color: #fff;
             border-radius: 12px;
@@ -564,13 +573,24 @@
         }
         .wa-start-chat-btn:hover { background-color: #20ba59; }
 
-        @keyframes waPulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-            70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        /* الحركة الأولى: انتشار موجات النبض حول الزر */
+        @keyframes waCustomPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6), 0 8px 24px rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0), 0 8px 24px rgba(37, 211, 102, 0.4); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 24px rgba(37, 211, 102, 0.4); }
+        }
+
+        /* الحركة الثانية: الاهتزاز المفاجئ الممتع المتتابع كل بضع ثوان لجذب انتباه عين القارئ */
+        @keyframes waCustomWobble {
+            0%, 90%, 100% { transform: rotate(0deg); }
+            92% { transform: rotate(-10deg) scale(1.03); }
+            94% { transform: rotate(12deg) scale(1.03); }
+            96% { transform: rotate(-8deg) scale(1.03); }
+            98% { transform: rotate(8deg) scale(1.03); }
         }
     </style>
 </head>
+<!-- نهاية جزء ٤ -->
 <!-- نهاية جزء ٤ -->
 
 
@@ -798,8 +818,11 @@
                 <a href="https://wa.me/60176706338" target="_blank" class="wa-start-chat-btn" id="waBtnText">Start Chat</a>
             </div>
         </div>
-        <button class="whatsapp-main-btn" onclick="toggleWhatsAppChat()" aria-label="Chat on WhatsApp">
-            <i class="fab fa-whatsapp"></i>
+		<button class="whatsapp-main-btn" onclick="toggleWhatsAppChat()" aria-label="Chat on WhatsApp">
+            <!-- كود الـ SVG الحقيقي الملون لأيقونة واتساب الرسمية الشفافة ذات التفاصيل الدقيقة -->
+            <svg viewBox="0 0 24 24" xmlns="http://w3.org">
+                <path fill="#fff" d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.461 3.42 1.268 4.873l-1.348 4.925 5.04-1.323c1.408.766 3.007 1.2 4.694 1.2 5.51 0 9.993-4.483 9.993-9.993S17.515 2 12.004 2zm4.957 14.212c-.215.604-1.25 1.196-1.722 1.26-.474.065-.94.316-3.023-.544-2.508-1.033-4.086-3.606-4.21-3.774-.126-.167-1.022-1.357-1.022-2.59 0-1.23.645-1.838.874-2.09.228-.25.503-.314.67-.314.17 0 .343.003.49.01.15.008.355-.06.556.425.204.493.696 1.696.757 1.82.06.126.1.272.016.44-.085.17-.19.27-.376.495-.183.22-.384.368-.216.657.17.29.743 1.226 1.593 1.982.895.797 1.653 1.042 1.942 1.186.29.145.46.122.63-.075.174-.197.747-.87.947-1.168.2-.3.402-.25.672-.15.27.1.1.204 1.706.8 1.605.597 1.71.72 1.737.9.027.18-.06.8-.276 1.404z"/>
+            </svg>
         </button>
     </div>
 <!-- نهاية جزء ٦ -->
