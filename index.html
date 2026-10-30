@@ -478,21 +478,28 @@
         html[dir="ltr"] .whatsapp-floating-container { right: 30px; }
         html[dir="rtl"] .whatsapp-floating-container { left: 30px; }
 
-        .whatsapp-main-btn {
-            background-color: #25d366;
-            color: white;
-            border: none;
-            width: 52px; /* تم تصغير الحجم قليلاً للتناسق التام */
-            height: 52px;
-            border-radius: 50%;
-            font-size: 26px; /* حجم الأيقونة المثالي بداخل الزر */
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: waPulse 2s infinite;
-        }
+		/* --- تصميم أيقونة الواتساب ثلاثية الأبعاد والمحسنة جداً --- */
+		.whatsapp-main-btn {
+			background: linear-gradient(135deg, #25d366 0%, #075e54 100%) !important; /* تدرج لوني عميق */
+			color: white !important;
+			border: none !important;
+			width: 54px !important;
+			height: 54px !important;
+			border-radius: 50% !important;
+			font-size: 28px !important;
+			cursor: pointer !important;
+			box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35), inset 0 2px 4px rgba(255,255,255,0.4) !important; /* ظل خارجي وبريق داخلي ثلاثي الأبعاد */
+			display: flex !important;
+			justify-content: center !important;
+			align-items: center !important;
+			animation: waPulse المحسن 2s infinite !important;
+			transform: translateZ(0);
+		}
+		
+		.whatsapp-main-btn:hover {
+			transform: scale(1.08); /* تكبير خفيف وتفاعلي عند تمرير الماوس */
+			background: linear-gradient(135deg, #20ba59 0%, #054d44 100%) !important;
+		}
 
         .whatsapp-chat-box {
             position: absolute;
