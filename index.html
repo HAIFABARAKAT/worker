@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">Worker Services & Recruitment Company</title>
     <!-- تضمين النسخة المستقرة والشاملة من مكتبة Font Awesome لحل مشكلة اختفاء الأيقونات نهائياً -->
-    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://googleapis.com');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
         
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         html[dir="rtl"] * {
@@ -24,10 +24,36 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        :root {
+            --bg-primary: #f4f7f6;
+            --text-primary: #333333;
+            --text-muted: #666666;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(255, 255, 255, 0.4);
+            --navbar-bg: rgba(255, 255, 255, 0.85);
+            --shadow-color: rgba(0, 0, 0, 0.05);
+            --input-bg: #fafafa;
+            --input-border: #cccccc;
+        }
+
+        /* إعدادات الوضع الداكن الذكي المطور */
+        html.dark-mode {
+            --bg-primary: #0f172a;
+            --text-primary: #f8fafc;
+            --text-muted: #cbd5e1;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --navbar-bg: rgba(15, 23, 42, 0.7);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --input-bg: #1e293b;
+            --input-border: #475569;
+        }
+
         body {
-            background-color: #f4f7f6;
-            color: #333;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -35,29 +61,79 @@
             margin: 0 auto;
             padding: 20px;
         }
+
+        /* أنماط حركات الظهور الانسيابي عند التمرير */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal-element.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
 <!-- نهاية جزء ١ -->
 
 
 <!-- بداية جزء ٢: تصميم شريط التنقل المصلح والهيدر وشريط الصور المتحرك -->
-<!-- بداية جزء ٢: تصميم شريط التنقل المصلح والهيدر وشريط الصور المتحرك -->
-<!-- بداية جزء ٢: تصميم شريط التنقل المصلح والهيدر وشريط الصور المتحرك -->
-        /* تصميم شريط التنقل وضمان بقاء الشعار واللغة على سطر واحد في الجوال */
+        /* تصميم شريط التنقل بتأثير الزجاج الفاخر المطور */
         .navbar {
-            background-color: #ffffff;
-            padding: 15px 10px; /* تقليل الحشو الجانبي لمنح مساحة أفقية كافية للجوال */
+            background-color: var(--navbar-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 15px 12px;
+            box-shadow: 0 4px 30px var(--shadow-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .navbar-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             width: 100%;
-            /* تم حذف nowrap و flex-direction لمنع التداخل والزحف العشوائي أسفل الهيدر */
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .brand-logo {
             font-weight: 700;
-            font-size: 1.1rem; /* حجم الخط الأصلي ثابت دون تغيير */
+            font-size: 1.2rem;
             color: #1e3c72;
-            white-space: nowrap; /* منع انقسام اسم الشركة إلى سطرين */
+            white-space: nowrap;
+        }
+        html.dark-mode .brand-logo {
+            color: #38bdf8;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* زر تبديل الوضع الداكن التفاعلي */
+        .theme-toggle-btn {
+            background: transparent;
+            border: 2px solid #2a5298;
+            color: #2a5298;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        html.dark-mode .theme-toggle-btn {
+            border-color: #38bdf8;
+            color: #38bdf8;
         }
 
         .lang-switcher-btn {
@@ -72,18 +148,26 @@
             align-items: center;
             gap: 6px;
             font-size: 0.85rem;
-            white-space: nowrap; /* منع انقسام نص زر اللغة */
+            white-space: nowrap;
+        }
+        html.dark-mode .lang-switcher-btn {
+            color: #38bdf8;
+            border-color: #38bdf8;
         }
 
-        .lang-switcher-btn:hover {
+        .lang-switcher-btn:hover, .theme-toggle-btn:hover {
             background-color: #2a5298;
             color: #ffffff;
+        }
+        html.dark-mode .lang-switcher-btn:hover, html.dark-mode .theme-toggle-btn:hover {
+            background-color: #38bdf8;
+            color: #0f172a;
         }
 
         header {
             background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: #fff;
-            padding: 60px 20px;
+            padding: 70px 20px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
@@ -106,13 +190,14 @@
             position: relative;
             overflow: hidden;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px var(--shadow-color);
         }
 
         .slider-wrapper {
             display: flex;
             width: 100%;
             height: 350px;
+            transition: transform 0.5s ease-in-out;
         }
 
         .slide {
@@ -156,24 +241,23 @@
 
         .slider-btn:hover { background: #fff; }
         
-        /* ضبط مكان أسهم التحريك بناءً على اتجاه الصفحة LTR و RTL */
         html[dir="ltr"] .prev-btn { left: 15px; }
         html[dir="ltr"] .next-btn { right: 15px; }
         html[dir="rtl"] .prev-btn { right: 15px; transform: translateY(-50%) rotate(180deg); }
         html[dir="rtl"] .next-btn { left: 15px; transform: translateY(-50%) rotate(180deg); }
 <!-- نهاية جزء ٢ -->
-<!-- نهاية جزء ٢ -->
-<!-- نهاية جزء ٢ -->
 
 
 <!-- بداية جزء ٣: تصميم كروت الخدمات، شريط الإنجازات، وشريط الشركات الجديد، وآراء العملاء -->
-        /* تصميم عناوين الأقسام */
         .section-title {
             text-align: center;
             margin: 50px 0 25px;
             color: #1e3c72;
             font-size: 2rem;
             position: relative;
+        }
+        html.dark-mode .section-title {
+            color: #38bdf8;
         }
 
         .section-title::after {
@@ -185,8 +269,10 @@
             margin: 8px auto 0;
             border-radius: 2px;
         }
+        html.dark-mode .section-title::after {
+            background-color: #38bdf8;
+        }
 
-        /* شبكة الخدمات */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -194,23 +280,26 @@
             margin-bottom: 60px;
         }
 
+        /* كروت الخدمات بتأثير الزجاج اللامع الفاخر */
         .service-card {
-            background: #fff;
-            border-radius: 8px;
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px var(--shadow-color);
         }
 
         .service-img {
             width: 100%;
             height: 220px;
             object-fit: cover;
-            background-color: #ddd;
         }
 
         .service-info {
@@ -222,8 +311,14 @@
             margin-bottom: 12px;
             font-size: 1.25rem;
         }
+        html.dark-mode .service-info h3 {
+            color: #38bdf8;
+        }
+        
+        .service-info p {
+            color: var(--text-primary);
+        }
 
-        /* شريط أرقام الإنجازات المتفاعل */
         .stats-section {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: #ffffff;
@@ -269,14 +364,14 @@
             opacity: 0.9;
         }
 
-        /* تصميم شريط شعارات الشركات شركاء النجاح المتحرك */
         .partners-section {
             margin-bottom: 60px;
             overflow: hidden;
-            background: #fff;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             padding: 30px 0;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
 
         .partners-slider {
@@ -294,8 +389,8 @@
         }
 
         .partner-logo-placeholder {
-            background-color: #f0f4f8;
-            color: #718096;
+            background-color: var(--input-bg);
+            color: var(--text-primary);
             font-weight: bold;
             font-size: 0.9rem;
             border-radius: 8px;
@@ -304,7 +399,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 1px dashed #cbd5e0;
+            border: 1px dashed var(--input-border);
             text-align: center;
         }
 
@@ -313,7 +408,6 @@
             100% { transform: translateX(calc(-200px * 5)); }
         }
 
-        /* ضبط اتجاه حركة الشريط عند استخدام الموقع باللغة العربية */
         html[dir="rtl"] .partners-slider {
             animation: scrollPartnersRTL 20s linear infinite;
         }
@@ -323,7 +417,6 @@
             100% { transform: translateX(calc(200px * 5)); }
         }
 
-        /* قسم آراء العملاء */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -332,17 +425,23 @@
         }
 
         .testimonial-card {
-            background-color: #fff;
+            background-color: var(--card-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--card-border);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 15px var(--shadow-color);
             border-top: 4px solid #2a5298;
             position: relative;
+        }
+        html.dark-mode .testimonial-card {
+            border-top-color: #38bdf8;
         }
 
         .testimonial-text {
             font-style: italic;
-            color: #555;
+            color: var(--text-primary);
             margin-bottom: 20px;
         }
 
@@ -351,24 +450,27 @@
             color: #1e3c72;
             font-size: 0.95rem;
         }
+        html.dark-mode .testimonial-author {
+            color: #38bdf8;
+        }
 
         .testimonial-company {
             font-size: 0.85rem;
-            color: #888;
+            color: var(--text-muted);
             margin-top: 2px;
         }
 <!-- نهاية جزء ٣ -->
 
 
 <!-- بداية جزء ٤: تصميم نموذج الطلبات والأسئلة الشائعة وزر الواتساب المصلح وإغلاق الترويسة -->
-        /* تصميم قسم نموذج الطلبات */
-<!-- بداية جزء ٤: تصميم نموذج الطلبات والأسئلة الشائعة وزر الواتساب المصلح وإغلاق الترويسة -->
-        /* تصميم قسم نموذج الطلبات */
         .form-section {
-            background: #fff;
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--card-border);
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 30px var(--shadow-color);
             max-width: 700px;
             margin: 0 auto 60px;
         }
@@ -381,24 +483,28 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #444;
+            color: var(--text-primary);
             font-size: 0.95rem;
         }
 
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #ccc;
+            border: 1px solid var(--input-border);
             border-radius: 6px;
             font-size: 1rem;
-            background-color: #fafafa;
+            background-color: var(--input-bg);
+            color: var(--text-primary);
         }
 
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none;
             border-color: #2a5298;
-            background-color: #fff;
             box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.15);
+        }
+        html.dark-mode .form-group input:focus, html.dark-mode .form-group select:focus, html.dark-mode .form-group textarea:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
         }
 
         .submit-btn {
@@ -418,17 +524,43 @@
             background-color: #1e3c72;
         }
 
-        /* تصميم قسم الأسئلة الشائعة */
+        /* تصميم قسم الخريطة التفاعلية الفاخرة */
+        .map-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 30px var(--shadow-color);
+            margin-bottom: 60px;
+            overflow: hidden;
+        }
+        
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         .faq-section {
             max-width: 800px;
             margin: 0 auto 60px;
         }
 
         .faq-item {
-            background-color: #fff;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 8px;
             margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 15px var(--shadow-color);
             overflow: hidden;
         }
 
@@ -446,20 +578,23 @@
             justify-content: space-between;
             align-items: center;
         }
+        html.dark-mode .faq-question {
+            color: #38bdf8;
+        }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
             padding: 0 20px;
-            color: #666;
-            background-color: #fafafa;
+            color: var(--text-primary);
+            background-color: var(--input-bg);
             transition: max-height 0.3s ease, padding 0.3s ease;
         }
 
         .faq-item.active .faq-answer {
             max-height: 200px;
             padding: 20px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid var(--card-border);
         }
 
         .faq-icon {
@@ -471,7 +606,6 @@
             transform: rotate(45deg);
         }
 
-        /* تصميم زر الواتساب المطور بالأيقونة الحقيقية والحركات الاهتزازية والنبضية */
         .whatsapp-floating-container {
             position: fixed;
             bottom: 30px;
@@ -481,9 +615,8 @@
         html[dir="ltr"] .whatsapp-floating-container { right: 30px; }
         html[dir="rtl"] .whatsapp-floating-container { left: 30px; }
 
-		/* تصميم الزر الدائري الرئيسي الحامل للأيقونة الأصلية الملونة */
 		.whatsapp-main-btn {
-			background: #25d366 !important; /* اللون الرسمي الأخضر الصريح */
+			background: #25d366 !important;
 			border: none !important;
 			width: 60px !important;
 			height: 60px !important;
@@ -493,7 +626,6 @@
 			display: flex !important;
 			justify-content: center !important;
 			align-items: center !important;
-            /* دمج حركتي النبض الدائري والاهتزاز المستمر لرفع لفت الانتباه التفاعلي */
 			animation: waCustomPulse 2s infinite, waCustomWobble 4s ease-in-out infinite !important;
 			transform: translateZ(0);
             padding: 0 !important;
@@ -504,7 +636,6 @@
 			background: #20ba59 !important;
 		}
 
-        /* محاذاة أيقونة الـ SVG الأصلية بالداخل */
         .whatsapp-main-btn svg {
             width: 34px !important;
             height: 34px !important;
@@ -515,7 +646,8 @@
             position: absolute;
             bottom: 75px;
             width: 290px;
-            background-color: #fff;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.15);
             overflow: hidden;
@@ -547,6 +679,9 @@
             padding: 20px;
             min-height: 80px;
         }
+        html.dark-mode .whatsapp-chat-body {
+            background-color: #1e293b;
+        }
         .wa-msg-bubble {
             background-color: white;
             padding: 10px 14px;
@@ -559,7 +694,7 @@
         .whatsapp-chat-footer {
             padding: 12px;
             text-align: center;
-            background-color: #fff;
+            background-color: var(--card-bg);
         }
         .wa-start-chat-btn {
             display: block;
@@ -573,14 +708,12 @@
         }
         .wa-start-chat-btn:hover { background-color: #20ba59; }
 
-        /* الحركة الأولى: انتشار موجات النبض حول الزر */
         @keyframes waCustomPulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6), 0 8px 24px rgba(37, 211, 102, 0.4); }
             70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0), 0 8px 24px rgba(37, 211, 102, 0.4); }
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 24px rgba(37, 211, 102, 0.4); }
         }
 
-        /* الحركة الثانية: الاهتزاز المفاجئ الممتع المتتابع كل بضع ثوان لجذب انتباه عين القارئ */
         @keyframes waCustomWobble {
             0%, 90%, 100% { transform: rotate(0deg); }
             92% { transform: rotate(-10deg) scale(1.03); }
@@ -591,21 +724,25 @@
     </style>
 </head>
 <!-- نهاية جزء ٤ -->
-<!-- نهاية جزء ٤ -->
 
 
 <!-- بداية جزء ٥: الهيكل البرمجي لـ HTML (شريط التنقل، الهيدر، شريط الصور، وكروت الخدمات) -->
-<!-- بداية جزء ٥: الهيكل البرمجي المصلح لـ HTML -->
 <body>
 
-    <!-- شريط التنقل حر ومستقل تماماً لضمان المحاذاة الأفقية الصحيحة -->
-<!-- شريط التنقل حر ومستقل تماماً لضمان المحاذاة الأفقية الصحيحة -->
-    <nav class="navbar" style="display: flex !important; flex-direction: row !important; justify-content: space-between !important; align-items: center !important; padding: 15px 12px !important; width: 100% !important; box-sizing: border-box !important;">
-        <div class="brand-logo" id="navLogo">Barakat Group</div>
-        <button class="lang-switcher-btn" id="langBtn" onclick="toggleLanguage()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            <span id="langText">العربية</span>
-        </button>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="brand-logo" id="navLogo">Barakat Group</div>
+            <div class="nav-controls">
+                <!-- زر التبديل التفاعلي للوضع الداكن المدمج حديثاً -->
+                <button class="theme-toggle-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="lang-switcher-btn" id="langBtn" onclick="toggleLanguage()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <span id="langText">العربية</span>
+                </button>
+            </div>
+        </div>
     </nav>
 
     <header>
@@ -613,11 +750,9 @@
         <p id="headerSub">Integrated solutions for attracting elite talents and professional workforce</p>
     </header>
 
-    <!-- تبدأ الحاوية هنا بعد الهيدر لترتيب بقية العناصر والخدمات بالأسفل -->
     <div class="container">
         
-        <!-- مستطيل الصور المتحرك المتفاعل الجديد -->
-        <div class="slider-container">
+        <div class="slider-container reveal-element">
             <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
             <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
             <div class="slider-wrapper" id="sliderWrapper">
@@ -644,10 +779,10 @@
             </div>
         </div>
         
-        <h2 class="section-title" id="servicesTitle">Our Premium Services</h2>
+        <h2 class="section-title reveal-element" id="servicesTitle">Our Premium Services</h2>
         <div class="services-grid">
             
-            <div class="service-card">
+            <div class="service-card reveal-element">
                 <img src="pic/1s.jpeg" alt="Professional staff" class="service-img">
                 <div class="service-info">
                     <h3 id="srv1Title">Technical & Professional Staffing</h3>
@@ -655,7 +790,7 @@
                 </div>
             </div>
 
-            <div class="service-card">
+            <div class="service-card reveal-element">
                 <img src="pic/2s.jpeg" alt="Construction workforce" class="service-img">
                 <div class="service-info">
                     <h3 id="srv2Title">Construction & Contracting Workers</h3>
@@ -663,7 +798,7 @@
                 </div>
             </div>
 
-            <div class="service-card">
+            <div class="service-card reveal-element">
                 <img src="pic/3s.jpeg" alt="Hospitality services" class="service-img">
                 <div class="service-info">
                     <h3 id="srv3Title">Hospitality & General Services</h3>
@@ -673,12 +808,10 @@
 
         </div>
 <!-- نهاية جزء ٥ -->
-<!-- نهاية جزء ٥ -->
 
 
 <!-- بداية جزء ٦: الهيكل البرمجي لـ HTML (الأرقام، شريط الشركات، الآراء، النموذج، الأسئلة، والواتساب) -->
-        <!-- شريط أرقام الإنجازات المتفاعل -->
-        <section id="stats-counter" class="stats-section">
+        <section id="stats-counter" class="stats-section reveal-element">
             <div class="stats-container">
                 <div class="stat-item">
                     <div class="stat-icon"><i class="fas fa-user-check"></i></div>
@@ -703,17 +836,14 @@
             </div>
         </section>
 
-        <!-- شريط شعارات الشركات وشركاء النجاح المتحرك -->
-        <h2 class="section-title" id="partnersTitle">Trusted Partners</h2>
-        <section class="partners-section">
+        <h2 class="section-title reveal-element" id="partnersTitle">Trusted Partners</h2>
+        <section class="partners-section reveal-element">
             <div class="partners-slider">
-                <!-- الـ 5 كروت الأولى الأصلية للشريط العرضي -->
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p1Text">Partner Company 1</div></div>
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p2Text">Partner Company 2</div></div>
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p3Text">Partner Company 3</div></div>
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p4Text">Partner Company 4</div></div>
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p5Text">Partner Company 5</div></div>
-                <!-- الـ 5 كروت المكررة لضمان حركة انسيابية لا تنتهي (Infinite Scroll) -->
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p1TextDup">Partner Company 1</div></div>
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p2TextDup">Partner Company 2</div></div>
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p3TextDup">Partner Company 3</div></div>
@@ -722,24 +852,22 @@
             </div>
         </section>
 
-        <!-- قسم آراء العملاء -->
-        <h2 class="section-title" id="testiTitle">What Our Clients Say</h2>
+        <h2 class="section-title reveal-element" id="testiTitle">What Our Clients Say</h2>
         <div class="testimonials-grid">
-            <div class="testimonial-card">
+            <div class="testimonial-card reveal-element">
                 <p class="testimonial-text" id="testiTxt1">"Barakat Group provided us with highly skilled engineers in record time. Excellent service and complete commitment."</p>
                 <div class="testimonial-author" id="testiAuth1">Eng. Ahmed Al-Mansoori</div>
                 <div class="testimonial-company" id="testiComp1">Al-Mansoori Contracting Company</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card reveal-element">
                 <p class="testimonial-text" id="testiTxt2">"Professional workflow and fully medically fit staff. The hospitality team transformed our restaurant operations."</p>
                 <div class="testimonial-author" id="testiAuth2">Khalid Ba-Wazir</div>
                 <div class="testimonial-company" id="testiComp2">Elite Hospitality Group</div>
             </div>
         </div>
 
-        <!-- قسم نموذج الطلبات ومفتاح Web3Forms الخاص بك -->
-        <h2 class="section-title" id="formTitle">Request a Workforce Recruitment</h2>
-        <div class="form-section">
+        <h2 class="section-title reveal-element" id="formTitle">Request a Workforce Recruitment</h2>
+        <div class="form-section reveal-element">
             <form action="https://web3forms.com" method="POST" id="orderForm">
                 <input type="hidden" name="access_key" value="705785a7-7db7-4974-8bcc-52aea4b30120">
                 
@@ -775,10 +903,17 @@
             </form>
         </div>
 
-        <!-- قسم الأسئلة الشائعة -->
-        <h2 class="section-title" id="faqTitle">Frequently Asked Questions</h2>
+        <!-- إضافة قسم الخريطة التفاعلية الفاخرة للشركة لتحديد فرع ماليزيا الدولي -->
+        <h2 class="section-title reveal-element" id="mapTitle">Our Global Headquarters</h2>
+        <div class="map-section reveal-element">
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127409.83279148386!2d101.35905252875154!3d3.2359424759714853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc59c47e80f339%3A0x6b63ca041fb82e66!2sPuncak%20Alam%2C%20Selangor%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <h2 class="section-title reveal-element" id="faqTitle">Frequently Asked Questions</h2>
         <div class="faq-section">
-            <div class="faq-item">
+            <div class="faq-item reveal-element">
                 <button class="faq-question" onclick="toggleFaq(this)">
                     <span id="faqQ1">What is the average time to recruit workers?</span>
                     <span class="faq-icon">+</span>
@@ -788,7 +923,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item reveal-element">
                 <button class="faq-question" onclick="toggleFaq(this)">
                     <span id="faqQ2">Do you provide guarantees on the workforce?</span>
                     <span class="faq-icon">+</span>
@@ -800,7 +935,6 @@
         </div>
     </div>
 
-    <!-- عنصر نافذة زر الواتساب العائمة المتفاعلة (تم تهيئتها افتراضياً بالمفتاح الدولي الماليزي 60) -->
     <div class="whatsapp-floating-container" id="whatsappContainer">
         <div class="whatsapp-chat-box" id="whatsappChatBox">
             <div class="whatsapp-chat-header">
@@ -814,16 +948,14 @@
                 <p class="wa-msg-bubble" id="waBubbleText">Welcome to Barakat Group! How can we assist you with workforce recruitment today?</p>
             </div>
             <div class="whatsapp-chat-footer">
-                <!-- تم ضبط المفتاح الدولي لماليزيا 60، قم فقط باستبدال الأرقام 123456789 برقمك الحقيقي لاحقاً -->
                 <a href="https://wa.me/60176706338" target="_blank" class="wa-start-chat-btn" id="waBtnText">Start Chat</a>
             </div>
         </div>
 		<button class="whatsapp-main-btn" onclick="toggleWhatsAppChat()" aria-label="Chat on WhatsApp">
-            <!-- كود الـ SVG الحقيقي الملون لأيقونة واتساب الرسمية الشفافة ذات التفاصيل الدقيقة -->
-            <svg viewBox="0 0 24 24" xmlns="http://w3.org">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#fff" d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.461 3.42 1.268 4.873l-1.348 4.925 5.04-1.323c1.408.766 3.007 1.2 4.694 1.2 5.51 0 9.993-4.483 9.993-9.993S17.515 2 12.004 2zm4.957 14.212c-.215.604-1.25 1.196-1.722 1.26-.474.065-.94.316-3.023-.544-2.508-1.033-4.086-3.606-4.21-3.774-.126-.167-1.022-1.357-1.022-2.59 0-1.23.645-1.838.874-2.09.228-.25.503-.314.67-.314.17 0 .343.003.49.01.15.008.355-.06.556.425.204.493.696 1.696.757 1.82.06.126.1.272.016.44-.085.17-.19.27-.376.495-.183.22-.384.368-.216.657.17.29.743 1.226 1.593 1.982.895.797 1.653 1.042 1.942 1.186.29.145.46.122.63-.075.174-.197.747-.87.947-1.168.2-.3.402-.25.672-.15.27.1.1.204 1.706.8 1.605.597 1.71.72 1.737.9.027.18-.06.8-.276 1.404z"/>
             </svg>
-        </button>
+		</button>
     </div>
 <!-- نهاية جزء ٦ -->
 
@@ -865,6 +997,7 @@
                 slide3Text: "Professional Quality & Success",
                 slide4Text: "Professional Quality & Success",
                 slide5Text: "Professional Quality & Success",
+                mapTitle: "Our Global Headquarters",
                 faqTitle: "Frequently Asked Questions",
                 faqQ1: "What is the average time to recruit workers?",
                 faqA1: "The process usually takes between 14 to 30 days, depending on the required nationalities and specific professional qualifications.",
@@ -877,19 +1010,16 @@
                 testiTxt2: '"Professional workflow and fully medically fit staff. The hospitality team transformed our restaurant operations."',
                 testiAuth2: "Khalid Ba-Wazir",
                 testiComp2: "Elite Hospitality Group",
-                // تراجم الأرقام والإنجازات
                 statLbl1: "Placed Candidates",
                 statLbl2: "Corporate Clients",
                 statLbl3: "Success Rate %",
                 statLbl4: "Years of Experience",
-                // تراجم شريط الشركات
                 partnersTitle: "Our Success Partners",
                 p1Text: "Al-Marai",
                 p2Text: "Bin Laden Group",
                 p3Text: "Aramco Services",
                 p4Text: "Sabic Logistics",
                 p5Text: "STC Business",
-                // تراجم نافذة الواتساب
                 waHeaderTitle: "Barakat Support",
                 waHeaderStatus: "Online",
                 waBubbleText: "Welcome to Barakat Group! How can we assist you with workforce recruitment today?",
@@ -929,6 +1059,7 @@
                 slide3Text: "الجودة المهنية والنجاح",
                 slide4Text: "الجودة المهنية والنجاح",
                 slide5Text: "الجودة المهنية والنجاح",
+                mapTitle: "مقرنا الدولي العالمي",
                 faqTitle: "الأسئلة الشائعة",
                 faqQ1: "ما هي المدة الزمنية المستغرقة لاستقدام العمالة؟",
                 faqA1: "تستغرق العملية عادةً ما بين 14 إلى 30 يوماً، ويعتمد ذلك على الجنسيات المطلوبة والمؤهلات المهنية المحددة.",
@@ -941,19 +1072,16 @@
                 testiTxt2: '"تنظيم احترافي وعمالة خالية تماماً من الملاحظات الطبية، طاقم الضيافة أحدث فارقاً كبيراً في إدارة مطاعمنا."',
                 testiAuth2: "خالد باوزير",
                 testiComp2: "مجموعة النخبة للضيافة",
-                // تراجم الأرقام والإنجازات
                 statLbl1: "مرشح تم توظيفه",
                 statLbl2: "شركة وعميل",
                 statLbl3: "نسبة نجاح التأشيرات %",
                 statLbl4: "عام من الخبرة",
-                // تراجم شريط الشركات
                 partnersTitle: "شركاء النجاح",
                 p1Text: "المراعي",
                 p2Text: "مجموعة بن لادن",
                 p3Text: "أرامكو السعودية",
                 p4Text: "سابك اللوجستية",
                 p5Text: "إس تي سي أعمال",
-                // تراجم نافذة الواتساب
                 waHeaderTitle: "دعم مجموعة بركات",
                 waHeaderStatus: "متصل الآن",
                 waBubbleText: "مرحباً بك في مجموعة بركات! كيف يمكننا مساعدتك في تلبية احتياجاتك من العمالة والتوظيف اليوم؟",
@@ -966,7 +1094,7 @@
 <!-- بداية جزء ٨: معالجات جافا سكريبت التفاعلية وإغلاق وسوم المستند كاملة -->
         let currentLang = 'en'; 
         let currentSlideIndex = 0;
-        let counterStarted = false; // متغير لمنع تكرار تحريك العداد صعوداً وهبوطاً
+        let counterStarted = false;
 
         function toggleLanguage() {
             currentLang = (currentLang === 'en') ? 'ar' : 'en';
@@ -1017,6 +1145,7 @@
             document.getElementById('slide4Text').innerText = t.slide4Text;
             document.getElementById('slide5Text').innerText = t.slide5Text;
 
+            document.getElementById('mapTitle').innerText = t.mapTitle;
             document.getElementById('faqTitle').innerText = t.faqTitle;
             document.getElementById('faqQ1').innerText = t.faqQ1;
             document.getElementById('faqA1').innerText = t.faqA1;
@@ -1031,13 +1160,11 @@
             document.getElementById('testiAuth2').innerText = t.testiAuth2;
             document.getElementById('testiComp2').innerText = t.testiComp2;
 
-            // تحديث نصوص ترجمة قسم الإنجازات والعداد
             document.getElementById('statLbl1').innerText = t.statLbl1;
             document.getElementById('statLbl2').innerText = t.statLbl2;
             document.getElementById('statLbl3').innerText = t.statLbl3;
             document.getElementById('statLbl4').innerText = t.statLbl4;
 
-            // تحديث نصوص ترجمة شريط الشركات وشركاء النجاح المتحرك (الأصلي والمكرر)
             document.getElementById('partnersTitle').innerText = t.partnersTitle;
             
             const p1Elements = document.querySelectorAll('[id^="p1Text"]');
@@ -1055,11 +1182,26 @@
             const p5Elements = document.querySelectorAll('[id^="p5Text"]');
             p5Elements.forEach(el => el.innerText = t.p5Text);
 
-            // تحديث نصوص ترجمة نافذة الواتساب العائمة
             document.getElementById('waHeaderTitle').innerText = t.waHeaderTitle;
             document.getElementById('waHeaderStatus').innerText = t.waHeaderStatus;
             document.getElementById('waBubbleText').innerText = t.waBubbleText;
             document.getElementById('waBtnText').innerText = t.waBtnText;
+        }
+
+        /* دالة معالجة الوضع الداكن الذكي التفاعلي مع حفظ تفضيلات المستخدم */
+        function toggleTheme() {
+            const htmlTag = document.getElementById('htmlTag');
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (htmlTag.classList.contains('dark-mode')) {
+                htmlTag.classList.remove('dark-mode');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlTag.classList.add('dark-mode');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
         }
 
         function updateSlider() {
@@ -1084,13 +1226,11 @@
             item.classList.toggle('active');
         }
 
-        // دالة التحكم التفاعلي بفتح وإغلاق نافذة الواتساب العائمة
         function toggleWhatsAppChat() {
             const chatBox = document.getElementById('whatsappChatBox');
             chatBox.classList.toggle('active');
         }
 
-        // دالة تحريك أرقام العداد بشكل تصاعدي مرن
         function startCounting() {
             const counters = document.querySelectorAll(".stat-number");
             counters.forEach(counter => {
@@ -1110,25 +1250,44 @@
             });
         }
 
-        // إعداد تفعيل العداد بمجرد ظهور القسم عبر الـ Intersection Observer
+        // إعداد تفعيل العداد والظهور الانسيابي للعناصر بالتمرير
         document.addEventListener("DOMContentLoaded", () => {
+            // فحص تفضيلات الكاش للوضع الداكن قبل التحميل
+            const savedTheme = localStorage.getItem('theme');
+            const htmlTag = document.getElementById('htmlTag');
+            const themeIcon = document.getElementById('themeIcon');
+            if (savedTheme === 'dark') {
+                htmlTag.classList.add('dark-mode');
+                if (themeIcon) themeIcon.className = 'fas fa-sun';
+            }
+
+            // مراقب العداد التراكمي
             const statsSection = document.getElementById("stats-counter");
-            
-            const observer = new IntersectionObserver((entries) => {
+            const statsObserver = new IntersectionObserver((entries) => {
                 const [entry] = entries;
                 if (entry.isIntersecting && !counterStarted) {
                     startCounting();
                     counterStarted = true;
-                    observer.unobserve(statsSection); // إلغاء المراقبة لرفع سرعة استجابة وأداء الصفحة بعد التفعيل لأول مرة
+                    statsObserver.unobserve(statsSection);
                 }
-            }, {
-                root: null,
-                threshold: 0.2 // يبدأ العمل عندما يظهر 20% من القسم على شاشة الزائر
-            });
+            }, { root: null, threshold: 0.2 });
 
             if (statsSection) {
-                observer.observe(statsSection);
+                statsObserver.observe(statsSection);
             }
+
+            // مراقب حركة الظهور الانسيابي (Scroll Reveal Animations) لكل الأقسام والكروت
+            const revealElements = document.querySelectorAll('.reveal-element');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+            revealElements.forEach(el => revealObserver.observe(el));
         });
     </script>
 </body>
