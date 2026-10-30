@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">Worker Services & Recruitment Company</title>
+    <!-- تضمين مكتبة Font Awesome لعرض أيقونات قسم الإنجازات بشكل احترافي -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         /* جزء 1: الخطوط والإعدادات العامة */
         @import url('https://googleapis.com');
@@ -153,9 +155,7 @@
         html[dir="rtl"] .next-btn { left: 15px; transform: translateY(-50%) rotate(180deg); }
 		
         /* نهاية جزء 2 */
-
-
-        /* جزء 3: تصميم كروت الخدمات */
+        /* جزء 3: تصميم كروت الخدمات والعداد */
         .section-title {
             text-align: center;
             margin: 50px 0 25px;
@@ -209,6 +209,53 @@
             margin-bottom: 12px;
             font-size: 1.25rem;
         }
+
+        /* التصميم الخاص بشريط أرقام الإنجازات المتفاعل الجديد */
+        .stats-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ffffff;
+            padding: 50px 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 40px 0 60px;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            color: #00f2fe;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
 		/* إضافة خاصة بقسم آراء العملاء */
         .testimonials-grid {
             display: grid;
@@ -246,8 +293,7 @@
         /* نهاية جزء 3 */
 
 
-
-        /* جزء 4: تصميم نموذج الطلبات */
+        /* جزء 4: تصميم نموذج الطلبات والأسئلة الشائعة */
         .form-section {
             background: #fff;
             padding: 40px;
@@ -355,12 +401,6 @@
         }
     </style>
 </head>
-<!-- نهاية جزء 4 -->
-
-
-
-<!-- جزء 5: محتوى الهيدر والخدمات -->
-<!-- جزء 5: محتوى الهيدر والخدمات -->
 <body>
 
     <nav class="navbar">
@@ -396,12 +436,12 @@
                     <div class="slide-caption"><h4 id="slide3Text">Professional Quality & Success</h4></div>
                 </div>
                 <div class="slide">
-                    <img src="pic/4.jpeg" alt="Slide 3">
-                    <div class="slide-caption"><h4 id="slide3Text">Professional Quality & Success</h4></div>
+                    <img src="pic/4.jpeg" alt="Slide 4">
+                    <div class="slide-caption"><h4 id="slide4Text">Professional Quality & Success</h4></div>
                 </div>				
                 <div class="slide">
-                    <img src="pic/5.jpeg" alt="Slide 3">
-                    <div class="slide-caption"><h4 id="slide3Text">Professional Quality & Success</h4></div>
+                    <img src="pic/5.jpeg" alt="Slide 5">
+                    <div class="slide-caption"><h4 id="slide5Text">Professional Quality & Success</h4></div>
                 </div>				
             </div>
         </div>
@@ -434,14 +474,33 @@
             </div>
 
         </div>
-<!-- نهاية جزء 5 -->
-<!-- نهاية جزء 5 -->
 
+        <!-- إضافة قسم شريط أرقام الإنجازات المتفاعل في موقعه المعتمد -->
+        <section id="stats-counter" class="stats-section">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-user-check"></i></div>
+                    <div class="stat-number" data-target="2500">0</div>
+                    <div class="stat-label" id="statLbl1">Placed Candidates</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-building"></i></div>
+                    <div class="stat-number" data-target="180">0</div>
+                    <div class="stat-label" id="statLbl2">Corporate Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-passport"></i></div>
+                    <div class="stat-number" data-target="99">0</div>
+                    <div class="stat-label" id="statLbl3">Success Rate %</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-award"></i></div>
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label" id="statLbl4">Years of Experience</div>
+                </div>
+            </div>
+        </section>
 
-
-
-        <!-- جزء 6: محتوى نموذج البيانات والـ Key -->
-<!-- جزء 6: محتوى آراء العملاء، نموذج البيانات، وقسم الأسئلة الشائعة -->
         <h2 class="section-title" id="testiTitle">What Our Clients Say</h2>
         <div class="testimonials-grid">
             <div class="testimonial-card">
@@ -516,14 +575,6 @@
             </div>
         </div>
     </div>
-<!-- نهاية جزء 6 -->
-<!-- نهاية جزء 6 -->
-
-
-
-
-    <!-- جزء 7: نصوص الترجمة للغتين -->
-<!-- جزء 7: نصوص الترجمة للغتين -->
     <script>
         const translations = {
             en: {
@@ -558,19 +609,25 @@
                 slide1Text: "Elite Business Solutions",
                 slide2Text: "Global Talents & Workforce",
                 slide3Text: "Professional Quality & Success",
+                slide4Text: "Professional Quality & Success",
+                slide5Text: "Professional Quality & Success",
                 faqTitle: "Frequently Asked Questions",
                 faqQ1: "What is the average time to recruit workers?",
                 faqA1: "The process usually takes between 14 to 30 days, depending on the required nationalities and specific professional qualifications.",
                 faqQ2: "Do you provide guarantees on the workforce?",
                 faqA2: "Yes, we provide a full 90-day comprehensive guarantee covering professional competence, medical fitness, and behavioral commitment.",
-                /* تصحيح كلمات آراء العملاء بالإنجليزية باسم بركات */
                 testiTitle: "What Our Clients Say",
                 testiTxt1: '"Barakat Group provided us with highly skilled engineers in record time. Excellent service and complete commitment."',
                 testiAuth1: "Eng. Ahmed Al-Mansoori",
                 testiComp1: "Al-Mansoori Contracting Company",
                 testiTxt2: '"Professional workflow and fully medically fit staff. The hospitality team transformed our restaurant operations."',
                 testiAuth2: "Khalid Ba-Wazir",
-                testiComp2: "Elite Hospitality Group"
+                testiComp2: "Elite Hospitality Group",
+                // ترجمة نصوص قسم الإنجازات والعداد للإنجليزية
+                statLbl1: "Placed Candidates",
+                statLbl2: "Corporate Clients",
+                statLbl3: "Success Rate %",
+                statLbl4: "Years of Experience"
             },
             ar: {
                 title: "شركة خدمات العمالة والتوظيف",
@@ -604,32 +661,30 @@
                 slide1Text: "حلول الأعمال النخبوية",
                 slide2Text: "الكفاءات والعمالة العالمية",
                 slide3Text: "الجودة المهنية والنجاح",
+                slide4Text: "الجودة المهنية والنجاح",
+                slide5Text: "الجودة المهنية والنجاح",
                 faqTitle: "الأسئلة الشائعة",
                 faqQ1: "ما هي المدة الزمنية المستغرقة لاستقدام العمالة؟",
                 faqA1: "تستغرق العملية عادةً ما بين 14 إلى 30 يوماً، ويعتمد ذلك على الجنسيات المطلوبة والمؤهلات المهنية المحددة.",
                 faqQ2: "هل توجد ضمانات على العمالة المستقدمة؟",
                 faqA2: "نعم، نقدم ضماناً شاملاً لمدة 90 يوماً يغطي الكفاءة المهنية، اللياقة الطبية، والالتزام السلوكي للعمال.",
-                /* تصحيح كلمات آراء العملاء بالعربية باسم بركات */
                 testiTitle: "آراء عملائنا",
                 testiTxt1: '"وفرت لنا مجموعة بركات مهندسين على أعلى مستوى من الكفاءة وفي وقت قياسي. خدمة ممتازة والتزام تام."',
                 testiAuth1: "م. أحمد المنصوري",
                 testiComp1: "شركة المنصوري للمقاولات العامة",
                 testiTxt2: '"تنظيم احترافي وعمالة خالية تماماً من الملاحظات الطبية، طاقم الضيافة أحدث فارقاً كبيراً في إدارة مطاعمنا."',
                 testiAuth2: "خالد باوزير",
-                testiComp2: "مجموعة النخبة للضيافة"
+                testiComp2: "مجموعة النخبة للضيافة",
+                // ترجمة نصوص قسم الإنجازات والعداد للعربية
+                statLbl1: "مرشح تم توظيفه",
+                statLbl2: "شركة وعميل",
+                statLbl3: "نسبة نجاح التأشيرات %",
+                statLbl4: "عام من الخبرة"
             }
         };
-        // نهاية جزء 7
-        // نهاية جزء 7
-
-
-
-
-        // جزء 8: معالج تبديل اللغة وإغلاق وسم الصفحة
-// جزء 8: معالج تبديل اللغة، التحريك التلقائي، وتفاعل الأسئلة الشائعة
-// جزء 8: معالج تبديل اللغة، التحريك التلقائي، وتفاعل الأسئلة الشائعة
         let currentLang = 'en'; 
         let currentSlideIndex = 0;
+        let counterStarted = false; // متغير لمنع تكرار تحريك العداد صعوداً وهبوطاً
 
         function toggleLanguage() {
             currentLang = (currentLang === 'en') ? 'ar' : 'en';
@@ -677,6 +732,8 @@
             document.getElementById('slide1Text').innerText = t.slide1Text;
             document.getElementById('slide2Text').innerText = t.slide2Text;
             document.getElementById('slide3Text').innerText = t.slide3Text;
+            document.getElementById('slide4Text').innerText = t.slide4Text;
+            document.getElementById('slide5Text').innerText = t.slide5Text;
 
             document.getElementById('faqTitle').innerText = t.faqTitle;
             document.getElementById('faqQ1').innerText = t.faqQ1;
@@ -684,7 +741,6 @@
             document.getElementById('faqQ2').innerText = t.faqQ2;
             document.getElementById('faqA2').innerText = t.faqA2;
 
-            /* تفعيل ترجمة قسم آراء العملاء بشكل صحيح وصحيح */
             document.getElementById('testiTitle').innerText = t.testiTitle;
             document.getElementById('testiTxt1').innerText = t.testiTxt1;
             document.getElementById('testiAuth1').innerText = t.testiAuth1;
@@ -692,6 +748,12 @@
             document.getElementById('testiTxt2').innerText = t.testiTxt2;
             document.getElementById('testiAuth2').innerText = t.testiAuth2;
             document.getElementById('testiComp2').innerText = t.testiComp2;
+
+            // تحديث نصوص ترجمة قسم الإنجازات
+            document.getElementById('statLbl1').innerText = t.statLbl1;
+            document.getElementById('statLbl2').innerText = t.statLbl2;
+            document.getElementById('statLbl3').innerText = t.statLbl3;
+            document.getElementById('statLbl4').innerText = t.statLbl4;
         }
 
         function updateSlider() {
@@ -715,8 +777,48 @@
             const item = button.parentElement;
             item.classList.toggle('active');
         }
+
+        // دالة تحريك أرقام العداد بشكل تصاعدي مرن
+        function startCounting() {
+            const counters = document.querySelectorAll(".stat-number");
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute("data-target");
+                    const count = +counter.innerText.replace('+', '');
+                    const speed = target / 80; 
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + speed);
+                        setTimeout(updateCount, 25);
+                    } else {
+                        // إضافة علامة الزائد للأرقام التي تحتاج إشارة مضافة
+                        counter.innerText = target + (target >= 15 ? "+" : "");
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // إعداد تفعيل العداد بمجرد ظهور القسم عبر الـ Intersection Observer
+        document.addEventListener("DOMContentLoaded", () => {
+            const statsSection = document.getElementById("stats-counter");
+            
+            const observer = new IntersectionObserver((entries) => {
+                const [entry] = entries;
+                if (entry.isIntersecting && !counterStarted) {
+                    startCounting();
+                    counterStarted = true;
+                    observer.unobserve(statsSection); // إلغاء المراقبة لرفع سرعة استجابة الصفحة بعد التفعيل لأول مرة
+                }
+            }, {
+                root: null,
+                threshold: 0.2 // يبدأ العمل عندما يظهر 20% من القسم على شاشة العميل
+            });
+
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        });
     </script>
 </body>
 </html>
-<!-- نهاية جزء 8 -->
-<!-- نهاية جزء 8 -->
