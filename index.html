@@ -192,18 +192,6 @@
         .submit-btn:hover {
             background-color: #1e3c72;
         }
-
-        .success-message {
-            display: none;
-            background-color: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid #c3e6cb;
-        }
     </style>
 </head>
 <body>
@@ -251,14 +239,12 @@
             </div>
 
         </div>
+
         <h2 class="section-title" id="formTitle">Request a Workforce Recruitment</h2>
         
         <div class="form-section">
-            <div id="successMsg" class="success-message">
-                Your request has been received successfully! Our consultant will contact you within 24 hours.
-            </div>
-
-            <form id="orderForm">
+            <!-- الإرسال الكلاسيكي المباشر للسيرفر لتجاوز قيود الاتصال وحلها نهائياً -->
+            <form action="https://api.web3forms.com/submit" method="POST" id="orderForm">
                 <input type="hidden" name="access_key" value="705785a7-7db7-4974-8bcc-52aea4b30120">
                 
                 <div class="form-group">
@@ -309,7 +295,6 @@
                 srv3Title: "Hospitality & General Services",
                 srv3Desc: "Meeting the needs of hotels, restaurants, and corporations for receptionists, chefs, and logistics staff.",
                 formTitle: "Request a Workforce Recruitment",
-                successMsg: "Your request has been received successfully! Our consultant will contact you within 24 hours.",
                 lblCompany: "Company Name",
                 phCompany: "Enter official company name",
                 lblCount: "Number of Workers Required",
@@ -340,7 +325,6 @@
                 srv3Title: "قطاع الضيافة والخدمات العامة",
                 srv3Desc: "نلبي احتياجات الفنادق، المطاعم، والشركات من موظفي استقبال، طهاة، وعمال خدمات لوجستية.",
                 formTitle: "تقديم طلب استقدام عمالة",
-                successMsg: "تم استلام طلبكم بنجاح! سيتواصل معكم مستشار التوظيف خلال 24 ساعة.",
                 lblCompany: "اسم الشركة",
                 phCompany: "أدخل اسم الشركة الرسمي",
                 lblCount: "عدد العمال المطلوبين",
@@ -387,7 +371,6 @@
             document.getElementById('srv3Title').innerText = t.srv3Title;
             document.getElementById('srv3Desc').innerText = t.srv3Desc;
             document.getElementById('formTitle').innerText = t.formTitle;
-            document.getElementById('successMsg').innerText = t.successMsg;
             
             document.getElementById('lblCompany').innerText = t.lblCompany;
             document.getElementById('companyName').placeholder = t.phCompany;
@@ -405,41 +388,6 @@
             document.getElementById('qualifications').placeholder = t.phQualif;
             document.getElementById('btnSubmit').innerText = t.btnSubmit;
         }
-
-        document.getElementById('orderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const form = e.target;
-            const formData = new FormData(form);
-            const successBox = document.getElementById('successMsg');
-            const submitBtn = document.getElementById('btnSubmit');
-
-            submitBtn.innerText = currentLang === 'ar' ? 'جاري الإرسال...' : 'Sending...';
-            submitBtn.disabled = true;
-
-            fetch('https://web3forms.com', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    successBox.style.display = 'block';
-                    form.reset();
-                    successBox.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    alert(currentLang === 'ar' ? 'حدث خطأ في الإرسال: ' + data.message : 'Submission error: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.log('Error:', error);
-                alert(currentLang === 'ar' ? 'فشل الاتصال بالسيرفر' : 'Server connection failed');
-            })
-            .finally(() => {
-                submitBtn.innerText = translations[currentLang].btnSubmit;
-                submitBtn.disabled = false;
-            });
-        });
     </script>
 </body>
 </html>
