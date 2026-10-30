@@ -730,16 +730,16 @@
 <!-- بداية جزء ٥: الهيكل البرمجي المصلح لـ HTML -->
 <body>
 
-    <!-- شريط التنقل حر ومستقل تماماً لضمان المحاذاة الأفقية الصحيحة وبداخله زر الوضع الداكن المطور بالأيقونات الهندسية -->
+    <!-- شريط التنقل حر ومستقل تماماً لضمان المحاذاة الأفقية الصحيحة وبداخله زر الوضع الداكن المطور -->
     <nav class="navbar" style="display: flex !important; flex-direction: row !important; justify-content: space-between !important; align-items: center !important; padding: 15px 12px !important; width: 100% !important; box-sizing: border-box !important;">
         <div class="brand-logo" id="navLogo">Barakat Group</div>
         
         <div style="display: flex; align-items: center; gap: 10px;">
-            <!-- زر تبديل الوضع الداكن المطور بأيقونات SVG الهندسية الثابتة على الجوال واختفاء المستطيل الفارغ -->
-            <button id="darkModeToggle" onclick="toggleDarkMode()" style="background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; color: #2a5298;">
-                <!-- أيقونة الشمس (تظهر في الوضع الداكن للتحويل للمضيء) -->
+            <!-- زر تبديل الوضع الداكن المطور بأيقونات SVG الهندسية الثابتة على الجوال -->
+            <button id="darkModeToggle" onclick="toggleDarkMode()" style="background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; margin: 0; color: #2a5298;">
+                <!-- أيقونة الشمس (تظهر في الوضع الداكن) -->
                 <svg id="sunIcon" style="display: none; width: 22px; height: 22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.22" x2="5.64" y2="17.78"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                <!-- أيقونة القمر (تظهر في الوضع المضيء للتحويل للداكن) -->
+                <!-- أيقونة القمر (تظهر في الوضع المضيء) -->
                 <svg id="moonIcon" style="display: block; width: 22px; height: 22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
 
