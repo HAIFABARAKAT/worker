@@ -406,13 +406,33 @@
             document.getElementById('btnSubmit').innerText = t.btnSubmit;
         }
 
-        document.getElementById('orderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const successBox = document.getElementById('successMsg');
-            successBox.style.display = 'block';
-            document.getElementById('orderForm').reset();
-            successBox.scrollIntoView({ behavior: 'smooth' });
-        });
+		document.getElementById('orderForm').addEventListener('submit', function(e) {
+			e.preventDefault(); // منع إعادة تحميل الصفحة الافتراضية
+			
+			const form = e.target;
+			const formData = new FormData(form);
+			const successBox = document.getElementById('successMsg');
+		
+			// إرسال البيانات بشكل متفاعل إلى سيرفر الإيميل
+			fetch('https://web3forms.com', {
+				method: 'POST',
+				body: formData
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.success) {
+					// إظهار رسالة النجاح للمستخدم وتفريغ الحقول
+					successBox.style.display = 'block';
+					form.reset();
+					successBox.scrollIntoView({ behavior: 'smooth' });
+				} else {
+					alert('حدث خطأ أثناء الإرسال، يرجى المحاولة مرة أخرى.');
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+		});
     </script>
 </body>
 </html>
