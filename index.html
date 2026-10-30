@@ -1,13 +1,13 @@
+<!-- بداية جزء ١: الخطوط والإعدادات العامة والتصميم العام المصلح للموقع -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr" id="htmlTag">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">Worker Services & Recruitment Company</title>
-    <!-- تضمين مكتبة Font Awesome لعرض أيقونات قسم الإنجازات بشكل احترافي -->
+    <!-- تضمين النسخة المستقرة والشاملة من مكتبة Font Awesome لحل مشكلة اختفاء الأيقونات نهائياً -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* جزء 1: الخطوط والإعدادات العامة */
         @import url('https://googleapis.com');
         
         * {
@@ -35,10 +35,11 @@
             margin: 0 auto;
             padding: 20px;
         }
-        /* نهاية جزء 1 */
+<!-- نهاية جزء ١ -->
 
 
-        /* جزء 2: تصميم شريط التنقل والهيدر */
+<!-- بداية جزء ٢: تصميم شريط التنقل المصلح والهيدر وشريط الصور المتحرك -->
+        /* تصميم شريط التنقل لضمان بقاء العناصر على سطر واحد */
         .navbar {
             background-color: #ffffff;
             padding: 15px 40px;
@@ -46,12 +47,14 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            flex-wrap: nowrap; /* يمنع نزول العناصر لسطر جديد نهائياً */
         }
 
         .brand-logo {
             font-weight: 700;
             font-size: 1.3rem;
             color: #1e3c72;
+            white-space: nowrap; /* يمنع انقسام النص */
         }
 
         .lang-switcher-btn {
@@ -66,6 +69,7 @@
             align-items: center;
             gap: 6px;
             font-size: 0.9rem;
+            white-space: nowrap; /* يمنع انقسام نص الزر */
         }
 
         .lang-switcher-btn:hover {
@@ -90,7 +94,8 @@
             font-size: 1.1rem;
             opacity: 0.9;
         }
-		/* إضافة خاصة بشريط الصور المتحرك */
+
+        /* تصميم مستطيل الصور المتحرك */
         .slider-container {
             width: 100%;
             max-width: 800px;
@@ -148,14 +153,16 @@
 
         .slider-btn:hover { background: #fff; }
         
-        /* ضبط مكان الأسهم بناءً على اتجاه الصفحة لـ LTR و RTL */
+        /* ضبط مكان أسهم التحريك بناءً على اتجاه الصفحة */
         html[dir="ltr"] .prev-btn { left: 15px; }
         html[dir="ltr"] .next-btn { right: 15px; }
         html[dir="rtl"] .prev-btn { right: 15px; transform: translateY(-50%) rotate(180deg); }
         html[dir="rtl"] .next-btn { left: 15px; transform: translateY(-50%) rotate(180deg); }
-		
-        /* نهاية جزء 2 */
-        /* جزء 3: تصميم كروت الخدمات والعداد */
+<!-- نهاية جزء ٢ -->
+
+
+<!-- بداية جزء ٣: تصميم كروت الخدمات، شريط الإنجازات، وشريط الشركات الجديد، وآراء العملاء -->
+        /* تصميم عناوين الأقسام */
         .section-title {
             text-align: center;
             margin: 50px 0 25px;
@@ -174,6 +181,7 @@
             border-radius: 2px;
         }
 
+        /* شبكة الخدمات */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -210,7 +218,7 @@
             font-size: 1.25rem;
         }
 
-        /* التصميم الخاص بشريط أرقام الإنجازات المتفاعل الجديد */
+        /* شريط أرقام الإنجازات المتفاعل */
         .stats-section {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: #ffffff;
@@ -256,7 +264,61 @@
             opacity: 0.9;
         }
 
-		/* إضافة خاصة بقسم آراء العملاء */
+        /* تصميم شريط شعارات الشركات شركاء النجاح المتحرك */
+        .partners-section {
+            margin-bottom: 60px;
+            overflow: hidden;
+            background: #fff;
+            padding: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .partners-slider {
+            display: flex;
+            width: calc(200px * 10);
+            animation: scrollPartners 20s linear infinite;
+        }
+
+        .partner-slide {
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .partner-logo-placeholder {
+            background-color: #f0f4f8;
+            color: #718096;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px dashed #cbd5e0;
+            text-align: center;
+        }
+
+        @keyframes scrollPartners {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-200px * 5)); }
+        }
+
+        /* ضبط اتجاه حركة الشريط عند استخدام الموقع باللغة العربية */
+        html[dir="rtl"] .partners-slider {
+            animation: scrollPartnersRTL 20s linear infinite;
+        }
+
+        @keyframes scrollPartnersRTL {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(200px * 5)); }
+        }
+
+        /* قسم آراء العملاء */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -290,10 +352,11 @@
             color: #888;
             margin-top: 2px;
         }
-        /* نهاية جزء 3 */
+<!-- نهاية جزء ٣ -->
 
 
-        /* جزء 4: تصميم نموذج الطلبات والأسئلة الشائعة */
+<!-- بداية جزء ٤: تصميم نموذج الطلبات والأسئلة الشائعة وزر الواتساب المصلح وإغلاق الترويسة -->
+        /* تصميم قسم نموذج الطلبات */
         .form-section {
             background: #fff;
             padding: 40px;
@@ -347,7 +410,8 @@
         .submit-btn:hover {
             background-color: #1e3c72;
         }
-		/* إضافة خاصة بقسم الأسئلة الشائعة */
+
+        /* تصميم قسم الأسئلة الشائعة */
         .faq-section {
             max-width: 800px;
             margin: 0 auto 60px;
@@ -399,8 +463,106 @@
         .faq-item.active .faq-icon {
             transform: rotate(45deg);
         }
+
+        /* تصميم زر الواتساب العائم بعد ضبط الحجم المتناسق لمنع التداخل */
+        .whatsapp-floating-container {
+            position: fixed;
+            bottom: 30px;
+            z-index: 9999;
+        }
+        
+        html[dir="ltr"] .whatsapp-floating-container { right: 30px; }
+        html[dir="rtl"] .whatsapp-floating-container { left: 30px; }
+
+        .whatsapp-main-btn {
+            background-color: #25d366;
+            color: white;
+            border: none;
+            width: 52px; /* تم تصغير الحجم قليلاً للتناسق التام */
+            height: 52px;
+            border-radius: 50%;
+            font-size: 26px; /* حجم الأيقونة المثالي بداخل الزر */
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: waPulse 2s infinite;
+        }
+
+        .whatsapp-chat-box {
+            position: absolute;
+            bottom: 65px;
+            width: 290px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            overflow: hidden;
+            transform: scale(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+        html[dir="ltr"] .whatsapp-chat-box { right: 0; }
+        html[dir="rtl"] .whatsapp-chat-box { left: 0; }
+
+        .whatsapp-chat-box.active {
+            transform: scale(1);
+        }
+
+        .whatsapp-chat-header {
+            background-color: #075e54;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .whatsapp-chat-header i { font-size: 24px; }
+        .chat-header-info h4 { font-size: 0.95rem; margin: 0; }
+        .chat-header-info p { font-size: 0.75rem; opacity: 0.8; margin: 0; }
+
+        .whatsapp-chat-body {
+            background-color: #e5ddd5;
+            padding: 20px;
+            min-height: 80px;
+        }
+        .wa-msg-bubble {
+            background-color: white;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            color: #333;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .whatsapp-chat-footer {
+            padding: 12px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .wa-start-chat-btn {
+            display: block;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .wa-start-chat-btn:hover { background-color: #20ba59; }
+
+        @keyframes waPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
     </style>
 </head>
+<!-- نهاية جزء ٤ -->
+
+
+<!-- بداية جزء ٥: الهيكل البرمجي لـ HTML (شريط التنقل، الهيدر، شريط الصور، وكروت الخدمات) -->
 <body>
 
     <nav class="navbar">
@@ -474,8 +636,11 @@
             </div>
 
         </div>
+<!-- نهاية جزء ٥ -->
 
-        <!-- إضافة قسم شريط أرقام الإنجازات المتفاعل في موقعه المعتمد -->
+
+<!-- بداية جزء ٦: الهيكل البرمجي لـ HTML (الأرقام، شريط الشركات، الآراء، النموذج، الأسئلة، والواتساب) -->
+        <!-- شريط أرقام الإنجازات المتفاعل -->
         <section id="stats-counter" class="stats-section">
             <div class="stats-container">
                 <div class="stat-item">
@@ -501,6 +666,26 @@
             </div>
         </section>
 
+        <!-- شريط شعارات الشركات وشركاء النجاح المتحرك -->
+        <h2 class="section-title" id="partnersTitle">Trusted Partners</h2>
+        <section class="partners-section">
+            <div class="partners-slider">
+                <!-- الـ 5 كروت الأولى الأصلية للشريط العرضي -->
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p1Text">Partner Company 1</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p2Text">Partner Company 2</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p3Text">Partner Company 3</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p4Text">Partner Company 4</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p5Text">Partner Company 5</div></div>
+                <!-- الـ 5 كروت المكررة لضمان حركة انسيابية لا تنتهي (Infinite Scroll) -->
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p1TextDup">Partner Company 1</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p2TextDup">Partner Company 2</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p3TextDup">Partner Company 3</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p4TextDup">Partner Company 4</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p5TextDup">Partner Company 5</div></div>
+            </div>
+        </section>
+
+        <!-- قسم آراء العملاء -->
         <h2 class="section-title" id="testiTitle">What Our Clients Say</h2>
         <div class="testimonials-grid">
             <div class="testimonial-card">
@@ -515,6 +700,7 @@
             </div>
         </div>
 
+        <!-- قسم نموذج الطلبات ومفتاح Web3Forms الخاص بك -->
         <h2 class="section-title" id="formTitle">Request a Workforce Recruitment</h2>
         <div class="form-section">
             <form action="https://web3forms.com" method="POST" id="orderForm">
@@ -552,6 +738,7 @@
             </form>
         </div>
 
+        <!-- قسم الأسئلة الشائعة -->
         <h2 class="section-title" id="faqTitle">Frequently Asked Questions</h2>
         <div class="faq-section">
             <div class="faq-item">
@@ -575,6 +762,33 @@
             </div>
         </div>
     </div>
+
+    <!-- عنصر نافذة زر الواتساب العائمة المتفاعلة (تم تهيئتها افتراضياً بالمفتاح الدولي الماليزي 60) -->
+    <div class="whatsapp-floating-container" id="whatsappContainer">
+        <div class="whatsapp-chat-box" id="whatsappChatBox">
+            <div class="whatsapp-chat-header">
+                <i class="fab fa-whatsapp"></i>
+                <div class="chat-header-info">
+                    <h4 id="waHeaderTitle">Barakat Support</h4>
+                    <p id="waHeaderStatus">Online</p>
+                </div>
+            </div>
+            <div class="whatsapp-chat-body">
+                <p class="wa-msg-bubble" id="waBubbleText">Welcome to Barakat Group! How can we assist you with workforce recruitment today?</p>
+            </div>
+            <div class="whatsapp-chat-footer">
+                <!-- تم ضبط المفتاح الدولي لماليزيا 60، قم فقط باستبدال الأرقام 123456789 برقمك الحقيقي لاحقاً -->
+                <a href="https://wa.me/60176706338" target="_blank" class="wa-start-chat-btn" id="waBtnText">Start Chat</a>
+            </div>
+        </div>
+        <button class="whatsapp-main-btn" onclick="toggleWhatsAppChat()" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
+<!-- نهاية جزء ٦ -->
+
+
+<!-- بداية جزء ٧: نصوص الترجمة للغتين (Translations Dictionary) -->
     <script>
         const translations = {
             en: {
@@ -623,11 +837,23 @@
                 testiTxt2: '"Professional workflow and fully medically fit staff. The hospitality team transformed our restaurant operations."',
                 testiAuth2: "Khalid Ba-Wazir",
                 testiComp2: "Elite Hospitality Group",
-                // ترجمة نصوص قسم الإنجازات والعداد للإنجليزية
+                // تراجم الأرقام والإنجازات
                 statLbl1: "Placed Candidates",
                 statLbl2: "Corporate Clients",
                 statLbl3: "Success Rate %",
-                statLbl4: "Years of Experience"
+                statLbl4: "Years of Experience",
+                // تراجم شريط الشركات
+                partnersTitle: "Our Success Partners",
+                p1Text: "Al-Marai",
+                p2Text: "Bin Laden Group",
+                p3Text: "Aramco Services",
+                p4Text: "Sabic Logistics",
+                p5Text: "STC Business",
+                // تراجم نافذة الواتساب
+                waHeaderTitle: "Barakat Support",
+                waHeaderStatus: "Online",
+                waBubbleText: "Welcome to Barakat Group! How can we assist you with workforce recruitment today?",
+                waBtnText: "Start Chat"
             },
             ar: {
                 title: "شركة خدمات العمالة والتوظيف",
@@ -675,13 +901,29 @@
                 testiTxt2: '"تنظيم احترافي وعمالة خالية تماماً من الملاحظات الطبية، طاقم الضيافة أحدث فارقاً كبيراً في إدارة مطاعمنا."',
                 testiAuth2: "خالد باوزير",
                 testiComp2: "مجموعة النخبة للضيافة",
-                // ترجمة نصوص قسم الإنجازات والعداد للعربية
+                // تراجم الأرقام والإنجازات
                 statLbl1: "مرشح تم توظيفه",
                 statLbl2: "شركة وعميل",
                 statLbl3: "نسبة نجاح التأشيرات %",
-                statLbl4: "عام من الخبرة"
+                statLbl4: "عام من الخبرة",
+                // تراجم شريط الشركات
+                partnersTitle: "شركاء النجاح",
+                p1Text: "المراعي",
+                p2Text: "مجموعة بن لادن",
+                p3Text: "أرامكو السعودية",
+                p4Text: "سابك اللوجستية",
+                p5Text: "إس تي سي أعمال",
+                // تراجم نافذة الواتساب
+                waHeaderTitle: "دعم مجموعة بركات",
+                waHeaderStatus: "متصل الآن",
+                waBubbleText: "مرحباً بك في مجموعة بركات! كيف يمكننا مساعدتك في تلبية احتياجاتك من العمالة والتوظيف اليوم؟",
+                waBtnText: "بدء المحادثة"
             }
         };
+<!-- نهاية جزء ٧ -->
+
+
+<!-- بداية جزء ٨: معالجات جافا سكريبت التفاعلية وإغلاق وسوم المستند كاملة -->
         let currentLang = 'en'; 
         let currentSlideIndex = 0;
         let counterStarted = false; // متغير لمنع تكرار تحريك العداد صعوداً وهبوطاً
@@ -749,11 +991,35 @@
             document.getElementById('testiAuth2').innerText = t.testiAuth2;
             document.getElementById('testiComp2').innerText = t.testiComp2;
 
-            // تحديث نصوص ترجمة قسم الإنجازات
+            // تحديث نصوص ترجمة قسم الإنجازات والعداد
             document.getElementById('statLbl1').innerText = t.statLbl1;
             document.getElementById('statLbl2').innerText = t.statLbl2;
             document.getElementById('statLbl3').innerText = t.statLbl3;
             document.getElementById('statLbl4').innerText = t.statLbl4;
+
+            // تحديث نصوص ترجمة شريط الشركات وشركاء النجاح المتحرك (الأصلي والمكرر)
+            document.getElementById('partnersTitle').innerText = t.partnersTitle;
+            
+            const p1Elements = document.querySelectorAll('[id^="p1Text"]');
+            p1Elements.forEach(el => el.innerText = t.p1Text);
+            
+            const p2Elements = document.querySelectorAll('[id^="p2Text"]');
+            p2Elements.forEach(el => el.innerText = t.p2Text);
+            
+            const p3Elements = document.querySelectorAll('[id^="p3Text"]');
+            p3Elements.forEach(el => el.innerText = t.p3Text);
+            
+            const p4Elements = document.querySelectorAll('[id^="p4Text"]');
+            p4Elements.forEach(el => el.innerText = t.p4Text);
+            
+            const p5Elements = document.querySelectorAll('[id^="p5Text"]');
+            p5Elements.forEach(el => el.innerText = t.p5Text);
+
+            // تحديث نصوص ترجمة نافذة الواتساب العائمة
+            document.getElementById('waHeaderTitle').innerText = t.waHeaderTitle;
+            document.getElementById('waHeaderStatus').innerText = t.waHeaderStatus;
+            document.getElementById('waBubbleText').innerText = t.waBubbleText;
+            document.getElementById('waBtnText').innerText = t.waBtnText;
         }
 
         function updateSlider() {
@@ -778,6 +1044,12 @@
             item.classList.toggle('active');
         }
 
+        // دالة التحكم التفاعلي بفتح وإغلاق نافذة الواتساب العائمة
+        function toggleWhatsAppChat() {
+            const chatBox = document.getElementById('whatsappChatBox');
+            chatBox.classList.toggle('active');
+        }
+
         // دالة تحريك أرقام العداد بشكل تصاعدي مرن
         function startCounting() {
             const counters = document.querySelectorAll(".stat-number");
@@ -791,7 +1063,6 @@
                         counter.innerText = Math.ceil(count + speed);
                         setTimeout(updateCount, 25);
                     } else {
-                        // إضافة علامة الزائد للأرقام التي تحتاج إشارة مضافة
                         counter.innerText = target + (target >= 15 ? "+" : "");
                     }
                 };
@@ -808,11 +1079,11 @@
                 if (entry.isIntersecting && !counterStarted) {
                     startCounting();
                     counterStarted = true;
-                    observer.unobserve(statsSection); // إلغاء المراقبة لرفع سرعة استجابة الصفحة بعد التفعيل لأول مرة
+                    observer.unobserve(statsSection); // إلغاء المراقبة لرفع سرعة استجابة وأداء الصفحة بعد التفعيل لأول مرة
                 }
             }, {
                 root: null,
-                threshold: 0.2 // يبدأ العمل عندما يظهر 20% من القسم على شاشة العميل
+                threshold: 0.2 // يبدأ العمل عندما يظهر 20% من القسم على شاشة الزائر
             });
 
             if (statsSection) {
@@ -822,3 +1093,4 @@
     </script>
 </body>
 </html>
+<!-- نهاية جزء ٨ -->
