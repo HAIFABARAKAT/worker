@@ -43,36 +43,31 @@
         /* تصميم شريط التنقل وضمان بقاء الشعار واللغة على سطر واحد في الجوال */
         .navbar {
             background-color: #ffffff;
-            padding: 15px 20px; /* تقليل الحشو الجانبي ليناسب شاشات الهواتف */
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            flex-direction: row !important; /* إجبار العناصر على الاصطفاف أفقياً */
-            flex-wrap: nowrap !important;     /* منع نزول زر اللغة لسطر جديد نهائياً */
-            width: 100%;
         }
 
         .brand-logo {
             font-weight: 700;
-            font-size: 1.1rem; /* حجم خط موزون لشاشات الهواتف */
+            font-size: 1.3rem;
             color: #1e3c72;
-            white-space: nowrap; /* منع انقسام اسم الشركة إلى سطرين */
         }
 
         .lang-switcher-btn {
             background-color: transparent;
             color: #2a5298;
             border: 2px solid #2a5298;
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.85rem;
-            white-space: nowrap; /* منع انقسام نص زر اللغة */
+            font-size: 0.9rem;
         }
 
         .lang-switcher-btn:hover {
@@ -96,7 +91,6 @@
         header p {
             font-size: 1.1rem;
             opacity: 0.9;
-        }
 
         /* تصميم مستطيل الصور المتحرك */
         .slider-container {
