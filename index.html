@@ -267,6 +267,58 @@
         .submit-btn:hover {
             background-color: #1e3c72;
         }
+		/* إضافة خاصة بقسم الأسئلة الشائعة */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .faq-item {
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px;
+            text-align: inherit;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e3c72;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            color: #666;
+            background-color: #fafafa;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
     </style>
 </head>
 <!-- نهاية جزء 4 -->
@@ -355,6 +407,7 @@
 
 
         <!-- جزء 6: محتوى نموذج البيانات والـ Key -->
+<!-- جزء 6: محتوى نموذج البيانات وقسم الأسئلة الشائعة الجديد -->
         <h2 class="section-title" id="formTitle">Request a Workforce Recruitment</h2>
         
         <div class="form-section">
@@ -392,7 +445,32 @@
                 <button type="submit" class="submit-btn" id="btnSubmit">Submit Request Now</button>
             </form>
         </div>
+
+        <!-- هيكل قسم الأسئلة الشائعة -->
+        <h2 class="section-title" id="faqTitle">Frequently Asked Questions</h2>
+        <div class="faq-section">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span id="faqQ1">What is the average time to recruit workers?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p id="faqA1">The process usually takes between 14 to 30 days, depending on the required nationalities and specific professional qualifications.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span id="faqQ2">Do you provide guarantees on the workforce?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p id="faqA2">Yes, we provide a full 90-day comprehensive guarantee covering professional competence, medical fitness, and behavioral commitment.</p>
+                </div>
+            </div>
+        </div>
     </div>
+<!-- نهاية جزء 6 -->
 <!-- نهاية جزء 6 -->
 
 
@@ -404,9 +482,9 @@
         const translations = {
             en: {
                 title: "Worker Services & Recruitment Company",
-                navLogo: "Barakat Group",
+                navLogo: "Rakaiz Group",
                 langText: "العربية",
-                headerTitle: "Barakat Recruitment & Services",
+                headerTitle: "Rakaiz Recruitment & Services",
                 headerSub: "Integrated solutions for attracting elite talents and professional workforce",
                 servicesTitle: "Our Premium Services",
                 srv1Title: "Technical & Professional Staffing",
@@ -434,7 +512,13 @@
                 /* كلمات الشريط المتحرك بالإنجليزية */
                 slide1Text: "Elite Business Solutions",
                 slide2Text: "Global Talents & Workforce",
-                slide3Text: "Professional Quality & Success"
+                slide3Text: "Professional Quality & Success",
+                /* كلمات الأسئلة الشائعة بالإنجليزية */
+                faqTitle: "Frequently Asked Questions",
+                faqQ1: "What is the average time to recruit workers?",
+                faqA1: "The process usually takes between 14 to 30 days, depending on the required nationalities and specific professional qualifications.",
+                faqQ2: "Do you provide guarantees on the workforce?",
+                faqA2: "Yes, we provide a full 90-day comprehensive guarantee covering professional competence, medical fitness, and behavioral commitment."
             },
             ar: {
                 title: "شركة خدمات العمالة والتوظيف",
@@ -468,7 +552,13 @@
                 /* كلمات الشريط المتحرك بالعربية */
                 slide1Text: "حلول الأعمال النخبوية",
                 slide2Text: "الكفاءات والعمالة العالمية",
-                slide3Text: "الجودة المهنية والنجاح"
+                slide3Text: "الجودة المهنية والنجاح",
+                /* كلمات الأسئلة الشائعة بالعربية */
+                faqTitle: "الأسئلة الشائعة",
+                faqQ1: "ما هي المدة الزمنية المستغرقة لاستقدام العمالة؟",
+                faqA1: "تستغرق العملية عادةً ما بين 14 إلى 30 يوماً، ويعتمد ذلك على الجنسيات المطلوبة والمؤهلات المهنية المحددة.",
+                faqQ2: "هل توجد ضمانات على العمالة المستقدمة؟",
+                faqA2: "نعم، نقدم ضماناً شاملاً لمدة 90 يوماً يغطي الكفاءة المهنية، اللياقة الطبية، والالتزام السلوكي للعمال."
             }
         };
         // نهاية جزء 7
@@ -478,7 +568,7 @@
 
 
         // جزء 8: معالج تبديل اللغة وإغلاق وسم الصفحة
-// جزء 8: معالج تبديل اللغة والتحريك التلقائي للصور
+// جزء 8: معالج تبديل اللغة، التحريك التلقائي، وتفاعل الأسئلة الشائعة
         let currentLang = 'en'; 
         let currentSlideIndex = 0;
 
@@ -525,17 +615,21 @@
             document.getElementById('qualifications').placeholder = t.phQualif;
             document.getElementById('btnSubmit').innerText = t.btnSubmit;
 
-            // تحديث نصوص الصور المتحركة عند تبديل اللغة
             document.getElementById('slide1Text').innerText = t.slide1Text;
             document.getElementById('slide2Text').innerText = t.slide2Text;
             document.getElementById('slide3Text').innerText = t.slide3Text;
+
+            // تحديث ترجمة قسم الأسئلة الشائعة
+            document.getElementById('faqTitle').innerText = t.faqTitle;
+            document.getElementById('faqQ1').innerText = t.faqQ1;
+            document.getElementById('faqA1').innerText = t.faqA1;
+            document.getElementById('faqQ2').innerText = t.faqQ2;
+            document.getElementById('faqA2').innerText = t.faqA2;
         }
 
-        // كود تشغيل وتحريك شريط الصور المتفاعل
         function updateSlider() {
             const wrapper = document.getElementById('sliderWrapper');
             const percentage = -currentSlideIndex * 100;
-            // إذا كانت الصفحة لغة عربية (RTL)، نقلب اتجاه التحريك التلقائي ليتناسب مع الرؤية البصرية
             const direction = document.getElementById('htmlTag').getAttribute('dir') === 'rtl' ? -percentage : percentage;
             wrapper.style.transform = `translateX(${direction}%)`;
         }
@@ -546,10 +640,15 @@
             updateSlider();
         }
 
-        // تحريك تلقائي كل 4 ثوانٍ
         setInterval(() => {
             moveSlide(1);
         }, 4000);
+
+        // دالة تفاعل فتح وإغلاق الأسئلة الشائعة بسلاسة
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            item.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
