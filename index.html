@@ -727,27 +727,21 @@
 
 
 <!-- بداية جزء ٥: الهيكل البرمجي لـ HTML (شريط التنقل، الهيدر، شريط الصور، وكروت الخدمات) -->
-<!-- بداية جزء ٥: الهيكل البرمجي المصلح لـ HTML -->
 <body>
 
-    <!-- شريط التنقل حر ومستقل تماماً لضمان المحاذاة الأفقية الصحيحة وبداخله زر الوضع الداكن المطور -->
-    <nav class="navbar" style="display: flex !important; flex-direction: row !important; justify-content: space-between !important; align-items: center !important; padding: 15px 12px !important; width: 100% !important; box-sizing: border-box !important;">
-        <div class="brand-logo" id="navLogo">Barakat Group</div>
-        
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <!-- زر تبديل الوضع الداكن المطور بأيقونات SVG الهندسية الثابتة على الجوال -->
-            <button id="darkModeToggle" onclick="toggleDarkMode()" style="background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; margin: 0; color: #2a5298;">
-                <!-- أيقونة الشمس (تظهر في الوضع الداكن) -->
-                <svg id="sunIcon" style="display: none; width: 22px; height: 22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.22" x2="5.64" y2="17.78"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                <!-- أيقونة القمر (تظهر في الوضع المضيء) -->
-                <svg id="moonIcon" style="display: block; width: 22px; height: 22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            </button>
-
-            <!-- زر تبديل اللغة -->
-            <button class="lang-switcher-btn" id="langBtn" onclick="toggleLanguage()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                <span id="langText">العربية</span>
-            </button>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="brand-logo" id="navLogo">Barakat Group</div>
+            <div class="nav-controls">
+                <!-- زر التبديل التفاعلي للوضع الداكن المدمج حديثاً -->
+                <button class="theme-toggle-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="lang-switcher-btn" id="langBtn" onclick="toggleLanguage()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <span id="langText">العربية</span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -756,11 +750,9 @@
         <p id="headerSub">Integrated solutions for attracting elite talents and professional workforce</p>
     </header>
 
-    <!-- تبدأ الحاوية هنا بعد الهيدر لترتيب بقية العناصر والخدمات بالأسفل -->
     <div class="container">
         
-        <!-- مستطيل الصور المتحرك المتفاعل الجديد -->
-        <div class="slider-container">
+        <div class="slider-container reveal-element">
             <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
             <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
             <div class="slider-wrapper" id="sliderWrapper">
@@ -787,10 +779,10 @@
             </div>
         </div>
         
-        <h2 class="section-title" id="servicesTitle">Our Premium Services</h2>
+        <h2 class="section-title reveal-element" id="servicesTitle">Our Premium Services</h2>
         <div class="services-grid">
             
-            <div class="service-card">
+            <div class="service-card reveal-element">
                 <img src="pic/1s.jpeg" alt="Professional staff" class="service-img">
                 <div class="service-info">
                     <h3 id="srv1Title">Technical & Professional Staffing</h3>
@@ -798,7 +790,7 @@
                 </div>
             </div>
 
-            <div class="service-card">
+            <div class="service-card reveal-element">
                 <img src="pic/2s.jpeg" alt="Construction workforce" class="service-img">
                 <div class="service-info">
                     <h3 id="srv2Title">Construction & Contracting Workers</h3>
@@ -806,7 +798,7 @@
                 </div>
             </div>
 
-            <div class="service-card">
+            <div class="service-card reveal-element">
                 <img src="pic/3s.jpeg" alt="Hospitality services" class="service-img">
                 <div class="service-info">
                     <h3 id="srv3Title">Hospitality & General Services</h3>
@@ -816,82 +808,66 @@
 
         </div>
 <!-- نهاية جزء ٥ -->
-<!-- نهاية جزء ٥ -->
 
 
 <!-- بداية جزء ٦: الهيكل البرمجي لـ HTML (الأرقام، شريط الشركات، الآراء، النموذج، الأسئلة، والواتساب) -->
-
-
-        <!-- شريط أرقام الإنجازات المتفاعل المطور بأيقونات هندسية ثابتة ومحمية من الانكسار -->
-        <section id="stats-counter" class="stats-section">
+        <section id="stats-counter" class="stats-section reveal-element">
             <div class="stats-container">
                 <div class="stat-item">
-                    <div class="stat-icon" style="display: flex; justify-content: center; margin-bottom: 12px; color: #00f2fe;">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
-                    </div>
+                    <div class="stat-icon"><i class="fas fa-user-check"></i></div>
                     <div class="stat-number" data-target="2500">0</div>
                     <div class="stat-label" id="statLbl1">Placed Candidates</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon" style="display: flex; justify-content: center; margin-bottom: 12px; color: #00f2fe;">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect><path d="M7 22V14h10v8"></path><path d="M12 2v12"></path></svg>
-                    </div>
+                    <div class="stat-icon"><i class="fas fa-building"></i></div>
                     <div class="stat-number" data-target="180">0</div>
                     <div class="stat-label" id="statLbl2">Corporate Clients</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon" style="display: flex; justify-content: center; margin-bottom: 12px; color: #00f2fe;">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                    </div>
+                    <div class="stat-icon"><i class="fas fa-passport"></i></div>
                     <div class="stat-number" data-target="99">0</div>
                     <div class="stat-label" id="statLbl3">Success Rate %</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon" style="display: flex; justify-content: center; margin-bottom: 12px; color: #00f2fe;">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    </div>
+                    <div class="stat-icon"><i class="fas fa-award"></i></div>
                     <div class="stat-number" data-target="15">0</div>
                     <div class="stat-label" id="statLbl4">Years of Experience</div>
                 </div>
             </div>
         </section>
 
-        <!-- شريط شعارات الشركات وشركاء النجاح المطور بأسماء حقيقية فور الفتح الافتتاحي -->
-        <h2 class="section-title" id="partnersTitle">Trusted Partners</h2>
-        <section class="partners-section">
+        <h2 class="section-title reveal-element" id="partnersTitle">Trusted Partners</h2>
+        <section class="partners-section reveal-element">
             <div class="partners-slider">
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p1Text">Al-Marai</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p2Text">Bin Laden Group</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p3Text">Aramco Services</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p4Text">Sabic Logistics</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p5Text">STC Business</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p1TextDup">Al-Marai</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p2TextDup">Bin Laden Group</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p3TextDup">Aramco Services</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p4TextDup">Sabic Logistics</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p5TextDup">STC Business</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p1Text">Partner Company 1</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p2Text">Partner Company 2</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p3Text">Partner Company 3</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p4Text">Partner Company 4</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p5Text">Partner Company 5</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p1TextDup">Partner Company 1</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p2TextDup">Partner Company 2</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p3TextDup">Partner Company 3</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p4TextDup">Partner Company 4</div></div>
+                <div class="partner-slide"><div class="partner-logo-placeholder" id="p5TextDup">Partner Company 5</div></div>
             </div>
         </section>
 
-
-        <!-- قسم آراء العملاء -->
-        <h2 class="section-title" id="testiTitle">What Our Clients Say</h2>
+        <h2 class="section-title reveal-element" id="testiTitle">What Our Clients Say</h2>
         <div class="testimonials-grid">
-            <div class="testimonial-card">
+            <div class="testimonial-card reveal-element">
                 <p class="testimonial-text" id="testiTxt1">"Barakat Group provided us with highly skilled engineers in record time. Excellent service and complete commitment."</p>
                 <div class="testimonial-author" id="testiAuth1">Eng. Ahmed Al-Mansoori</div>
                 <div class="testimonial-company" id="testiComp1">Al-Mansoori Contracting Company</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card reveal-element">
                 <p class="testimonial-text" id="testiTxt2">"Professional workflow and fully medically fit staff. The hospitality team transformed our restaurant operations."</p>
                 <div class="testimonial-author" id="testiAuth2">Khalid Ba-Wazir</div>
                 <div class="testimonial-company" id="testiComp2">Elite Hospitality Group</div>
             </div>
         </div>
 
-        <!-- قسم نموذج الطلبات ومفتاح Web3Forms الخاص بك -->
-        <h2 class="section-title" id="formTitle">Request a Workforce Recruitment</h2>
-        <div class="form-section">
+        <h2 class="section-title reveal-element" id="formTitle">Request a Workforce Recruitment</h2>
+        <div class="form-section reveal-element">
             <form action="https://web3forms.com" method="POST" id="orderForm">
                 <input type="hidden" name="access_key" value="705785a7-7db7-4974-8bcc-52aea4b30120">
                 
@@ -927,10 +903,17 @@
             </form>
         </div>
 
-        <!-- قسم الأسئلة الشائعة -->
-        <h2 class="section-title" id="faqTitle">Frequently Asked Questions</h2>
+        <!-- إضافة قسم الخريطة التفاعلية الفاخرة للشركة لتحديد فرع ماليزيا الدولي -->
+        <h2 class="section-title reveal-element" id="mapTitle">Our Global Headquarters</h2>
+        <div class="map-section reveal-element">
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127409.83279148386!2d101.35905252875154!3d3.2359424759714853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc59c47e80f339%3A0x6b63ca041fb82e66!2sPuncak%20Alam%2C%20Selangor%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <h2 class="section-title reveal-element" id="faqTitle">Frequently Asked Questions</h2>
         <div class="faq-section">
-            <div class="faq-item">
+            <div class="faq-item reveal-element">
                 <button class="faq-question" onclick="toggleFaq(this)">
                     <span id="faqQ1">What is the average time to recruit workers?</span>
                     <span class="faq-icon">+</span>
@@ -940,7 +923,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item reveal-element">
                 <button class="faq-question" onclick="toggleFaq(this)">
                     <span id="faqQ2">Do you provide guarantees on the workforce?</span>
                     <span class="faq-icon">+</span>
@@ -952,11 +935,10 @@
         </div>
     </div>
 
-    <!-- عنصر نافذة زر الواتساب العائمة المتفاعلة بالأيقونة الرسمية الأصلية والاهتزاز -->
     <div class="whatsapp-floating-container" id="whatsappContainer">
         <div class="whatsapp-chat-box" id="whatsappChatBox">
             <div class="whatsapp-chat-header">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="color: white;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-3.567l.355.211c1.561.927 3.451 1.416 5.388 1.417 5.737 0 10.406-4.646 10.409-10.355.002-2.766-1.072-5.367-3.023-7.32C17.47 2.731 14.875 1.657 12.1 1.657c-5.742 0-10.41 4.647-10.413 10.358-.001 1.955.513 3.866 1.491 5.56l.232.403-1.012 3.697 3.792-.991z"/></svg>
+                <i class="fab fa-whatsapp"></i>
                 <div class="chat-header-info">
                     <h4 id="waHeaderTitle">Barakat Support</h4>
                     <p id="waHeaderStatus">Online</p>
@@ -966,16 +948,15 @@
                 <p class="wa-msg-bubble" id="waBubbleText">Welcome to Barakat Group! How can we assist you with workforce recruitment today?</p>
             </div>
             <div class="whatsapp-chat-footer">
-                <a href="https://wa.me" target="_blank" class="wa-start-chat-btn" id="waBtnText">Start Chat</a>
+                <a href="https://wa.me/60176706338" target="_blank" class="wa-start-chat-btn" id="waBtnText">Start Chat</a>
             </div>
         </div>
 		<button class="whatsapp-main-btn" onclick="toggleWhatsAppChat()" aria-label="Chat on WhatsApp">
-            <svg viewBox="0 0 24 24" xmlns="http://w3.org">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#fff" d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.461 3.42 1.268 4.873l-1.348 4.925 5.04-1.323c1.408.766 3.007 1.2 4.694 1.2 5.51 0 9.993-4.483 9.993-9.993S17.515 2 12.004 2zm4.957 14.212c-.215.604-1.25 1.196-1.722 1.26-.474.065-.94.316-3.023-.544-2.508-1.033-4.086-3.606-4.21-3.774-.126-.167-1.022-1.357-1.022-2.59 0-1.23.645-1.838.874-2.09.228-.25.503-.314.67-.314.17 0 .343.003.49.01.15.008.355-.06.556.425.204.493.696 1.696.757 1.82.06.126.1.272.016.44-.085.17-.19.27-.376.495-.183.22-.384.368-.216.657.17.29.743 1.226 1.593 1.982.895.797 1.653 1.042 1.942 1.186.29.145.46.122.63-.075.174-.197.747-.87.947-1.168.2-.3.402-.25.672-.15.27.1.1.204 1.706.8 1.605.597 1.71.72 1.737.9.027.18-.06.8-.276 1.404z"/>
             </svg>
-        </button>
+		</button>
     </div>
-
 <!-- نهاية جزء ٦ -->
 
 
@@ -1111,31 +1092,9 @@
 
 
 <!-- بداية جزء ٨: معالجات جافا سكريبت التفاعلية وإغلاق وسوم المستند كاملة -->
-
-
-    <script>
         let currentLang = 'en'; 
         let currentSlideIndex = 0;
-        let counterStarted = false; 
-
-        // دالة التحكم بالوضع الداكن المحدثة للـ SVG الهندسي الجديد
-        function toggleDarkMode() {
-            const body = document.body;
-            const sunIcon = document.getElementById('sunIcon');
-            const moonIcon = document.getElementById('moonIcon');
-            
-            body.classList.toggle('dark-mode');
-            
-            if(body.classList.contains('dark-mode')) {
-                if(sunIcon) sunIcon.style.display = 'block';
-                if(moonIcon) moonIcon.style.display = 'none';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                if(sunIcon) sunIcon.style.display = 'none';
-                if(moonIcon) moonIcon.style.display = 'block';
-                localStorage.setItem('theme', 'light');
-            }
-        }
+        let counterStarted = false;
 
         function toggleLanguage() {
             currentLang = (currentLang === 'en') ? 'ar' : 'en';
@@ -1186,6 +1145,7 @@
             document.getElementById('slide4Text').innerText = t.slide4Text;
             document.getElementById('slide5Text').innerText = t.slide5Text;
 
+            document.getElementById('mapTitle').innerText = t.mapTitle;
             document.getElementById('faqTitle').innerText = t.faqTitle;
             document.getElementById('faqQ1').innerText = t.faqQ1;
             document.getElementById('faqA1').innerText = t.faqA1;
@@ -1226,6 +1186,22 @@
             document.getElementById('waHeaderStatus').innerText = t.waHeaderStatus;
             document.getElementById('waBubbleText').innerText = t.waBubbleText;
             document.getElementById('waBtnText').innerText = t.waBtnText;
+        }
+
+        /* دالة معالجة الوضع الداكن الذكي التفاعلي مع حفظ تفضيلات المستخدم */
+        function toggleTheme() {
+            const htmlTag = document.getElementById('htmlTag');
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (htmlTag.classList.contains('dark-mode')) {
+                htmlTag.classList.remove('dark-mode');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlTag.classList.add('dark-mode');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
         }
 
         function updateSlider() {
@@ -1274,35 +1250,46 @@
             });
         }
 
+        // إعداد تفعيل العداد والظهور الانسيابي للعناصر بالتمرير
         document.addEventListener("DOMContentLoaded", () => {
-            const statsSection = document.getElementById("stats-counter");
-            
-            // قراءة المظهر المفضل للزائر المسجل مسبقاً وتطبيقه تلقائياً عند فتح الصفحة
+            // فحص تفضيلات الكاش للوضع الداكن قبل التحميل
             const savedTheme = localStorage.getItem('theme');
-            if(savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                if(document.getElementById('sunIcon')) document.getElementById('sunIcon').style.display = 'block';
-                if(document.getElementById('moonIcon')) document.getElementById('moonIcon').style.display = 'block';
+            const htmlTag = document.getElementById('htmlTag');
+            const themeIcon = document.getElementById('themeIcon');
+            if (savedTheme === 'dark') {
+                htmlTag.classList.add('dark-mode');
+                if (themeIcon) themeIcon.className = 'fas fa-sun';
             }
 
-            const observer = new IntersectionObserver((entries) => {
+            // مراقب العداد التراكمي
+            const statsSection = document.getElementById("stats-counter");
+            const statsObserver = new IntersectionObserver((entries) => {
                 const [entry] = entries;
                 if (entry.isIntersecting && !counterStarted) {
                     startCounting();
                     counterStarted = true;
-                    observer.unobserve(statsSection); 
+                    statsObserver.unobserve(statsSection);
                 }
-            }, {
-                root: null,
-                threshold: 0.2 
-            });
+            }, { root: null, threshold: 0.2 });
 
             if (statsSection) {
-                observer.observe(statsSection);
+                statsObserver.observe(statsSection);
             }
+
+            // مراقب حركة الظهور الانسيابي (Scroll Reveal Animations) لكل الأقسام والكروت
+            const revealElements = document.querySelectorAll('.reveal-element');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+            revealElements.forEach(el => revealObserver.observe(el));
         });
     </script>
 </body>
 </html>
-
 <!-- نهاية جزء ٨ -->
