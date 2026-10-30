@@ -1,974 +1,445 @@
-<!-- بداية جزء ١: الخطوط والإعدادات العامة والتصميم العام المصلح للموقع -->
 <!DOCTYPE html>
-<html lang="en" dir="ltr" id="htmlTag">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Worker Services & Recruitment Company</title>
-    <!-- تضمين النسخة المستقرة والشاملة من مكتبة Font Awesome لحل مشكلة اختفاء الأيقونات نهائياً -->
+    <title>Barakat Recruitment & Services</title>
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
-        
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #1565c0;
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-light: #f4f6f9;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        html[dir="rtl"] * {
-            font-family: 'Cairo', sans-serif;
-        }
-        html[dir="ltr"] * {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        :root {
-            --bg-primary: #f4f7f6;
-            --text-primary: #333333;
-            --text-muted: #666666;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --card-border: rgba(255, 255, 255, 0.4);
-            --navbar-bg: rgba(255, 255, 255, 0.85);
-            --shadow-color: rgba(0, 0, 0, 0.05);
-            --input-bg: #fafafa;
-            --input-border: #cccccc;
-        }
-
-        /* إعدادات الوضع الداكن الذكي المطور */
-        html.dark-mode {
-            --bg-primary: #0f172a;
-            --text-primary: #f8fafc;
-            --text-muted: #cbd5e1;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --navbar-bg: rgba(15, 23, 42, 0.7);
-            --shadow-color: rgba(0, 0, 0, 0.3);
-            --input-bg: #1e293b;
-            --input-border: #475569;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* أنماط حركات الظهور الانسيابي عند التمرير */
-        .reveal-element {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .reveal-element.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-<!-- نهاية جزء ١ -->
-
-
-<!-- بداية جزء ٢: تصميم شريط التنقل المصلح والهيدر وشريط الصور المتحرك -->
-        /* تصميم شريط التنقل بتأثير الزجاج الفاخر المطور */
-        .navbar {
-            background-color: var(--navbar-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--card-border);
-            padding: 15px 12px;
-            box-shadow: 0 4px 30px var(--shadow-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .navbar-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .brand-logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #1e3c72;
-            white-space: nowrap;
-        }
-        html.dark-mode .brand-logo {
-            color: #38bdf8;
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* زر تبديل الوضع الداكن التفاعلي */
-        .theme-toggle-btn {
-            background: transparent;
-            border: 2px solid #2a5298;
-            color: #2a5298;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-        html.dark-mode .theme-toggle-btn {
-            border-color: #38bdf8;
-            color: #38bdf8;
-        }
-
-        .lang-switcher-btn {
-            background-color: transparent;
-            color: #2a5298;
-            border: 2px solid #2a5298;
-            padding: 6px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-        html.dark-mode .lang-switcher-btn {
-            color: #38bdf8;
-            border-color: #38bdf8;
-        }
-
-        .lang-switcher-btn:hover, .theme-toggle-btn:hover {
-            background-color: #2a5298;
-            color: #ffffff;
-        }
-        html.dark-mode .lang-switcher-btn:hover, html.dark-mode .theme-toggle-btn:hover {
-            background-color: #38bdf8;
-            color: #0f172a;
-        }
-
+        /* Navbar & Header */
         header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: #fff;
-            padding: 70px 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* تصميم مستطيل الصور المتحرك */
-        .slider-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 30px auto 10px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px var(--shadow-color);
-        }
-
-        .slider-wrapper {
-            display: flex;
-            width: 100%;
-            height: 350px;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .slide {
-            min-width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .slide-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-            color: #fff;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
             padding: 20px;
             text-align: center;
-        }
-
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.7);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #1e3c72;
-            z-index: 10;
-        }
-
-        .slider-btn:hover { background: #fff; }
-        
-        html[dir="ltr"] .prev-btn { left: 15px; }
-        html[dir="ltr"] .next-btn { right: 15px; }
-        html[dir="rtl"] .prev-btn { right: 15px; transform: translateY(-50%) rotate(180deg); }
-        html[dir="rtl"] .next-btn { left: 15px; transform: translateY(-50%) rotate(180deg); }
-<!-- نهاية جزء ٢ -->
-
-
-<!-- بداية جزء ٣: تصميم كروت الخدمات، شريط الإنجازات، وشريط الشركات الجديد، وآراء العملاء -->
-        .section-title {
-            text-align: center;
-            margin: 50px 0 25px;
-            color: #1e3c72;
-            font-size: 2rem;
             position: relative;
         }
-        html.dark-mode .section-title {
-            color: #38bdf8;
+
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            border: 1px solid var(--text-light);
+            padding: 5px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .section-title::after {
+        .hero {
+            padding: 50px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .services h2::after {
             content: '';
             display: block;
             width: 50px;
-            height: 4px;
-            background-color: #2a5298;
-            margin: 8px auto 0;
-            border-radius: 2px;
-        }
-        html.dark-mode .section-title::after {
-            background-color: #38bdf8;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
         }
 
-        .services-grid {
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+            gap: 20px;
         }
 
-        /* كروت الخدمات بتأثير الزجاج اللامع الفاخر */
-        .service-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px var(--shadow-color);
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px var(--shadow-color);
-        }
-
-        .service-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .service-info {
+        .card {
+            background: #fff;
             padding: 25px;
-        }
-
-        .service-info h3 {
-            color: #2a5298;
-            margin-bottom: 12px;
-            font-size: 1.25rem;
-        }
-        html.dark-mode .service-info h3 {
-            color: #38bdf8;
-        }
-        
-        .service-info p {
-            color: var(--text-primary);
-        }
-
-        .stats-section {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: #ffffff;
-            padding: 50px 20px;
-            border-radius: 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             text-align: center;
-            margin: 40px 0 60px;
+            transition: transform 0.3s;
         }
 
-        .stats-container {
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card .icon-wrapper {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .stat-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 25px 15px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
         }
 
-        .stat-item:hover {
-            transform: translateY(-5px);
+        .stat-item .stat-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
         }
 
-        .stat-icon {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-            color: #00f2fe;
+        .stat-item h4 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
         }
 
-        .stat-number {
-            font-size: 2.8rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            font-weight: 500;
-            opacity: 0.9;
-        }
-
+        /* Partners Marquee Fix */
         .partners-section {
-            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: #fff;
             overflow: hidden;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            padding: 30px 0;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px var(--shadow-color);
         }
 
-        .partners-slider {
-            display: flex;
-            width: calc(200px * 10);
-            animation: scrollPartners 20s linear infinite;
-        }
-
-        .partner-slide {
-            width: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .partner-logo-placeholder {
-            background-color: var(--input-bg);
-            color: var(--text-primary);
-            font-weight: bold;
-            font-size: 0.9rem;
-            border-radius: 8px;
-            width: 100%;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px dashed var(--input-border);
+        .partners-section h2 {
             text-align: center;
+            margin-bottom: 25px;
         }
 
-        @keyframes scrollPartners {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-200px * 5)); }
+        /* This wrapper ensures visibility in both RTL and LTR modes */
+        .marquee-wrapper {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            background: #fafafa;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
         }
 
-        html[dir="rtl"] .partners-slider {
-            animation: scrollPartnersRTL 20s linear infinite;
+        .marquee-content {
+            display: flex;
+            gap: 40px;
+            animation: marquee 20s linear infinite;
+            white-space: nowrap;
+            min-width: 100%;
+            justify-content: space-around;
+            align-items: center;
         }
 
-        @keyframes scrollPartnersRTL {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(200px * 5)); }
+        /* Keyframes compatible with both directions */
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(50%);
+            }
         }
 
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
+        /* Adjust animation for LTR mode specifically if needed */
+        html[dir="ltr"] .marquee-content {
+            animation: marquee-ltr 20s linear infinite;
+        }
+
+        @keyframes marquee-ltr {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .partner-item {
+            padding: 10px 20px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-weight: bold;
+            color: #555;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
         .testimonial-card {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid var(--card-border);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px var(--shadow-color);
-            border-top: 4px solid #2a5298;
-            position: relative;
-        }
-        html.dark-mode .testimonial-card {
-            border-top-color: #38bdf8;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            color: var(--text-primary);
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            border-right: 4px solid var(--primary-color);
             margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .testimonial-author {
-            font-weight: bold;
-            color: #1e3c72;
-            font-size: 0.95rem;
-        }
-        html.dark-mode .testimonial-author {
-            color: #38bdf8;
+        html[dir="ltr"] .testimonial-card {
+            border-right: none;
+            border-left: 4px solid var(--primary-color);
         }
 
-        .testimonial-company {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 2px;
+        /* Recruitment Form */
+        .recruitment-form {
+            background: #fff;
+            padding: 40px 20px;
+            max-width: 600px;
+            margin: 40px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
-<!-- نهاية جزء ٣ -->
 
-
-<!-- بداية جزء ٤: تصميم نموذج الطلبات والأسئلة الشائعة وزر الواتساب المصلح وإغلاق الترويسة -->
-        .form-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid var(--card-border);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px var(--shadow-color);
-            max-width: 700px;
-            margin: 0 auto 60px;
+        .recruitment-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary-color);
         }
 
         .form-group {
-            margin-bottom: 22px;
+            margin-bottom: 15px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 0.95rem;
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--input-border);
-            border-radius: 6px;
-            font-size: 1rem;
-            background-color: var(--input-bg);
-            color: var(--text-primary);
-        }
-
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #2a5298;
-            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.15);
-        }
-        html.dark-mode .form-group input:focus, html.dark-mode .form-group select:focus, html.dark-mode .form-group textarea:focus {
-            border-color: #38bdf8;
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
-        }
-
-        .submit-btn {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            background-color: #2a5298;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .submit-btn:hover {
-            background-color: #1e3c72;
-        }
-
-        /* تصميم قسم الخريطة التفاعلية الفاخرة */
-        .map-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 8px 30px var(--shadow-color);
-            margin-bottom: 60px;
-            overflow: hidden;
-        }
-        
-        .map-wrapper {
-            position: relative;
-            width: 100%;
-            height: 380px;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .map-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .faq-section {
-            max-width: 800px;
-            margin: 0 auto 60px;
-        }
-
-        .faq-item {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px var(--shadow-color);
-            overflow: hidden;
-        }
-
-        .faq-question {
-            width: 100%;
-            background: none;
-            border: none;
-            padding: 20px;
-            text-align: inherit;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1e3c72;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        html.dark-mode .faq-question {
-            color: #38bdf8;
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0 20px;
-            color: var(--text-primary);
-            background-color: var(--input-bg);
-            transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding: 20px;
-            border-top: 1px solid var(--card-border);
-        }
-
-        .faq-icon {
-            transition: transform 0.3s ease;
+            margin-bottom: 5px;
             font-weight: bold;
         }
 
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
-
-        .whatsapp-floating-container {
-            position: fixed;
-            bottom: 30px;
-            z-index: 9999;
-        }
-        
-        html[dir="ltr"] .whatsapp-floating-container { right: 30px; }
-        html[dir="rtl"] .whatsapp-floating-container { left: 30px; }
-
-		.whatsapp-main-btn {
-			background: #25d366 !important;
-			border: none !important;
-			width: 60px !important;
-			height: 60px !important;
-			border-radius: 50% !important;
-			cursor: pointer !important;
-			box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45) !important;
-			display: flex !important;
-			justify-content: center !important;
-			align-items: center !important;
-			animation: waCustomPulse 2s infinite, waCustomWobble 4s ease-in-out infinite !important;
-			transform: translateZ(0);
-            padding: 0 !important;
-		}
-		
-		.whatsapp-main-btn:hover {
-			transform: scale(1.1) rotate(5deg);
-			background: #20ba59 !important;
-		}
-
-        .whatsapp-main-btn svg {
-            width: 34px !important;
-            height: 34px !important;
-            display: block;
-        }
-
-        .whatsapp-chat-box {
-            position: absolute;
-            bottom: 75px;
-            width: 290px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-            overflow: hidden;
-            transform: scale(0);
-            transform-origin: bottom;
-            transition: transform 0.3s ease;
-        }
-        html[dir="ltr"] .whatsapp-chat-box { right: 0; }
-        html[dir="rtl"] .whatsapp-chat-box { left: 0; }
-
-        .whatsapp-chat-box.active {
-            transform: scale(1);
-        }
-
-        .whatsapp-chat-header {
-            background-color: #075e54;
-            color: white;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .whatsapp-chat-header i { font-size: 24px; }
-        .chat-header-info h4 { font-size: 0.95rem; margin: 0; }
-        .chat-header-info p { font-size: 0.75rem; opacity: 0.8; margin: 0; }
-
-        .whatsapp-chat-body {
-            background-color: #e5ddd5;
-            padding: 20px;
-            min-height: 80px;
-        }
-        html.dark-mode .whatsapp-chat-body {
-            background-color: #1e293b;
-        }
-        .wa-msg-bubble {
-            background-color: white;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 0.88rem;
-            color: #333;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .whatsapp-chat-footer {
-            padding: 12px;
-            text-align: center;
-            background-color: var(--card-bg);
-        }
-        .wa-start-chat-btn {
-            display: block;
-            background-color: #25d366;
-            color: white;
-            text-decoration: none;
+        .form-control {
+            width: 100%;
             padding: 10px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        .wa-start-chat-btn:hover { background-color: #20ba59; }
-
-        @keyframes waCustomPulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6), 0 8px 24px rgba(37, 211, 102, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0), 0 8px 24px rgba(37, 211, 102, 0.4); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 24px rgba(37, 211, 102, 0.4); }
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
         }
 
-        @keyframes waCustomWobble {
-            0%, 90%, 100% { transform: rotate(0deg); }
-            92% { transform: rotate(-10deg) scale(1.03); }
-            94% { transform: rotate(12deg) scale(1.03); }
-            96% { transform: rotate(-8deg) scale(1.03); }
-            98% { transform: rotate(8deg) scale(1.03); }
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--secondary-color);
         }
     </style>
 </head>
-<!-- نهاية جزء ٤ -->
-
-
-<!-- بداية جزء ٥: الهيكل البرمجي لـ HTML (شريط التنقل، الهيدر، شريط الصور، وكروت الخدمات) -->
 <body>
 
-    <nav class="navbar">
-        <div class="navbar-content">
-            <div class="brand-logo" id="navLogo">Barakat Group</div>
-            <div class="nav-controls">
-                <!-- زر التبديل التفاعلي للوضع الداكن المدمج حديثاً -->
-                <button class="theme-toggle-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle Theme">
-                    <i class="fas fa-moon" id="themeIcon"></i>
-                </button>
-                <button class="lang-switcher-btn" id="langBtn" onclick="toggleLanguage()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    <span id="langText">العربية</span>
-                </button>
-            </div>
-        </div>
-    </nav>
-
     <header>
-        <h1 id="headerTitle">Barakat Recruitment & Services</h1>
-        <p id="headerSub">Integrated solutions for attracting elite talents and professional workforce</p>
+        <button class="lang-switch" id="langBtn" onclick="toggleLanguage()">
+            <i class="fa-solid fa-globe"></i> <span id="langText">English</span>
+        </button>
+        <div class="hero">
+            <h1 id="mainTitle">مجموعة بركات للتوظيف والخدمات</h1>
+            <p id="mainSubtitle">حلول متكاملة لاستقطاب النخبة من المواهب والعمالة المهنية</p>
+        </div>
     </header>
 
-    <div class="container">
-        
-        <div class="slider-container reveal-element">
-            <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
-            <div class="slider-wrapper" id="sliderWrapper">
-                <div class="slide">
-                    <img src="pic/1.jpeg" alt="Slide 1">
-                    <div class="slide-caption"><h4 id="slide1Text">Elite Business Solutions</h4></div>
-                </div>
-                <div class="slide">
-                    <img src="pic/2.jpeg" alt="Slide 2">
-                    <div class="slide-caption"><h4 id="slide2Text">Global Talents & Workforce</h4></div>
-                </div>
-                <div class="slide">
-                    <img src="pic/3.jpeg" alt="Slide 3">
-                    <div class="slide-caption"><h4 id="slide3Text">Professional Quality & Success</h4></div>
-                </div>
-                <div class="slide">
-                    <img src="pic/4.jpeg" alt="Slide 4">
-                    <div class="slide-caption"><h4 id="slide4Text">Professional Quality & Success</h4></div>
-                </div>				
-                <div class="slide">
-                    <img src="pic/5.jpeg" alt="Slide 5">
-                    <div class="slide-caption"><h4 id="slide5Text">Professional Quality & Success</h4></div>
-                </div>				
+    <section class="services">
+        <h2 id="servicesTitle">خدماتنا المميزة</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="icon-wrapper"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3 id="srv1Title">توظيف الكوادر التقنية والمهنية</h3>
+                <p id="srv1Desc">توفير مهندسين، مطورين، وفنيين ذوي خبرة عالية لدعم نمو أعمالك.</p>
+            </div>
+            <div class="card">
+                <div class="icon-wrapper"><i class="fa-solid fa-helmet-safety"></i></div>
+                <h3 id="srv2Title">عمالة المقاولات والإنشاءات</h3>
+                <p id="srv2Desc">تأمين فرق عمل متكاملة للمشاريع الإنشائية والمعمارية بمختلف المستويات.</p>
+            </div>
+            <div class="card">
+                <div class="icon-wrapper"><i class="fa-solid fa-bell-concierge"></i></div>
+                <h3 id="srv3Title">خدمات الضيافة والخدمات العامة</h3>
+                <p id="srv3Desc">تلبية احتياجات الفنادق والمطاعم والشركات من موظفي استقبال، طهاة، وفرق لوجستية.</p>
             </div>
         </div>
-        
-        <h2 class="section-title reveal-element" id="servicesTitle">Our Premium Services</h2>
-        <div class="services-grid">
-            
-            <div class="service-card reveal-element">
-                <img src="pic/1s.jpeg" alt="Professional staff" class="service-img">
-                <div class="service-info">
-                    <h3 id="srv1Title">Technical & Professional Staffing</h3>
-                    <p id="srv1Desc">Providing highly experienced engineers, developers, and technicians to drive your business growth.</p>
-                </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-user-check"></i></div>
+                <h4>1,200+</h4>
+                <p id="stat1Label">مرشح تم توظيفه</p>
             </div>
-
-            <div class="service-card reveal-element">
-                <img src="pic/2s.jpeg" alt="Construction workforce" class="service-img">
-                <div class="service-info">
-                    <h3 id="srv2Title">Construction & Contracting Workers</h3>
-                    <p id="srv2Desc">Securing integrated workforce teams for structural and architectural projects across all levels.</p>
-                </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-building"></i></div>
+                <h4>180+</h4>
+                <p id="stat2Label">عميل من الشركات</p>
             </div>
-
-            <div class="service-card reveal-element">
-                <img src="pic/3s.jpeg" alt="Hospitality services" class="service-img">
-                <div class="service-info">
-                    <h3 id="srv3Title">Hospitality & General Services</h3>
-                    <p id="srv3Desc">Meeting the needs of hotels, restaurants, and corporations for receptionists, chefs, and logistics staff.</p>
-                </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h4>98%</h4>
+                <p id="stat3Label">نسبة النجاح</p>
             </div>
-
-        </div>
-<!-- نهاية جزء ٥ -->
-
-
-<!-- بداية جزء ٦: الهيكل البرمجي لـ HTML (الأرقام، شريط الشركات، الآراء، النموذج، الأسئلة، والواتساب) -->
-        <section id="stats-counter" class="stats-section reveal-element">
-            <div class="stats-container">
-                <div class="stat-item">
-                    <div class="stat-icon"><i class="fas fa-user-check"></i></div>
-                    <div class="stat-number" data-target="2500">0</div>
-                    <div class="stat-label" id="statLbl1">Placed Candidates</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon"><i class="fas fa-building"></i></div>
-                    <div class="stat-number" data-target="180">0</div>
-                    <div class="stat-label" id="statLbl2">Corporate Clients</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon"><i class="fas fa-passport"></i></div>
-                    <div class="stat-number" data-target="99">0</div>
-                    <div class="stat-label" id="statLbl3">Success Rate %</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon"><i class="fas fa-award"></i></div>
-                    <div class="stat-number" data-target="15">0</div>
-                    <div class="stat-label" id="statLbl4">Years of Experience</div>
-                </div>
-            </div>
-        </section>
-
-        <h2 class="section-title reveal-element" id="partnersTitle">Trusted Partners</h2>
-        <section class="partners-section reveal-element">
-            <div class="partners-slider">
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p1Text">Partner Company 1</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p2Text">Partner Company 2</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p3Text">Partner Company 3</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p4Text">Partner Company 4</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p5Text">Partner Company 5</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p1TextDup">Partner Company 1</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p2TextDup">Partner Company 2</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p3TextDup">Partner Company 3</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p4TextDup">Partner Company 4</div></div>
-                <div class="partner-slide"><div class="partner-logo-placeholder" id="p5TextDup">Partner Company 5</div></div>
-            </div>
-        </section>
-
-        <h2 class="section-title reveal-element" id="testiTitle">What Our Clients Say</h2>
-        <div class="testimonials-grid">
-            <div class="testimonial-card reveal-element">
-                <p class="testimonial-text" id="testiTxt1">"Barakat Group provided us with highly skilled engineers in record time. Excellent service and complete commitment."</p>
-                <div class="testimonial-author" id="testiAuth1">Eng. Ahmed Al-Mansoori</div>
-                <div class="testimonial-company" id="testiComp1">Al-Mansoori Contracting Company</div>
-            </div>
-            <div class="testimonial-card reveal-element">
-                <p class="testimonial-text" id="testiTxt2">"Professional workflow and fully medically fit staff. The hospitality team transformed our restaurant operations."</p>
-                <div class="testimonial-author" id="testiAuth2">Khalid Ba-Wazir</div>
-                <div class="testimonial-company" id="testiComp2">Elite Hospitality Group</div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                <h4>10+</h4>
+                <p id="stat4Label">سنوات الخبرة</p>
             </div>
         </div>
+    </section>
 
-        <h2 class="section-title reveal-element" id="formTitle">Request a Workforce Recruitment</h2>
-        <div class="form-section reveal-element">
-            <form action="https://web3forms.com" method="POST" id="orderForm">
-                <input type="hidden" name="access_key" value="705785a7-7db7-4974-8bcc-52aea4b30120">
+    <section class="partners-section">
+        <h2 id="partnersTitle">شركاء النجاح</h2>
+        <div class="marquee-wrapper">
+            <div class="marquee-content" id="marqueeContent">
+                <!-- Duplicated items inside container ensures seamless scrolling in both layout orientations -->
+                <div class="partner-item"><i class="fa-solid fa-truck-ramp-box"></i> <span class="p-name" data-ar="سابك اللوجستية" data-en="Sabic Logistics">سابك اللوجستية</span></div>
+                <div class="partner-item"><i class="fa-solid fa-briefcase"></i> <span class="p-name" data-ar="اس تي سي أعمال" data-en="STC Business">اس تي سي أعمال</span></div>
+                <div class="partner-item"><i class="fa-solid fa-industry"></i> <span class="p-name" data-ar="شركة الشريك 3" data-en="Partner Company 3">شركة الشريك 3</span></div>
+                <div class="partner-item"><i class="fa-solid fa-store"></i> <span class="p-name" data-ar="شركة الشريك 4" data-en="Partner Company 4">شركة الشريك 4</span></div>
                 
-                <div class="form-group">
-                    <label id="lblCompany" for="companyName">Company Name</label>
-                    <input type="text" id="companyName" name="Company_Name" required placeholder="Enter official company name">
-                </div>
-
-                <div class="form-group">
-                    <label id="lblCount" for="workersCount">Number of Workers Required</label>
-                    <input type="number" id="workersCount" name="Workers_Count" min="1" required placeholder="e.g., 5">
-                </div>
-
-                <div class="form-group">
-                    <label id="lblNationality" for="nationality">Nationality of Workers</label>
-                    <select id="nationality" name="Workers_Nationality" required>
-                        <option id="optSelect" value="" disabled selected>Select required nationality</option>
-                        <option id="optLocal" value="Local">Local (Citizens)</option>
-                        <option id="optEgyptian" value="Egyptian">Egyptian</option>
-                        <option id="optIndian" value="Indian">Indian</option>
-                        <option id="optPakistani" value="Pakistani">Pakistani</option>
-                        <option id="optFilipino" value="Filipino">Filipino</option>
-                        <option id="optOthers" value="Multiple">Other / Multiple Nationalities</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label id="lblQualif" for="qualifications">Workers' Qualifications & Experience Required</label>
-                    <textarea id="qualifications" name="Workers_Qualifications" rows="4" required placeholder="Specify educational background or experience certificates needed..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn" id="btnSubmit">Submit Request Now</button>
-            </form>
-        </div>
-
-        <!-- إضافة قسم الخريطة التفاعلية الفاخرة للشركة لتحديد فرع ماليزيا الدولي -->
-        <h2 class="section-title reveal-element" id="mapTitle">Our Global Headquarters</h2>
-        <div class="map-section reveal-element">
-            <div class="map-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127409.83279148386!2d101.35905252875154!3d3.2359424759714853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc59c47e80f339%3A0x6b63ca041fb82e66!2sPuncak%20Alam%2C%20Selangor%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="partner-item"><i class="fa-solid fa-truck-ramp-box"></i> <span class="p-name" data-ar="سابك اللوجستية" data-en="Sabic Logistics">سابك اللوجستية</span></div>
+                <div class="partner-item"><i class="fa-solid fa-briefcase"></i> <span class="p-name" data-ar="اس تي سي أعمال" data-en="STC Business">اس تي سي أعمال</span></div>
+                <div class="partner-item"><i class="fa-solid fa-industry"></i> <span class="p-name" data-ar="شركة الشريك 3" data-en="Partner Company 3">شركة الشريك 3</span></div>
+                <div class="partner-item"><i class="fa-solid fa-store"></i> <span class="p-name" data-ar="شركة الشريك 4" data-en="Partner Company 4">شركة الشريك 4</span></div>
             </div>
         </div>
+    </section>
 
-        <h2 class="section-title reveal-element" id="faqTitle">Frequently Asked Questions</h2>
-        <div class="faq-section">
-            <div class="faq-item reveal-element">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span id="faqQ1">What is the average time to recruit workers?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p id="faqA1">The process usually takes between 14 to 30 days, depending on the required nationalities and specific professional qualifications.</p>
-                </div>
-            </div>
-
-            <div class="faq-item reveal-element">
-                <button class="faq-question" onclick="toggleFaq(this)">
-                    <span id="faqQ2">Do you provide guarantees on the workforce?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p id="faqA2">Yes, we provide a full 90-day comprehensive guarantee covering professional competence, medical fitness, and behavioral commitment.</p>
-                </div>
-            </div>
+    <section class="testimonials">
+        <h2 id="reviewTitle">آراء عملائنا</h2>
+        <div class="testimonial-card">
+            <p id="rev1Text">"قدمت لنا مجموعة بركات مهندسين ذوي مهارات عالية في وقت قياسي. خدمة ممتازة والتزام كامل."</p>
+            <strong id="rev1Author">م. أحمد المنصوري - شركة المنصوري للمقاولات</strong>
         </div>
-    </div>
-
-    <div class="whatsapp-floating-container" id="whatsappContainer">
-        <div class="whatsapp-chat-box" id="whatsappChatBox">
-            <div class="whatsapp-chat-header">
-                <i class="fab fa-whatsapp"></i>
-                <div class="chat-header-info">
-                    <h4 id="waHeaderTitle">Barakat Support</h4>
-                    <p id="waHeaderStatus">Online</p>
-                </div>
-            </div>
-            <div class="whatsapp-chat-body">
-                <p class="wa-msg-bubble" id="waBubbleText">Welcome to Barakat Group! How can we assist you with workforce recruitment today?</p>
-            </div>
-            <div class="whatsapp-chat-footer">
-                <a href="https://wa.me/60176706338" target="_blank" class="wa-start-chat-btn" id="waBtnText">Start Chat</a>
-            </div>
+        <div class="testimonial-card">
+            <p id="rev2Text">"منظومة عمل احترافية وموظفون لائقون طبياً تماماً. فريق الضيافة أحدث تحولاً في إدارة مطعمنا."</p>
+            <strong id="rev2Author">خالد باوزير - مجموعة النخبة للضيافة</strong>
         </div>
-		<button class="whatsapp-main-btn" onclick="toggleWhatsAppChat()" aria-label="Chat on WhatsApp">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#fff" d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.461 3.42 1.268 4.873l-1.348 4.925 5.04-1.323c1.408.766 3.007 1.2 4.694 1.2 5.51 0 9.993-4.483 9.993-9.993S17.515 2 12.004 2zm4.957 14.212c-.215.604-1.25 1.196-1.722 1.26-.474.065-.94.316-3.023-.544-2.508-1.033-4.086-3.606-4.21-3.774-.126-.167-1.022-1.357-1.022-2.59 0-1.23.645-1.838.874-2.09.228-.25.503-.314.67-.314.17 0 .343.003.49.01.15.008.355-.06.556.425.204.493.696 1.696.757 1.82.06.126.1.272.016.44-.085.17-.19.27-.376.495-.183.22-.384.368-.216.657.17.29.743 1.226 1.593 1.982.895.797 1.653 1.042 1.942 1.186.29.145.46.122.63-.075.174-.197.747-.87.947-1.168.2-.3.402-.25.672-.15.27.1.1.204 1.706.8 1.605.597 1.71.72 1.737.9.027.18-.06.8-.276 1.404z"/>
-            </svg>
-		</button>
-    </div>
-<!-- نهاية جزء ٦ -->
+    </section>
 
+    <section class="recruitment-form">
+        <h2 id="formTitle">طلب استقدام عمالة</h2>
+        <form onsubmit="event.preventDefault(); alert('تم إرسال الطلب بنجاح');">
+            <div class="form-group">
+                <label id="lblComp" for="companyName">اسم الشركة</label>
+                <input type="text" id="companyName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label id="lblNum" for="workerNum">عدد العمالة المطلوبة</label>
+                <input type="number" id="workerNum" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label id="lblNat" for="nationality">الجنسية المطلوبة</label>
+                <select id="nationality" class="form-control">
+                    <option value="local">محلية (مواطنين)</option>
+                    <option value="egyptian">مصرية</option>
+                    <option value="indian">هندية</option>
+                    <option value="pakistani">باكستانية</option>
+                    <option value="filipino">فلبينية</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit" id="btnSubmit">إرسال الطلب الآن</button>
+        </form>
+    </section>
 
-<!-- بداية جزء ٧: نصوص الترجمة للغتين (Translations Dictionary) -->
     <script>
         const translations = {
+            ar: {
+                langText: "English",
+                mainTitle: "مجموعة بركات للتوظيف والخدمات",
+                mainSubtitle: "حلول متكاملة لاستقدام النخبة من المواهب والعمالة المهنية",
+                servicesTitle: "خدماتنا المميزة",
+                srv1Title: "توظيف الكوادر التقنية والمهنية",
+                srv1Desc: "توفير مهندسين، مطورين، وفنيين ذوي خبرة عالية لدعم نمو أعمالك.",
+                srv2Title: "عمالة المقاولات والإنشاءات",
+                srv2Desc: "تأمين فرق عمل متكاملة للمشاريع الإنشائية والمعمارية بمختلف المستويات.",
+                srv3Title: "خدمات الضيافة والخدمات العامة",
+                srv3Desc: "تلبية احتياجات الفنادق والمطاعم والشركات من موظفي استقبال، طهاة، وفرق لوجستية.",
+                stat1Label: "مرشح تم توظيفه",
+                stat2Label: "عميل من الشركات",
+                stat3Label: "نسبة النجاح",
+                stat4Label: "سنوات الخبرة",
+                partnersTitle: "شركاء النجاح",
+                reviewTitle: "آراء عملائنا",
+                rev1Text: '"قدمت لنا مجموعة بركات مهندسين ذوي مهارات عالية في وقت قياسي. خدمة ممتازة والتزام كامل."',
+                rev1Author: "م. أحمد المنصوري - شركة المنصوري للمقاولات",
+                rev2Text: '"منظومة عمل احترافية وموظفون لائقون طبياً تماماً. فريق الضيافة أحدث تحولاً في إدارة مطعمنا."',
+                rev2Author: "خالد باوزير - مجموعة النخبة للضيافة",
+                formTitle: "طلب استقدام عمالة",
+                lblComp: "اسم الشركة",
+                lblNum: "عدد العمالة المطلوبة",
+                lblNat: "الجنسية المطلوبة",
+                btnSubmit: "إرسال الطلب الآن"
+            },
             en: {
-                title: "Worker Services & Recruitment Company",
-                navLogo: "Barakat Group",
                 langText: "العربية",
-                headerTitle: "Barakat Recruitment & Services",
-                headerSub: "Integrated solutions for attracting elite talents and professional workforce",
+                mainTitle: "Barakat Recruitment & Services",
+                mainSubtitle: "Integrated solutions for attracting elite talents and professional workforce",
                 servicesTitle: "Our Premium Services",
                 srv1Title: "Technical & Professional Staffing",
                 srv1Desc: "Providing highly experienced engineers, developers, and technicians to drive your business growth.",
@@ -976,320 +447,66 @@
                 srv2Desc: "Securing integrated workforce teams for structural and architectural projects across all levels.",
                 srv3Title: "Hospitality & General Services",
                 srv3Desc: "Meeting the needs of hotels, restaurants, and corporations for receptionists, chefs, and logistics staff.",
+                stat1Label: "Placed Candidates",
+                stat2Label: "Corporate Clients",
+                stat3Label: "Success Rate %",
+                stat4Label: "Years of Experience",
+                partnersTitle: "Trusted Partners",
+                reviewTitle: "What Our Clients Say",
+                rev1Text: '"Barakat Group provided us with highly skilled engineers in record time. Excellent service and complete commitment."',
+                rev1Author: "Eng. Ahmed Al-Mansoori - Al-Mansoori Contracting Company",
+                rev2Text: '"Professional workflow and fully medically fit staff. The hospitality team transformed our restaurant operations."',
+                rev2Author: "Khalid Ba-Wazir - Elite Hospitality Group",
                 formTitle: "Request a Workforce Recruitment",
-                lblCompany: "Company Name",
-                phCompany: "Enter official company name",
-                lblCount: "Number of Workers Required",
-                phCount: "e.g., 5",
-                lblNationality: "Nationality of Workers",
-                optSelect: "Select required nationality",
-                optLocal: "Local (Citizens)",
-                optEgyptian: "Egyptian",
-                optIndian: "Indian",
-                optPakistani: "Pakistani",
-                optFilipino: "Filipino",
-                optOthers: "Other / Multiple Nationalities",
-                lblQualif: "Workers' Qualifications & Experience Required",
-                phQualif: "Specify educational background or experience certificates needed...",
-                btnSubmit: "Submit Request Now",
-                slide1Text: "Elite Business Solutions",
-                slide2Text: "Global Talents & Workforce",
-                slide3Text: "Professional Quality & Success",
-                slide4Text: "Professional Quality & Success",
-                slide5Text: "Professional Quality & Success",
-                mapTitle: "Our Global Headquarters",
-                faqTitle: "Frequently Asked Questions",
-                faqQ1: "What is the average time to recruit workers?",
-                faqA1: "The process usually takes between 14 to 30 days, depending on the required nationalities and specific professional qualifications.",
-                faqQ2: "Do you provide guarantees on the workforce?",
-                faqA2: "Yes, we provide a full 90-day comprehensive guarantee covering professional competence, medical fitness, and behavioral commitment.",
-                testiTitle: "What Our Clients Say",
-                testiTxt1: '"Barakat Group provided us with highly skilled engineers in record time. Excellent service and complete commitment."',
-                testiAuth1: "Eng. Ahmed Al-Mansoori",
-                testiComp1: "Al-Mansoori Contracting Company",
-                testiTxt2: '"Professional workflow and fully medically fit staff. The hospitality team transformed our restaurant operations."',
-                testiAuth2: "Khalid Ba-Wazir",
-                testiComp2: "Elite Hospitality Group",
-                statLbl1: "Placed Candidates",
-                statLbl2: "Corporate Clients",
-                statLbl3: "Success Rate %",
-                statLbl4: "Years of Experience",
-                partnersTitle: "Our Success Partners",
-                p1Text: "Al-Marai",
-                p2Text: "Bin Laden Group",
-                p3Text: "Aramco Services",
-                p4Text: "Sabic Logistics",
-                p5Text: "STC Business",
-                waHeaderTitle: "Barakat Support",
-                waHeaderStatus: "Online",
-                waBubbleText: "Welcome to Barakat Group! How can we assist you with workforce recruitment today?",
-                waBtnText: "Start Chat"
-            },
-            ar: {
-                title: "شركة خدمات العمالة والتوظيف",
-                navLogo: "مجموعة بركات",
-                langText: "English",
-                headerTitle: "مجموعة بركات للتوظيف والخدمات",
-                headerSub: "حلول متكاملة لاستقطاب وتوفير الكفاءات والعمالة المهنية",
-                servicesTitle: "خدماتنا المتميزة",
-                srv1Title: "توفير الكوادر المهنية والتقنية",
-                srv1Desc: "نوفر مهندسين، مبرمجين، وفنيين ذوي خبرات عالية تساهم في نمو وتطوير أعمال شركتك بشكل مباشر.",
-                srv2Title: "عمالة قطاع المقاولات والإنشاءات",
-                srv2Desc: "تأمين أطقم عمل متكاملة للمشاريع الإنشائية والمعمارية بمختلف التخصصات والمؤهلات المطلوبة.",
-                srv3Title: "قطاع الضيافة والخدمات العامة",
-                srv3Desc: "نلبي احتياجات الفنادق، المطاعم، والشركات من موظفي استقبال، طهاة، وعمال خدمات لوجستية.",
-                formTitle: "تقديم طلب استقدام عمالة",
-                lblCompany: "اسم الشركة",
-                phCompany: "أدخل اسم الشركة الرسمي",
-                lblCount: "عدد العمال المطلوبين",
-                phCount: "مثال: 5",
-                lblNationality: "جنسية العمال",
-                optSelect: "اختر الجنسية المطلوبة",
-                optLocal: "محلية (مواطنين)",
-                optEgyptian: "مصرية",
-                optIndian: "هندية",
-                optPakistani: "باكستانية",
-                optFilipino: "فلبينية",
-                optOthers: "جنسيات أخرى متعددة",
-                lblQualif: "مؤهلات العمال والخبرات المطلوبة",
-                phQualif: "اذكر المؤهلات الدراسية أو شهادات الخبرة المطلوبة بالتفصيل...",
-                btnSubmit: "إرسال الطلب الآن",
-                slide1Text: "حلول الأعمال النخبوية",
-                slide2Text: "الكفاءات والعمالة العالمية",
-                slide3Text: "الجودة المهنية والنجاح",
-                slide4Text: "الجودة المهنية والنجاح",
-                slide5Text: "الجودة المهنية والنجاح",
-                mapTitle: "مقرنا الدولي العالمي",
-                faqTitle: "الأسئلة الشائعة",
-                faqQ1: "ما هي المدة الزمنية المستغرقة لاستقدام العمالة؟",
-                faqA1: "تستغرق العملية عادةً ما بين 14 إلى 30 يوماً، ويعتمد ذلك على الجنسيات المطلوبة والمؤهلات المهنية المحددة.",
-                faqQ2: "هل توجد ضمانات على العمالة المستقدمة؟",
-                faqA2: "نعم، نقدم ضماناً شاملاً لمدة 90 يوماً يغطي الكفاءة المهنية، اللياقة الطبية، والالتزام السلوكي للعمال.",
-                testiTitle: "آراء عملائنا",
-                testiTxt1: '"وفرت لنا مجموعة بركات مهندسين على أعلى مستوى من الكفاءة وفي وقت قياسي. خدمة ممتازة والتزام تام."',
-                testiAuth1: "م. أحمد المنصوري",
-                testiComp1: "شركة المنصوري للمقاولات العامة",
-                testiTxt2: '"تنظيم احترافي وعمالة خالية تماماً من الملاحظات الطبية، طاقم الضيافة أحدث فارقاً كبيراً في إدارة مطاعمنا."',
-                testiAuth2: "خالد باوزير",
-                testiComp2: "مجموعة النخبة للضيافة",
-                statLbl1: "مرشح تم توظيفه",
-                statLbl2: "شركة وعميل",
-                statLbl3: "نسبة نجاح التأشيرات %",
-                statLbl4: "عام من الخبرة",
-                partnersTitle: "شركاء النجاح",
-                p1Text: "المراعي",
-                p2Text: "مجموعة بن لادن",
-                p3Text: "أرامكو السعودية",
-                p4Text: "سابك اللوجستية",
-                p5Text: "إس تي سي أعمال",
-                waHeaderTitle: "دعم مجموعة بركات",
-                waHeaderStatus: "متصل الآن",
-                waBubbleText: "مرحباً بك في مجموعة بركات! كيف يمكننا مساعدتك في تلبية احتياجاتك من العمالة والتوظيف اليوم؟",
-                waBtnText: "بدء المحادثة"
+                lblComp: "Company Name",
+                lblNum: "Number of Workers Required",
+                lblNat: "Nationality of Workers",
+                btnSubmit: "Submit Request Now"
             }
         };
-<!-- نهاية جزء ٧ -->
-
-
-<!-- بداية جزء ٨: معالجات جافا سكريبت التفاعلية وإغلاق وسوم المستند كاملة -->
-        let currentLang = 'en'; 
-        let currentSlideIndex = 0;
-        let counterStarted = false;
 
         function toggleLanguage() {
-            currentLang = (currentLang === 'en') ? 'ar' : 'en';
-            
-            const htmlTag = document.getElementById('htmlTag');
-            if(currentLang === 'ar') {
-                htmlTag.setAttribute('dir', 'rtl');
-                htmlTag.setAttribute('lang', 'ar');
-            } else {
-                htmlTag.setAttribute('dir', 'ltr');
-                htmlTag.setAttribute('lang', 'en');
-            }
+            const html = document.documentElement;
+            const currentDir = html.getAttribute("dir");
+            const nextLang = currentDir === "rtl" ? "en" : "ar";
+            const nextDir = currentDir === "rtl" ? "ltr" : "rtl";
 
-            const t = translations[currentLang];
-            document.title = t.title;
-            document.getElementById('navLogo').innerText = t.navLogo;
-            document.getElementById('langText').innerText = t.langText;
-            document.getElementById('headerTitle').innerText = t.headerTitle;
-            document.getElementById('headerSub').innerText = t.headerSub;
-            document.getElementById('servicesTitle').innerText = t.servicesTitle;
-            document.getElementById('srv1Title').innerText = t.srv1Title;
-            document.getElementById('srv1Desc').innerText = t.srv1Desc;
-            document.getElementById('srv2Title').innerText = t.srv2Title;
-            document.getElementById('srv2Desc').innerText = t.srv2Desc;
-            document.getElementById('srv3Title').innerText = t.srv3Title;
-            document.getElementById('srv3Desc').innerText = t.srv3Desc;
-            document.getElementById('formTitle').innerText = t.formTitle;
-            
-            document.getElementById('lblCompany').innerText = t.lblCompany;
-            document.getElementById('companyName').placeholder = t.phCompany;
-            document.getElementById('lblCount').innerText = t.lblCount;
-            document.getElementById('workersCount').placeholder = t.phCount;
-            document.getElementById('lblNationality').innerText = t.lblNationality;
-            document.getElementById('optSelect').innerText = t.optSelect;
-            document.getElementById('optLocal').innerText = t.optLocal;
-            document.getElementById('optEgyptian').innerText = t.optEgyptian;
-            document.getElementById('optIndian').innerText = t.optIndian;
-            document.getElementById('optPakistani').innerText = t.optPakistani;
-            document.getElementById('optFilipino').innerText = t.optFilipino;
-            document.getElementById('optOthers').innerText = t.optOthers;
-            document.getElementById('lblQualif').innerText = t.lblQualif;
-            document.getElementById('qualifications').placeholder = t.phQualif;
-            document.getElementById('btnSubmit').innerText = t.btnSubmit;
+            html.setAttribute("lang", nextLang);
+            html.setAttribute("dir", nextDir);
 
-            document.getElementById('slide1Text').innerText = t.slide1Text;
-            document.getElementById('slide2Text').innerText = t.slide2Text;
-            document.getElementById('slide3Text').innerText = t.slide3Text;
-            document.getElementById('slide4Text').innerText = t.slide4Text;
-            document.getElementById('slide5Text').innerText = t.slide5Text;
+            // Update Text Contents
+            document.getElementById("langText").innerText = translations[nextLang].langText;
+            document.getElementById("mainTitle").innerText = translations[nextLang].mainTitle;
+            document.getElementById("mainSubtitle").innerText = translations[nextLang].mainSubtitle;
+            document.getElementById("servicesTitle").innerText = translations[nextLang].servicesTitle;
+            document.getElementById("srv1Title").innerText = translations[nextLang].srv1Title;
+            document.getElementById("srv1Desc").innerText = translations[nextLang].srv1Desc;
+            document.getElementById("srv2Title").innerText = translations[nextLang].srv2Title;
+            document.getElementById("srv2Desc").innerText = translations[nextLang].srv2Desc;
+            document.getElementById("srv3Title").innerText = translations[nextLang].srv3Title;
+            document.getElementById("srv3Desc").innerText = translations[nextLang].srv3Desc;
+            document.getElementById("stat1Label").innerText = translations[nextLang].stat1Label;
+            document.getElementById("stat2Label").innerText = translations[nextLang].stat2Label;
+            document.getElementById("stat3Label").innerText = translations[nextLang].stat3Label;
+            document.getElementById("stat4Label").innerText = translations[nextLang].stat4Label;
+            document.getElementById("partnersTitle").innerText = translations[nextLang].partnersTitle;
+            document.getElementById("reviewTitle").innerText = translations[nextLang].reviewTitle;
+            document.getElementById("rev1Text").innerText = translations[nextLang].rev1Text;
+            document.getElementById("rev1Author").innerText = translations[nextLang].rev1Author;
+            document.getElementById("rev2Text").innerText = translations[nextLang].rev2Text;
+            document.getElementById("rev2Author").innerText = translations[nextLang].rev2Author;
+            document.getElementById("formTitle").innerText = translations[nextLang].formTitle;
+            document.getElementById("lblComp").innerText = translations[nextLang].lblComp;
+            document.getElementById("lblNum").innerText = translations[nextLang].lblNum;
+            document.getElementById("lblNat").innerText = translations[nextLang].lblNat;
+            document.getElementById("btnSubmit").innerText = translations[nextLang].btnSubmit;
 
-            document.getElementById('mapTitle').innerText = t.mapTitle;
-            document.getElementById('faqTitle').innerText = t.faqTitle;
-            document.getElementById('faqQ1').innerText = t.faqQ1;
-            document.getElementById('faqA1').innerText = t.faqA1;
-            document.getElementById('faqQ2').innerText = t.faqQ2;
-            document.getElementById('faqA2').innerText = t.faqA2;
-
-            document.getElementById('testiTitle').innerText = t.testiTitle;
-            document.getElementById('testiTxt1').innerText = t.testiTxt1;
-            document.getElementById('testiAuth1').innerText = t.testiAuth1;
-            document.getElementById('testiComp1').innerText = t.testiComp1;
-            document.getElementById('testiTxt2').innerText = t.testiTxt2;
-            document.getElementById('testiAuth2').innerText = t.testiAuth2;
-            document.getElementById('testiComp2').innerText = t.testiComp2;
-
-            document.getElementById('statLbl1').innerText = t.statLbl1;
-            document.getElementById('statLbl2').innerText = t.statLbl2;
-            document.getElementById('statLbl3').innerText = t.statLbl3;
-            document.getElementById('statLbl4').innerText = t.statLbl4;
-
-            document.getElementById('partnersTitle').innerText = t.partnersTitle;
-            
-            const p1Elements = document.querySelectorAll('[id^="p1Text"]');
-            p1Elements.forEach(el => el.innerText = t.p1Text);
-            
-            const p2Elements = document.querySelectorAll('[id^="p2Text"]');
-            p2Elements.forEach(el => el.innerText = t.p2Text);
-            
-            const p3Elements = document.querySelectorAll('[id^="p3Text"]');
-            p3Elements.forEach(el => el.innerText = t.p3Text);
-            
-            const p4Elements = document.querySelectorAll('[id^="p4Text"]');
-            p4Elements.forEach(el => el.innerText = t.p4Text);
-            
-            const p5Elements = document.querySelectorAll('[id^="p5Text"]');
-            p5Elements.forEach(el => el.innerText = t.p5Text);
-
-            document.getElementById('waHeaderTitle').innerText = t.waHeaderTitle;
-            document.getElementById('waHeaderStatus').innerText = t.waHeaderStatus;
-            document.getElementById('waBubbleText').innerText = t.waBubbleText;
-            document.getElementById('waBtnText').innerText = t.waBtnText;
-        }
-
-        /* دالة معالجة الوضع الداكن الذكي التفاعلي مع حفظ تفضيلات المستخدم */
-        function toggleTheme() {
-            const htmlTag = document.getElementById('htmlTag');
-            const themeIcon = document.getElementById('themeIcon');
-            
-            if (htmlTag.classList.contains('dark-mode')) {
-                htmlTag.classList.remove('dark-mode');
-                themeIcon.className = 'fas fa-moon';
-                localStorage.setItem('theme', 'light');
-            } else {
-                htmlTag.classList.add('dark-mode');
-                themeIcon.className = 'fas fa-sun';
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        function updateSlider() {
-            const wrapper = document.getElementById('sliderWrapper');
-            const percentage = -currentSlideIndex * 100;
-            const direction = document.getElementById('htmlTag').getAttribute('dir') === 'rtl' ? -percentage : percentage;
-            wrapper.style.transform = `translateX(${direction}%)`;
-        }
-
-        function moveSlide(step) {
-            const totalSlides = document.querySelectorAll('.slide').length;
-            currentSlideIndex = (currentSlideIndex + step + totalSlides) % totalSlides;
-            updateSlider();
-        }
-
-        setInterval(() => {
-            moveSlide(1);
-        }, 4000);
-
-        function toggleFaq(button) {
-            const item = button.parentElement;
-            item.classList.toggle('active');
-        }
-
-        function toggleWhatsAppChat() {
-            const chatBox = document.getElementById('whatsappChatBox');
-            chatBox.classList.toggle('active');
-        }
-
-        function startCounting() {
-            const counters = document.querySelectorAll(".stat-number");
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute("data-target");
-                    const count = +counter.innerText.replace('+', '');
-                    const speed = target / 80; 
-
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + speed);
-                        setTimeout(updateCount, 25);
-                    } else {
-                        counter.innerText = target + (target >= 15 ? "+" : "");
-                    }
-                };
-                updateCount();
+            // Update Marquee partner names
+            const names = document.querySelectorAll(".p-name");
+            names.forEach(name => {
+                name.innerText = name.getAttribute(`data-${nextLang}`);
             });
         }
-
-        // إعداد تفعيل العداد والظهور الانسيابي للعناصر بالتمرير
-        document.addEventListener("DOMContentLoaded", () => {
-            // فحص تفضيلات الكاش للوضع الداكن قبل التحميل
-            const savedTheme = localStorage.getItem('theme');
-            const htmlTag = document.getElementById('htmlTag');
-            const themeIcon = document.getElementById('themeIcon');
-            if (savedTheme === 'dark') {
-                htmlTag.classList.add('dark-mode');
-                if (themeIcon) themeIcon.className = 'fas fa-sun';
-            }
-
-            // مراقب العداد التراكمي
-            const statsSection = document.getElementById("stats-counter");
-            const statsObserver = new IntersectionObserver((entries) => {
-                const [entry] = entries;
-                if (entry.isIntersecting && !counterStarted) {
-                    startCounting();
-                    counterStarted = true;
-                    statsObserver.unobserve(statsSection);
-                }
-            }, { root: null, threshold: 0.2 });
-
-            if (statsSection) {
-                statsObserver.observe(statsSection);
-            }
-
-            // مراقب حركة الظهور الانسيابي (Scroll Reveal Animations) لكل الأقسام والكروت
-            const revealElements = document.querySelectorAll('.reveal-element');
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                        revealObserver.unobserve(entry.target);
-                    }
-                });
-            }, { root: null, threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
-
-            revealElements.forEach(el => revealObserver.observe(el));
-        });
     </script>
 </body>
 </html>
-<!-- نهاية جزء ٨ -->
