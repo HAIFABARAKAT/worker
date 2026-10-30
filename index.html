@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">Worker Services & Recruitment Company</title>
-    <!-- تضمين النسخة المستقرة والشاملة من مكتبة Font Awesome للأيقونات والعداد والأسئلة -->
+    <!-- تضمين النسخة المستقرة والشاملة من مكتبة Font Awesome لحل مشكلة اختفاء الأيقونات نهائياً -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         @import url('https://googleapis.com');
@@ -39,38 +39,39 @@
 
 
 <!-- بداية جزء ٢: تصميم شريط التنقل المصلح والهيدر وشريط الصور المتحرك -->
-        /* تصميم شريط التنقل لضمان البقاء على سطر واحد مستقل في كل الأجهزة */
+<!-- بداية جزء ٢: تصميم شريط التنقل المصلح والهيدر وشريط الصور المتحرك -->
+<!-- بداية جزء ٢: تصميم شريط التنقل المصلح والهيدر وشريط الصور المتحرك -->
+        /* تصميم شريط التنقل وضمان بقاء الشعار واللغة على سطر واحد في الجوال */
         .navbar {
             background-color: #ffffff;
-            padding: 15px 30px; /* ضبط الحشو الجانبي ليتناسب مع شاشات الجوال */
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
+            padding: 15px 10px; /* تقليل الحشو الجانبي لمنح مساحة أفقية كافية للجوال */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            flex-direction: row !important; /* إجبار العناصر على الاصطفاف أفقياً */
-            flex-wrap: nowrap !important;     /* منع نزول زر اللغة لسطر جديد نهائياً */
             width: 100%;
+            /* تم حذف nowrap و flex-direction لمنع التداخل والزحف العشوائي أسفل الهيدر */
         }
 
         .brand-logo {
             font-weight: 700;
-            font-size: 1.15rem; /* حجم خط موزون ومناسب لشاشات الهواتف */
+            font-size: 1.1rem; /* حجم الخط الأصلي ثابت دون تغيير */
             color: #1e3c72;
-            white-space: nowrap; /* منع انقسام نص اسم الشركة */
+            white-space: nowrap; /* منع انقسام اسم الشركة إلى سطرين */
         }
 
         .lang-switcher-btn {
             background-color: transparent;
             color: #2a5298;
             border: 2px solid #2a5298;
-            padding: 6px 14px;
+            padding: 6px 12px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             white-space: nowrap; /* منع انقسام نص زر اللغة */
         }
 
@@ -155,12 +156,15 @@
 
         .slider-btn:hover { background: #fff; }
         
-        /* ضبط مكان الأسهم بناءً على اتجاه الصفحة LTR و RTL */
+        /* ضبط مكان أسهم التحريك بناءً على اتجاه الصفحة LTR و RTL */
         html[dir="ltr"] .prev-btn { left: 15px; }
         html[dir="ltr"] .next-btn { right: 15px; }
         html[dir="rtl"] .prev-btn { right: 15px; transform: translateY(-50%) rotate(180deg); }
         html[dir="rtl"] .next-btn { left: 15px; transform: translateY(-50%) rotate(180deg); }
 <!-- نهاية جزء ٢ -->
+<!-- نهاية جزء ٢ -->
+<!-- نهاية جزء ٢ -->
+
 
 <!-- بداية جزء ٣: تصميم كروت الخدمات، شريط الإنجازات، وشريط الشركات الجديد، وآراء العملاء -->
         /* تصميم عناوين الأقسام */
@@ -257,10 +261,6 @@
             font-size: 2.8rem;
             font-weight: bold;
             margin-bottom: 8px;
-        }
-
-        .stat-number-suffix {
-            display: inline-block;
         }
 
         .stat-label {
@@ -360,7 +360,7 @@
 <!-- نهاية جزء ٣ -->
 
 
-<!-- بداية جزء ٤: تصميم نموذج الطلبات والأسئلة الشائعة وزر الواتساب الـ SVG الاهتزازي الجديد وإغلاق الترويسة -->
+<!-- بداية جزء ٤: تصميم نموذج الطلبات والأسئلة الشائعة وزر الواتساب المصلح وإغلاق الترويسة -->
         /* تصميم قسم نموذج الطلبات */
         .form-section {
             background: #fff;
@@ -469,7 +469,7 @@
             transform: rotate(45deg);
         }
 
-        /* تصميم زر الواتساب التفاعلي العائم الحقيقي والمحسن جداً بتقنية SVG */
+        /* تصميم زر الواتساب العائم بعد ضبط الحجم المتناسق لمنع التداخل */
         .whatsapp-floating-container {
             position: fixed;
             bottom: 30px;
@@ -479,28 +479,32 @@
         html[dir="ltr"] .whatsapp-floating-container { right: 30px; }
         html[dir="rtl"] .whatsapp-floating-container { left: 30px; }
 
-        .whatsapp-main-btn {
-            background-color: transparent !important;
-            border: none !important;
-            width: 56px !important;
-            height: 56px !important;
-            cursor: pointer !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            /* تأثير حركة الاهتزاز والنبض التفاعلية لجذب الانتباه بشكل دوري تلقائي كل 4 ثوانٍ */
-            animation: waSmartAttention 4s ease-in-out infinite !important;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
-        }
-
-        .whatsapp-main-btn svg {
-            width: 100%;
-            height: 100%;
-        }
+		/* --- تصميم أيقونة الواتساب ثلاثية الأبعاد والمحسنة جداً --- */
+		.whatsapp-main-btn {
+			background: linear-gradient(135deg, #25d366 0%, #075e54 100%) !important; /* تدرج لوني عميق */
+			color: white !important;
+			border: none !important;
+			width: 54px !important;
+			height: 54px !important;
+			border-radius: 50% !important;
+			font-size: 28px !important;
+			cursor: pointer !important;
+			box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35), inset 0 2px 4px rgba(255,255,255,0.4) !important; /* ظل خارجي وبريق داخلي ثلاثي الأبعاد */
+			display: flex !important;
+			justify-content: center !important;
+			align-items: center !important;
+			animation: waPulse المحسن 2s infinite !important;
+			transform: translateZ(0);
+		}
+		
+		.whatsapp-main-btn:hover {
+			transform: scale(1.08); /* تكبير خفيف وتفاعلي عند تمرير الماوس */
+			background: linear-gradient(135deg, #20ba59 0%, #054d44 100%) !important;
+		}
 
         .whatsapp-chat-box {
             position: absolute;
-            bottom: 70px;
+            bottom: 65px;
             width: 290px;
             background-color: #fff;
             border-radius: 12px;
@@ -525,7 +529,7 @@
             align-items: center;
             gap: 12px;
         }
-        .whatsapp-chat-header svg { width: 24px; height: 24px; fill: #fff; }
+        .whatsapp-chat-header i { font-size: 24px; }
         .chat-header-info h4 { font-size: 0.95rem; margin: 0; }
         .chat-header-info p { font-size: 0.75rem; opacity: 0.8; margin: 0; }
 
@@ -557,30 +561,24 @@
             border-radius: 6px;
             font-weight: 600;
             font-size: 0.9rem;
-            box-shadow: 0 2px 5px rgba(37,211,102,0.3);
         }
         .wa-start-chat-btn:hover { background-color: #20ba59; }
 
-        /* حركة الاهتزاز والنبض الذكية التفاعلية المدمجة */
-        @keyframes waSmartAttention {
-            0%, 100% { transform: scale(1); }
-            5% { transform: scale(1.1) rotate(-8deg); }
-            10% { transform: scale(1.1) rotate(8deg); }
-            15% { transform: scale(1.1) rotate(-8deg); }
-            20% { transform: scale(1.1) rotate(8deg); }
-            25% { transform: scale(1) rotate(0); }
-            30% { filter: drop-shadow(0 4px 20px rgba(37, 211, 102, 0.6)); }
-            45% { filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15)); }
+        @keyframes waPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
     </style>
 </head>
 <!-- نهاية جزء ٤ -->
 
 
-<!-- بداية جزء ٥: الهيكل البرمجي لـ HTML (الشريط العلوي حر ومستقل تماماً لضمان سطر واحد، والهيدر، وكروت الخدمات) -->
+<!-- بداية جزء ٥: الهيكل البرمجي لـ HTML (شريط التنقل، الهيدر، شريط الصور، وكروت الخدمات) -->
+<!-- بداية جزء ٥: الهيكل البرمجي المصلح لـ HTML -->
 <body>
 
-    <!-- شريط التنقل حر تماماً وخارج أي حاويات لضمان سطر واحد متزن واحترافي -->
+    <!-- شريط التنقل حر ومستقل تماماً لضمان المحاذاة الأفقية الصحيحة -->
     <nav class="navbar">
         <div class="brand-logo" id="navLogo">Barakat Group</div>
         <button class="lang-switcher-btn" id="langBtn" onclick="toggleLanguage()">
@@ -594,7 +592,7 @@
         <p id="headerSub">Integrated solutions for attracting elite talents and professional workforce</p>
     </header>
 
-    <!-- تبدأ الحاوية الكبيرة هنا حصراً بعد انتهاء الهيدر تماماً لتنظيم المظهر السفلي والخدمات -->
+    <!-- تبدأ الحاوية هنا بعد الهيدر لترتيب بقية العناصر والخدمات بالأسفل -->
     <div class="container">
         
         <!-- مستطيل الصور المتحرك المتفاعل الجديد -->
@@ -654,9 +652,10 @@
 
         </div>
 <!-- نهاية جزء ٥ -->
+<!-- نهاية جزء ٥ -->
 
 
-<!-- بداية جزء ٦: الهيكل البرمجي لـ HTML (الأرقام، شريط الشركات، الآراء، النموذج، الأسئلة، والواتساب الـ SVG الملون) -->
+<!-- بداية جزء ٦: الهيكل البرمجي لـ HTML (الأرقام، شريط الشركات، الآراء، النموذج، الأسئلة، والواتساب) -->
         <!-- شريط أرقام الإنجازات المتفاعل -->
         <section id="stats-counter" class="stats-section">
             <div class="stats-container">
@@ -687,12 +686,13 @@
         <h2 class="section-title" id="partnersTitle">Trusted Partners</h2>
         <section class="partners-section">
             <div class="partners-slider">
+                <!-- الـ 5 كروت الأولى الأصلية للشريط العرضي -->
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p1Text">Partner Company 1</div></div>
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p2Text">Partner Company 2</div></div>
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p3Text">Partner Company 3</div></div>
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p4Text">Partner Company 4</div></div>
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p5Text">Partner Company 5</div></div>
-                
+                <!-- الـ 5 كروت المكررة لضمان حركة انسيابية لا تنتهي (Infinite Scroll) -->
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p1TextDup">Partner Company 1</div></div>
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p2TextDup">Partner Company 2</div></div>
                 <div class="partner-slide"><div class="partner-logo-placeholder" id="p3TextDup">Partner Company 3</div></div>
@@ -777,14 +777,13 @@
                 </div>
             </div>
         </div>
-    </div> <!-- إغلاق محكم وسليم لوسم الحاوية الحاوية الرئيسية لحل المشكلة الهيكلية نهائياً -->
+    </div>
 
-    <!-- عنصر نافذة زر الواتساب العائمة المتفاعلة مع كود الـ SVG الملون والاهتزازي مدمجاً برقمك الماليزي الصحيح مباشرة -->
+    <!-- عنصر نافذة زر الواتساب العائمة المتفاعلة (تم تهيئتها افتراضياً بالمفتاح الدولي الماليزي 60) -->
     <div class="whatsapp-floating-container" id="whatsappContainer">
         <div class="whatsapp-chat-box" id="whatsappChatBox">
             <div class="whatsapp-chat-header">
-                <!-- أيقونة الـ SVG البيضاء لمتصفح النافذة المنبثقة -->
-                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-1.986-.001-3.932-.493-5.661-1.429L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 1.977 14.06 1.023 11.43 1.024c-5.439 0-9.865 4.37-9.87 9.799-.001 1.77.483 3.371 1.391 4.842l-.993 3.63 3.699-.963zm13.012-7.234c-.288-.144-1.702-.84-1.962-.935-.26-.095-.45-.144-.64.144-.19.288-.735.935-.902 1.127-.167.192-.335.216-.624.072-.288-.144-1.22-.449-2.324-1.434-.86-.767-1.44-1.715-1.608-2.003-.168-.288-.018-.444.126-.587.13-.13.288-.336.432-.504.144-.168.192-.288.288-.48.096-.192.048-.36-.024-.504-.072-.144-.64-1.536-.877-2.112-.23-.557-.464-.48-.64-.489-.166-.008-.356-.01-.545-.01-.189 0-.498.072-.759.36-.26.288-1.02 1.008-1.02 2.448s1.047 2.832 1.193 3.024c.145.192 2.06 3.146 4.992 4.413.697.302 1.242.483 1.666.617.701.223 1.34.192 1.843.117.561-.084 1.702-.696 1.942-1.368.24-.672.24-1.248.168-1.368-.072-.12-.26-.192-.549-.336z"/></svg>
+                <i class="fab fa-whatsapp"></i>
                 <div class="chat-header-info">
                     <h4 id="waHeaderTitle">Barakat Support</h4>
                     <p id="waHeaderStatus">Online</p>
@@ -794,10 +793,16 @@
                 <p class="wa-msg-bubble" id="waBubbleText">Welcome to Barakat Group! How can we assist you with workforce recruitment today?</p>
             </div>
             <div class="whatsapp-chat-footer">
-                <!-- الرابط المكتمل والمطابق تماماً لرقمك المالي الحقيقي والمحمي من أي قص -->
-                <a href="https://wa.me" target="_blank" class="wa-start-chat-btn" id="waBtnText">Start Chat</a>
+                <!-- تم ضبط المفتاح الدولي لماليزيا 60، قم فقط باستبدال الأرقام 123456789 برقمك الحقيقي لاحقاً -->
+                <a href="https://wa.me/60176706338" target="_blank" class="wa-start-chat-btn" id="waBtnText">Start Chat</a>
             </div>
         </div>
+        <button class="whatsapp-main-btn" onclick="toggleWhatsAppChat()" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
+<!-- نهاية جزء ٦ -->
+
 
 <!-- بداية جزء ٧: نصوص الترجمة للغتين (Translations Dictionary) -->
     <script>
