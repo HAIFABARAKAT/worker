@@ -1253,6 +1253,7 @@
         // إعداد تفعيل العداد والظهور الانسيابي للعناصر بالتمرير
         document.addEventListener("DOMContentLoaded", () => {
             // فحص تفضيلات الكاش للوضع الداكن قبل التحميل
+			toggleLanguage();
             const savedTheme = localStorage.getItem('theme');
             const htmlTag = document.getElementById('htmlTag');
             const themeIcon = document.getElementById('themeIcon');
