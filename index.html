@@ -729,21 +729,23 @@
 <!-- بداية جزء ٥: الهيكل البرمجي لـ HTML (شريط التنقل، الهيدر، شريط الصور، وكروت الخدمات) -->
 <body>
 
-    <nav class="navbar">
-        <div class="navbar-content">
-            <div class="brand-logo" id="navLogo">Barakat Group</div>
-            <div class="nav-controls">
-                <!-- زر التبديل التفاعلي للوضع الداكن المدمج حديثاً -->
-                <button class="theme-toggle-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle Theme">
-                    <i class="fas fa-moon" id="themeIcon"></i>
-                </button>
-                <button class="lang-switcher-btn" id="langBtn" onclick="toggleLanguage()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    <span id="langText">العربية</span>
-                </button>
-            </div>
-        </div>
-    </nav>
+	<nav class="navbar" style="height: 100px !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 0 12px !important;">
+		<div class="navbar-content" style="display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100% !important; max-width: 1200px !important; height: 100% !important; margin: 0 auto !important;">
+			<div class="brand-logo" id="navLogo" style="margin: 0 !important; padding: 0 !important; display: flex !important; align-items: center !important; font-size: 1.4rem !important;">Barakat Group</div>
+			<div class="nav-controls" style="display: flex !important; align-items: center !important; gap: 10px !important; margin: 0 !important; padding: 0 !important;">
+				<!-- زر التبديل التفاعلي للوضع الداكن المدمج حديثاً -->
+				<button class="theme-toggle-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle Theme">
+					<i class="fa-solid fa-moon" id="themeIcon"></i>
+				</button>
+				<button class="lang-switcher-btn" id="langBtn" onclick="toggleLanguage()">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+					<span id="langText">العربية</span>
+				</button>
+			</div>
+		</div>
+	</nav>
+
+
 
     <header>
         <h1 id="headerTitle">Barakat Recruitment & Services</h1>
