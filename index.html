@@ -1,686 +1,511 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مجموعة بركات للتوظيف والخدمات | Barakat Group</title>
+    <title>Barakat Recruitment & Services</title>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --primary-color: #0d47a1;
-            --primary-dark: #0a3680;
-            --accent-color: #1565c0;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #212529;
-            --text-muted: #6c757d;
-            --border-color: #dee2e6;
-            --font-ar: 'Cairo', sans-serif;
-            --font-en: 'Poppins', sans-serif;
-            --marquee-speed: 25s;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #e0e0e0;
-            --text-muted: #a0a0a0;
-            --border-color: #333333;
-            --primary-color: #1565c0;
-            --primary-dark: #0d47a1;
+            --secondary-color: #1565c0;
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-light: #f4f6f9;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: var(--font-ar);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-        }
-
-        body.en {
-            font-family: var(--font-en);
-        }
-
-        /* Header & Top Bar */
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .top-controls {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            z-index: 100;
-        }
-
-        html[dir="rtl"] .top-controls {
-            left: auto;
-            right: 15px;
-        }
-
-        .btn-control {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 8px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-        }
-
-        .btn-control:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .hero-title {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            margin-top: 20px;
-            font-weight: 700;
-        }
-
-        .hero-desc {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             line-height: 1.6;
         }
 
-        /* Section Styling */
-        section {
+        /* Navbar & Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            border: 1px solid var(--text-light);
+            padding: 5px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hero {
             padding: 50px 20px;
-            max-width: 1100px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 40px 20px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-title {
+        .services h2 {
             text-align: center;
-            font-size: 1.8rem;
             margin-bottom: 30px;
             position: relative;
-            padding-bottom: 10px;
-            font-weight: 700;
         }
 
-        .section-title::after {
+        .services h2::after {
             content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            display: block;
             width: 50px;
             height: 3px;
             background-color: var(--primary-color);
+            margin: 10px auto 0;
         }
 
-        /* Services Grid */
-        .services-grid {
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+            gap: 20px;
         }
 
-        .service-card {
-            background-color: var(--card-bg);
-            padding: 30px 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        .card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             text-align: center;
-            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
         }
 
-        .service-icon {
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card .icon-wrapper {
             font-size: 2.5rem;
             color: var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            display: inline-block;
         }
 
-        .service-card h3 {
-            font-size: 1.3rem;
+        .card h3 {
             margin-bottom: 12px;
-            color: var(--text-color);
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: var(--primary-color);
         }
 
         /* Stats Section */
-        .stats-container {
+        .stats {
+            background: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            text-align: center;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            margin-bottom: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .stat-item h2 {
-            font-size: 2.5rem;
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-item .stat-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-item h4 {
+            font-size: 2rem;
             color: var(--primary-color);
             margin-bottom: 5px;
         }
 
-        .stat-item p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+        /* Partners Marquee Fix */
+        .partners-section {
+            padding: 40px 20px;
+            background: #fff;
+            overflow: hidden;
         }
 
-        /* Form Styling */
-        .form-container {
-            background-color: var(--card-bg);
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-color);
-            max-width: 650px;
-            margin: 0 auto;
+        .partners-section h2 {
+            text-align: center;
+            margin-bottom: 25px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: inherit;
-            font-size: 0.95rem;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.1);
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 14px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: inherit;
-        }
-
-        .btn-submit:hover {
-            background-color: var(--primary-dark);
-        }
-
-        /* Marquee Continuous Slider (Robust across RTL/LTR) */
+        /* This wrapper ensures visibility in both RTL and LTR modes */
         .marquee-wrapper {
             width: 100%;
             overflow: hidden;
-            background-color: var(--card-bg);
-            padding: 20px 0;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            position: relative;
             display: flex;
+            background: #fafafa;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
         }
 
         .marquee-content {
             display: flex;
-            gap: 50px;
-            flex-shrink: 0;
-            align-items: center;
-            justify-content: space-around;
-            min-width: 100%;
-            animation: scroll-left var(--marquee-speed) linear infinite;
-        }
-
-        html[dir="rtl"] .marquee-content {
-            animation: scroll-right var(--marquee-speed) linear infinite;
-        }
-
-        .marquee-item {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-muted);
+            gap: 40px;
+            animation: marquee 20s linear infinite;
             white-space: nowrap;
+            min-width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        /* Keyframes compatible with both directions */
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(50%);
+            }
+        }
+
+        /* Adjust animation for LTR mode specifically if needed */
+        html[dir="ltr"] .marquee-content {
+            animation: marquee-ltr 20s linear infinite;
+        }
+
+        @keyframes marquee-ltr {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .partner-item {
             padding: 10px 20px;
-            background: var(--bg-color);
+            background: #fff;
+            border: 1px solid #e0e0e0;
             border-radius: 6px;
-            border: 1px solid var(--border-color);
-        }
-
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        @keyframes scroll-right {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(100%); }
+            font-weight: bold;
+            color: #555;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
         /* Testimonials */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+        .testimonials {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
         .testimonial-card {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border-top: 1px solid var(--border-color);
-            border-right: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        html[dir="rtl"] .testimonial-card {
-            border-left: 1px solid var(--border-color);
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
             border-right: 4px solid var(--primary-color);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 15px;
-            line-height: 1.6;
-            color: var(--text-color);
+        html[dir="ltr"] .testimonial-card {
+            border-right: none;
+            border-left: 4px solid var(--primary-color);
         }
 
-        .testimonial-author {
-            font-weight: 700;
-            font-size: 0.95rem;
+        /* Recruitment Form */
+        .recruitment-form {
+            background: #fff;
+            padding: 40px 20px;
+            max-width: 600px;
+            margin: 40px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .recruitment-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
             color: var(--primary-color);
         }
 
-        .testimonial-company {
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        .form-group {
+            margin-bottom: 15px;
         }
 
-        /* Live Support Widget */
-        .support-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            font-family: var(--font-ar);
-        }
-        
-        html[dir="rtl"] .support-widget {
-            right: auto;
-            left: 20px;
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
 
-        .support-btn {
-            background-color: #25d366;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
+            transition: background 0.2s;
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--primary-dark);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
-            margin-top: 40px;
+        .btn-submit:hover {
+            background-color: var(--secondary-color);
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Controls & Languages -->
-    <div class="top-controls">
-        <button class="btn-control" id="theme-toggle" onclick="toggleTheme()">
-            <i class="fa-solid var(--theme-icon, fa-moon)"></i>
-            <span id="theme-text">الوضع الداكن</span>
-        </button>
-        <button class="btn-control" id="lang-toggle" onclick="toggleLanguage()">
-            <i class="fa-solid fa-globe"></i>
-            <span>English</span>
-        </button>
-    </div>
-
-    <!-- Header Hero Section -->
     <header>
-        <h1 class="hero-title" id="hero-title">مجموعة بركات للتوظيف والخدمات</h1>
-        <p class="hero-desc" id="hero-desc">حلول متكاملة لاستقطاب النخبة من المواهب والعمالة المهنية لشركتكم.</p>
+        <button class="lang-switch" id="langBtn" onclick="toggleLanguage()">
+            <i class="fa-solid fa-globe"></i> <span id="langText">English</span>
+        </button>
+        <div class="hero">
+            <h1 id="mainTitle">مجموعة بركات للتوظيف والخدمات</h1>
+            <p id="mainSubtitle">حلول متكاملة لاستقطاب النخبة من المواهب والعمالة المهنية</p>
+        </div>
     </header>
 
-    <!-- Stats Section -->
-    <section style="padding-bottom: 10px; padding-top: 30px;">
-        <div class="stats-container">
-            <div class="stat-item">
-                <h2 id="stat-candidates">1500+</h2>
-                <p id="stat-candidates-lbl">مرشح تم توظيفهم</p>
+    <section class="services">
+        <h2 id="servicesTitle">خدماتنا المميزة</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="icon-wrapper"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3 id="srv1Title">توظيف الكوادر التقنية والمهنية</h3>
+                <p id="srv1Desc">توفير مهندسين، مطورين، وفنيين ذوي خبرة عالية لدعم نمو أعمالك.</p>
             </div>
-            <div class="stat-item">
-                <h2 id="stat-clients">180+</h2>
-                <p id="stat-clients-lbl">عميل من الشركات</p>
+            <div class="card">
+                <div class="icon-wrapper"><i class="fa-solid fa-helmet-safety"></i></div>
+                <h3 id="srv2Title">عمالة المقاولات والإنشاءات</h3>
+                <p id="srv2Desc">تأمين فرق عمل متكاملة للمشاريع الإنشائية والمعمارية بمختلف المستويات.</p>
             </div>
-            <div class="stat-item">
-                <h2 id="stat-rate">98%</h2>
-                <p id="stat-rate-lbl">نسبة النجاح</p>
-            </div>
-            <div class="stat-item">
-                <h2 id="stat-years">10+</h2>
-                <p id="stat-years-lbl">سنوات الخبرة</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services-section">
-        <h2 class="section-title" id="services-title">خدماتنا المميزة</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                <h3 id="srv1-title">توظيف الكوادر التقنية والمهنية</h3>
-                <p id="srv1-desc">توفير مهندسين، مطورين، وفنيين ذوي خبرة عالية لدعم نمو أعمالك ومشاريعك الذكية.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fa-solid fa-helmet-safety"></i></div>
-                <h3 id="srv2-title">عمالة الإنشاءات والمقاولات</h3>
-                <p id="srv2-desc">تأمين فرق عمل متكاملة للمشاريع الإنشائية والمعمارية بمختلف المستويات والمهارات الميدانية.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fa-solid fa-bell-concierge"></i></div>
-                <h3 id="srv3-title">خدمات الضيافة والخدمات العامة</h3>
-                <p id="srv3-desc">تلبية احتياجات الفنادق والمطاعم والشركات من موظفي استقبال، طهاة، وطواقم الدعم اللوجستي.</p>
+            <div class="card">
+                <div class="icon-wrapper"><i class="fa-solid fa-bell-concierge"></i></div>
+                <h3 id="srv3Title">خدمات الضيافة والخدمات العامة</h3>
+                <p id="srv3Desc">تلبية احتياجات الفنادق والمطاعم والشركات من موظفي استقبال، طهاة، وفرق لوجستية.</p>
             </div>
         </div>
     </section>
 
-    <!-- Partners Continuous Marquee Slider -->
-    <section style="padding: 20px 0;">
-        <h2 class="section-title" id="partners-title">شركاء النجاح</h2>
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-user-check"></i></div>
+                <h4>1,200+</h4>
+                <p id="stat1Label">مرشح تم توظيفه</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-building"></i></div>
+                <h4>180+</h4>
+                <p id="stat2Label">عميل من الشركات</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h4>98%</h4>
+                <p id="stat3Label">نسبة النجاح</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                <h4>10+</h4>
+                <p id="stat4Label">سنوات الخبرة</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners-section">
+        <h2 id="partnersTitle">شركاء النجاح</h2>
         <div class="marquee-wrapper">
-            <div class="marquee-content" id="marquee-1">
-                <div class="marquee-item">Sabic Logistics</div>
-                <div class="marquee-item">STC Business</div>
-                <div class="marquee-item">Al-Mansoori Contracting</div>
-                <div class="marquee-item">Elite Hospitality Group</div>
-                <div class="marquee-item">Aramco Services</div>
-                <div class="marquee-item">Saudi Binladin Group</div>
-            </div>
-            <!-- Duplicated content for seamless infinity scrolling -->
-            <div class="marquee-content" id="marquee-2" aria-hidden="true">
-                <div class="marquee-item">Sabic Logistics</div>
-                <div class="marquee-item">STC Business</div>
-                <div class="marquee-item">Al-Mansoori Contracting</div>
-                <div class="marquee-item">Elite Hospitality Group</div>
-                <div class="marquee-item">Aramco Services</div>
-                <div class="marquee-item">Saudi Binladin Group</div>
+            <div class="marquee-content" id="marqueeContent">
+                <!-- Duplicated items inside container ensures seamless scrolling in both layout orientations -->
+                <div class="partner-item"><i class="fa-solid fa-truck-ramp-box"></i> <span class="p-name" data-ar="سابك اللوجستية" data-en="Sabic Logistics">سابك اللوجستية</span></div>
+                <div class="partner-item"><i class="fa-solid fa-briefcase"></i> <span class="p-name" data-ar="اس تي سي أعمال" data-en="STC Business">اس تي سي أعمال</span></div>
+                <div class="partner-item"><i class="fa-solid fa-industry"></i> <span class="p-name" data-ar="شركة الشريك 3" data-en="Partner Company 3">شركة الشريك 3</span></div>
+                <div class="partner-item"><i class="fa-solid fa-store"></i> <span class="p-name" data-ar="شركة الشريك 4" data-en="Partner Company 4">شركة الشريك 4</span></div>
+                
+                <div class="partner-item"><i class="fa-solid fa-truck-ramp-box"></i> <span class="p-name" data-ar="سابك اللوجستية" data-en="Sabic Logistics">سابك اللوجستية</span></div>
+                <div class="partner-item"><i class="fa-solid fa-briefcase"></i> <span class="p-name" data-ar="اس تي سي أعمال" data-en="STC Business">اس تي سي أعمال</span></div>
+                <div class="partner-item"><i class="fa-solid fa-industry"></i> <span class="p-name" data-ar="شركة الشريك 3" data-en="Partner Company 3">شركة الشريك 3</span></div>
+                <div class="partner-item"><i class="fa-solid fa-store"></i> <span class="p-name" data-ar="شركة الشريك 4" data-en="Partner Company 4">شركة الشريك 4</span></div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section>
-        <h2 class="section-title" id="testimonials-title">ماذا يقول عملاؤنا</h2>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text" id="test1-text">"وفرت لنا مجموعة بركات مهندسين ذوي مهارات عالية في وقت قياسي. خدمة ممتازة والتزام كامل بالمواعيد والشروط."</p>
-                <div class="testimonial-author" id="test1-author">م. أحمد المنصوري</div>
-                <div class="testimonial-company" id="test1-company">شركة المنصوري للمقاولات</div>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text" id="test2-text">"آلية عمل احترافية للغاية وطاقم عمل لائق طبياً وسلوكياً بالكامل. فريق الضيافة أحدث نقلة نوعية في إدارة عمليات مطاعمنا."</p>
-                <div class="testimonial-author" id="test2-author">خالد باوزير</div>
-                <div class="testimonial-company" id="test2-company">مجموعة الضيافة النخبة</div>
-            </div>
+    <section class="testimonials">
+        <h2 id="reviewTitle">آراء عملائنا</h2>
+        <div class="testimonial-card">
+            <p id="rev1Text">"قدمت لنا مجموعة بركات مهندسين ذوي مهارات عالية في وقت قياسي. خدمة ممتازة والتزام كامل."</p>
+            <strong id="rev1Author">م. أحمد المنصوري - شركة المنصوري للمقاولات</strong>
+        </div>
+        <div class="testimonial-card">
+            <p id="rev2Text">"منظومة عمل احترافية وموظفون لائقون طبياً تماماً. فريق الضيافة أحدث تحولاً في إدارة مطعمنا."</p>
+            <strong id="rev2Author">خالد باوزير - مجموعة النخبة للضيافة</strong>
         </div>
     </section>
 
-    <!-- Recruitment Form Section -->
-    <section>
-        <div class="form-container">
-            <h2 class="section-title" id="form-title" style="margin-bottom: 25px;">طلب استقدام عمالة</h2>
-            <form onsubmit="event.preventDefault(); alert(currentLang === 'ar' ? 'تم إرسال طلبكم بنجاح!' : 'Your request has been submitted successfully!');">
-                <div class="form-group">
-                    <label for="company_name" id="lbl-comp">اسم الشركة</label>
-                    <input type="text" id="company_name" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="workers_count" id="lbl-count">عدد العمالة المطلوبة</label>
-                    <input type="number" id="workers_count" class="form-control" min="1" required>
-                </div>
-                <div class="form-group">
-                    <label for="nationality" id="lbl-nat">جنسية العمالة</label>
-                    <select id="nationality" class="form-control" required>
-                        <option value="" id="opt-select">اختر الجنسية المطلوبة</option>
-                        <option value="local" id="opt-local">محلية (مواطنين)</option>
-                        <option value="egyptian" id="opt-egy">مصرية</option>
-                        <option value="indian" id="opt-ind">هندية</option>
-                        <option value="pakistani" id="opt-pak">باكستانية</option>
-                        <option value="filipino" id="opt-phil">فلبينية</option>
-                        <option value="other" id="opt-other">جنسيات أخرى / متعددة</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="qualifications" id="lbl-qual">المؤهلات والخبرات المطلوبة</label>
-                    <textarea id="qualifications" class="form-control" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="btn-submit" id="btn-submit">إرسال الطلب الآن</button>
-            </form>
-        </div>
+    <section class="recruitment-form">
+        <h2 id="formTitle">طلب استقدام عمالة</h2>
+        <form onsubmit="event.preventDefault(); alert('تم إرسال الطلب بنجاح');">
+            <div class="form-group">
+                <label id="lblComp" for="companyName">اسم الشركة</label>
+                <input type="text" id="companyName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label id="lblNum" for="workerNum">عدد العمالة المطلوبة</label>
+                <input type="number" id="workerNum" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label id="lblNat" for="nationality">الجنسية المطلوبة</label>
+                <select id="nationality" class="form-control">
+                    <option value="local">محلية (مواطنين)</option>
+                    <option value="egyptian">مصرية</option>
+                    <option value="indian">هندية</option>
+                    <option value="pakistani">باكستانية</option>
+                    <option value="filipino">فلبينية</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit" id="btnSubmit">إرسال الطلب الآن</button>
+        </form>
     </section>
-
-    <!-- Live Chat Widget -->
-    <div class="support-widget">
-        <div class="support-btn" onclick="alert(currentLang === 'ar' ? 'الدعم الفني متاح الآن لمساعدتك!' : 'Live Support is online to assist you!')">
-            <i class="fa-solid fa-comments"></i>
-            <span id="support-text">تحدث معنا الآن</span>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p id="footer-text">© 2026 مجموعة بركات للتوظيف والخدمات المتكاملة. جميع الحقوق محفوظة.</p>
-    </footer>
 
     <script>
-        // Language Data
         const translations = {
             ar: {
-                title: "مجموعة بركات للتوظيف والخدمات | Barakat Group",
-                heroTitle: "مجموعة بركات للتوظيف والخدمات",
-                heroDesc: "حلول متكاملة لاستقطاب النخبة من المواهب والعمالة المهنية لشركتكم.",
-                statCandidates: "1500+", statCandidatesLbl: "مرشح تم توظيفهم",
-                statClients: "180+", statClientsLbl: "عميل من الشركات",
-                statRate: "98%", statRateLbl: "نسبة النجاح",
-                statYears: "10+", statYearsLbl: "سنوات الخبرة",
+                langText: "English",
+                mainTitle: "مجموعة بركات للتوظيف والخدمات",
+                mainSubtitle: "حلول متكاملة لاستقدام النخبة من المواهب والعمالة المهنية",
                 servicesTitle: "خدماتنا المميزة",
-                srv1Title: "توظيف الكوادر التقنية والمهنية", srv1Desc: "توفير مهندسين، مطورين، وفنيين ذوي خبرة عالية لدعم نمو أعمالك ومشاريعك الذكية.",
-                srv2Title: "عمالة الإنشاءات والمقاولات", srv2Desc: "تأمين فرق عمل متكاملة للمشاريع الإنشائية والمعمارية بمختلف المستويات والمهارات الميدانية.",
-                srv3Title: "خدمات الضيافة والخدمات العامة", srv3Desc: "تلبية احتياجات الفنادق والمطاعم والشركات من موظفي استقبال، طهاة، وطواقم الدعم اللوجستي.",
+                srv1Title: "توظيف الكوادر التقنية والمهنية",
+                srv1Desc: "توفير مهندسين، مطورين، وفنيين ذوي خبرة عالية لدعم نمو أعمالك.",
+                srv2Title: "عمالة المقاولات والإنشاءات",
+                srv2Desc: "تأمين فرق عمل متكاملة للمشاريع الإنشائية والمعمارية بمختلف المستويات.",
+                srv3Title: "خدمات الضيافة والخدمات العامة",
+                srv3Desc: "تلبية احتياجات الفنادق والمطاعم والشركات من موظفي استقبال، طهاة، وفرق لوجستية.",
+                stat1Label: "مرشح تم توظيفه",
+                stat2Label: "عميل من الشركات",
+                stat3Label: "نسبة النجاح",
+                stat4Label: "سنوات الخبرة",
                 partnersTitle: "شركاء النجاح",
-                testimonialsTitle: "ماذا يقول عملاؤنا",
-                test1Text: '"وفرت لنا مجموعة بركات مهندسين ذوي مهارات عالية في وقت قياسي. خدمة ممتازة والتزام كامل بالمواعيد والشروط."',
-                test1Author: "م. أحمد المنصوري", test1Company: "شركة المنصوري للمقاولات",
-                test2Text: '"آلية عمل احترافية للغاية وطاقم عمل لائق طبياً وسلوكياً بالكامل. فريق الضيافة أحدث نقلة نوعية في إدارة عمليات مطاعمنا."',
-                test2Author: "خالد باوزير", test2Company: "مجموعة الضيافة النخبة",
+                reviewTitle: "آراء عملائنا",
+                rev1Text: '"قدمت لنا مجموعة بركات مهندسين ذوي مهارات عالية في وقت قياسي. خدمة ممتازة والتزام كامل."',
+                rev1Author: "م. أحمد المنصوري - شركة المنصوري للمقاولات",
+                rev2Text: '"منظومة عمل احترافية وموظفون لائقون طبياً تماماً. فريق الضيافة أحدث تحولاً في إدارة مطعمنا."',
+                rev2Author: "خالد باوزير - مجموعة النخبة للضيافة",
                 formTitle: "طلب استقدام عمالة",
-                lblComp: "اسم الشركة", lblCount: "عدد العمالة المطلوبة",
-                lblNat: "جنسية العمالة", optSelect: "اختر الجنسية المطلوبة",
-                optLocal: "محلية (مواطنين)", optEgy: "مصرية", optInd: "هندية", optPak: "باكستانية", optPhil: "فلبينية", optOther: "جنسيات أخرى / متعددة",
-                lblQual: "المؤهلات والخبرات المطلوبة", btnSubmit: "إرسال الطلب الآن",
-                supportText: "تحدث معنا الآن",
-                footerText: "© 2026 مجموعة بركات للتوظيف والخدمات المتكاملة. جميع الحقوق محفوظة.",
-                langBtn: "English", darkText: "الوضع الداكن", lightText: "الوضع المضيء"
+                lblComp: "اسم الشركة",
+                lblNum: "عدد العمالة المطلوبة",
+                lblNat: "الجنسية المطلوبة",
+                btnSubmit: "إرسال الطلب الآن"
             },
             en: {
-                title: "Barakat Recruitment & Services | Integrated Solutions",
-                heroTitle: "Barakat Recruitment & Services",
-                heroDesc: "Integrated solutions for attracting elite talents and professional workforce.",
-                statCandidates: "1500+", statCandidatesLbl: "Placed Candidates",
-                statClients: "180+", statClientsLbl: "Corporate Clients",
-                statRate: "98%", statRateLbl: "Success Rate %",
-                statYears: "10+", statYearsLbl: "Years of Experience",
+                langText: "العربية",
+                mainTitle: "Barakat Recruitment & Services",
+                mainSubtitle: "Integrated solutions for attracting elite talents and professional workforce",
                 servicesTitle: "Our Premium Services",
-                srv1Title: "Technical & Professional Staffing", srv1Desc: "Providing highly experienced engineers, developers, and technicians to drive your business growth.",
-                srv2Title: "Construction & Contracting Workers", srv2Desc: "Securing integrated workforce teams for structural and architectural projects across all levels.",
-                srv3Title: "Hospitality & General Services", srv3Desc: "Meeting the needs of hotels, restaurants, and corporations for receptionists, chefs, and logistics staff.",
+                srv1Title: "Technical & Professional Staffing",
+                srv1Desc: "Providing highly experienced engineers, developers, and technicians to drive your business growth.",
+                srv2Title: "Construction & Contracting Workers",
+                srv2Desc: "Securing integrated workforce teams for structural and architectural projects across all levels.",
+                srv3Title: "Hospitality & General Services",
+                srv3Desc: "Meeting the needs of hotels, restaurants, and corporations for receptionists, chefs, and logistics staff.",
+                stat1Label: "Placed Candidates",
+                stat2Label: "Corporate Clients",
+                stat3Label: "Success Rate %",
+                stat4Label: "Years of Experience",
                 partnersTitle: "Trusted Partners",
-                testimonialsTitle: "What Our Clients Say",
-                test1Text: '"Barakat Group provided us with highly skilled engineers in record time. Excellent service and complete commitment."',
-                test1Author: "Eng. Ahmed Al-Mansoori", test1Company: "Al-Mansoori Contracting Company",
-                test2Text: '"Professional workflow and fully medically fit staff. The hospitality team transformed our restaurant operations."',
-                test2Author: "Khalid Ba-Wazir", test2Company: "Elite Hospitality Group",
+                reviewTitle: "What Our Clients Say",
+                rev1Text: '"Barakat Group provided us with highly skilled engineers in record time. Excellent service and complete commitment."',
+                rev1Author: "Eng. Ahmed Al-Mansoori - Al-Mansoori Contracting Company",
+                rev2Text: '"Professional workflow and fully medically fit staff. The hospitality team transformed our restaurant operations."',
+                rev2Author: "Khalid Ba-Wazir - Elite Hospitality Group",
                 formTitle: "Request a Workforce Recruitment",
-                lblComp: "Company Name", lblCount: "Number of Workers Required",
-                lblNat: "Nationality of Workers", optSelect: "Select required nationality",
-                optLocal: "Local (Citizens)", optEgy: "Egyptian", optInd: "Indian", optPak: "Pakistani", optPhil: "Filipino", optOther: "Other / Multiple Nationalities",
-                lblQual: "Workers' Qualifications & Experience Required", btnSubmit: "Submit Request Now",
-                supportText: "Chat with us",
-                footerText: "© 2026 Barakat Recruitment & Integrated Services. All Rights Reserved.",
-                langBtn: "العربية", darkText: "Dark Mode", lightText: "Light Mode"
+                lblComp: "Company Name",
+                lblNum: "Number of Workers Required",
+                lblNat: "Nationality of Workers",
+                btnSubmit: "Submit Request Now"
             }
         };
 
-        let currentLang = 'ar'; // Default language Arabic
-
         function toggleLanguage() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            const docHtml = document.documentElement;
-            
-            if (currentLang === 'en') {
-                docHtml.setAttribute('lang', 'en');
-                docHtml.setAttribute('dir', 'ltr');
-                document.body.classList.add('en');
-            } else {
-                docHtml.setAttribute('lang', 'ar');
-                docHtml.setAttribute('dir', 'rtl');
-                document.body.classList.remove('en');
-            }
+            const html = document.documentElement;
+            const currentDir = html.getAttribute("dir");
+            const nextLang = currentDir === "rtl" ? "en" : "ar";
+            const nextDir = currentDir === "rtl" ? "ltr" : "rtl";
 
-            // Apply translations
-            const t = translations[currentLang];
-            document.title = t.title;
-            document.getElementById('hero-title').innerText = t.heroTitle;
-            document.getElementById('hero-desc').innerText = t.heroDesc;
-            
-            document.getElementById('stat-candidates').innerText = t.statCandidates;
-            document.getElementById('stat-candidates-lbl').innerText = t.statCandidatesLbl;
-            document.getElementById('stat-clients').innerText = t.statClients;
-            document.getElementById('stat-clients-lbl').innerText = t.statClientsLbl;
-            document.getElementById('stat-rate').innerText = t.statRate;
-            document.getElementById('stat-rate-lbl').innerText = t.statRateLbl;
-            document.getElementById('stat-years').innerText = t.statYears;
-            document.getElementById('stat-years-lbl').innerText = t.statYearsLbl;
+            html.setAttribute("lang", nextLang);
+            html.setAttribute("dir", nextDir);
 
-            document.getElementById('services-title').innerText = t.servicesTitle;
-            document.getElementById('srv1-title').innerText = t.srv1Title;
-            document.getElementById('srv1-desc').innerText = t.srv1Desc;
-            document.getElementById('srv2-title').innerText = t.srv2Title;
-            document.getElementById('srv2-desc').innerText = t.srv2Desc;
-            document.getElementById('srv3-title').innerText = t.srv3Title;
-            document.getElementById('srv3-desc').innerText = t.srv3Desc;
+            // Update Text Contents
+            document.getElementById("langText").innerText = translations[nextLang].langText;
+            document.getElementById("mainTitle").innerText = translations[nextLang].mainTitle;
+            document.getElementById("mainSubtitle").innerText = translations[nextLang].mainSubtitle;
+            document.getElementById("servicesTitle").innerText = translations[nextLang].servicesTitle;
+            document.getElementById("srv1Title").innerText = translations[nextLang].srv1Title;
+            document.getElementById("srv1Desc").innerText = translations[nextLang].srv1Desc;
+            document.getElementById("srv2Title").innerText = translations[nextLang].srv2Title;
+            document.getElementById("srv2Desc").innerText = translations[nextLang].srv2Desc;
+            document.getElementById("srv3Title").innerText = translations[nextLang].srv3Title;
+            document.getElementById("srv3Desc").innerText = translations[nextLang].srv3Desc;
+            document.getElementById("stat1Label").innerText = translations[nextLang].stat1Label;
+            document.getElementById("stat2Label").innerText = translations[nextLang].stat2Label;
+            document.getElementById("stat3Label").innerText = translations[nextLang].stat3Label;
+            document.getElementById("stat4Label").innerText = translations[nextLang].stat4Label;
+            document.getElementById("partnersTitle").innerText = translations[nextLang].partnersTitle;
+            document.getElementById("reviewTitle").innerText = translations[nextLang].reviewTitle;
+            document.getElementById("rev1Text").innerText = translations[nextLang].rev1Text;
+            document.getElementById("rev1Author").innerText = translations[nextLang].rev1Author;
+            document.getElementById("rev2Text").innerText = translations[nextLang].rev2Text;
+            document.getElementById("rev2Author").innerText = translations[nextLang].rev2Author;
+            document.getElementById("formTitle").innerText = translations[nextLang].formTitle;
+            document.getElementById("lblComp").innerText = translations[nextLang].lblComp;
+            document.getElementById("lblNum").innerText = translations[nextLang].lblNum;
+            document.getElementById("lblNat").innerText = translations[nextLang].lblNat;
+            document.getElementById("btnSubmit").innerText = translations[nextLang].btnSubmit;
 
-            document.getElementById('partners-title').innerText = t.partnersTitle;
-            document.getElementById('testimonials-title').innerText = t.testimonialsTitle;
-            
-            document.getElementById('test1-text').innerText = t.test1Text;
-            document.getElementById('test1-author').innerText = t.test1Author;
-            document.getElementById('test1-company').innerText = t.test1Company;
-            document.getElementById('test2-text').innerText = t.test2Text;
-            document.getElementById('test2-author').innerText = t.test2Author;
-            document.getElementById('test2-company').innerText = t.test2Company;
-
-            document.getElementById('form-title').innerText = t.formTitle;
-            document.getElementById('lbl-comp').innerText = t.lblComp;
-            document.getElementById('lbl-count').innerText = t.lblCount;
-            document.getElementById('lbl-nat').innerText = t.lblNat;
-            document.getElementById('opt-select').innerText = t.optSelect;
-            document.getElementById('opt-local').innerText = t.optLocal;
-            document.getElementById('opt-egy').innerText = t.optEgy;
-            document.getElementById('opt-ind').innerText = t.optInd;
-            document.getElementById('opt-pak').innerText = t.optPak;
-            document.getElementById('opt-phil').innerText = t.optPhil;
-            document.getElementById('opt-other').innerText = t.optOther;
-            document.getElementById('lbl-qual').innerText = t.lblQual;
-            document.getElementById('btn-submit').innerText = t.btnSubmit;
-            
-            document.getElementById('support-text').innerText = t.supportText;
-            document.getElementById('footer-text').innerText = t.footerText;
-            
-            document.getElementById('lang-toggle').querySelector('span').innerText = t.langBtn;
-            updateThemeButtonText();
-        }
-
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            updateThemeButtonText();
-        }
-
-        function updateThemeButtonText() {
-            const theme = document.documentElement.getAttribute('data-theme');
-            const iconEl = document.getElementById('theme-toggle').querySelector('i');
-            const textEl = document.getElementById('theme-text');
-            const t = translations[currentLang];
-
-            if (theme === 'dark') {
-                iconEl.className = 'fa-solid fa-sun';
-                textEl.innerText = t.lightText;
-            } else {
-                iconEl.className = 'fa-solid fa-moon';
-                textEl.innerText = t.darkText;
-            }
+            // Update Marquee partner names
+            const names = document.querySelectorAll(".p-name");
+            names.forEach(name => {
+                name.innerText = name.getAttribute(`data-${nextLang}`);
+            });
         }
     </script>
 </body>
