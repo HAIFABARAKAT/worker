@@ -155,14 +155,16 @@
             border-color: #38bdf8;
         }
 
-        .lang-switcher-btn:hover, .theme-toggle-btn:hover {
-            background-color: #2a5298;
-            color: #ffffff;
-        }
-        html.dark-mode .lang-switcher-btn:hover, html.dark-mode .theme-toggle-btn:hover {
-            background-color: #38bdf8;
-            color: #0f172a;
-        }
+		@media (hover: hover) {
+			.lang-switcher-btn:hover, .theme-toggle-btn:hover {
+				background-color: #2a5298;
+				color: #ffffff;
+			}
+			html.dark-mode .lang-switcher-btn:hover, html.dark-mode .theme-toggle-btn:hover {
+				background-color: #38bdf8;
+				color: #0f172a;
+			}
+		}
 
         header {
             background: linear-gradient(135deg, #1e3c72, #2a5298);
