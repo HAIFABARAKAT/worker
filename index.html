@@ -79,45 +79,54 @@
 <!-- بداية جزء ٢: تصميم شريط التنقل المصلح والهيدر وشريط الصور المتحرك -->
         /* تصميم شريط التنقل بتأثير الزجاج الفاخر المطور */
         .navbar {
-            background-color: var(--navbar-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--card-border);
-            padding: 25px 12px;
-            box-shadow: 0 4px 30px var(--shadow-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-            box-sizing: border-box;
-			display: flex;
-			align-items: center;
-        }
-
-        .navbar-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center |important;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .brand-logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #1e3c72;
-            white-space: nowrap;
-        }
-        html.dark-mode .brand-logo {
-            color: #38bdf8;
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+			background-color: var(--navbar-bg);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border-bottom: 1px solid var(--card-border);
+			box-shadow: 0 4px 30px var(--shadow-color);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+			width: 100%;
+			box-sizing: border-box;
+			/* تحديد ارتفاع ثابت ومريح للشريط لزيادة حجمه للأسفل */
+			height: 90px !important;
+			padding: 0 12px !important;
+			display: flex !important;
+			align-items: center !important;
+		}
+		
+		.navbar-content {
+			display: flex !important;
+			justify-content: space-between !important;
+			/* إجبار المحتويات على أخذ نفس الارتفاع والتوسط في السنتر */
+			align-items: center !important; 
+			height: 100% !important;
+			width: 100%;
+			max-width: 1200px;
+			margin: 0 auto !important;
+			padding: 0 !important;
+		}
+		
+		.brand-logo {
+			font-weight: 700;
+			font-size: 1.4rem;
+			color: #1e3c72;
+			white-space: nowrap;
+			/* تصفير الهوامش تماماً لمنع الصعود للأعلى */
+			margin: 0 !important;
+			padding: 0 !important;
+			line-height: 1 !important;
+		}
+		
+		.nav-controls {
+			display: flex !important;
+			align-items: center !important;
+			gap: 10px;
+			margin: 0 !important;
+			padding: 0 !important;
+			height: 100% !important;
+		}
 
         /* زر تبديل الوضع الداكن التفاعلي */
         .theme-toggle-btn {
