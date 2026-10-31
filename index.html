@@ -167,12 +167,20 @@
 		}
 
         header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: #fff;
-            padding: 70px 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+			background: linear-gradient(-45deg, #1e3c72, #2a5298, #1e293b, #0f172a);
+			background-size: 400% 400%;
+			animation: gradientBG 15s ease infinite;
+			color: #fff;
+			padding: 90px 20px;
+			text-align: center;
+			box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+		}
+		
+		@keyframes gradientBG {
+			0% { background-position: 0% 50%; }
+			50% { background-position: 100% 50%; }
+			100% { background-position: 0% 50%; }
+		}
 
         header h1 {
             font-size: 2.5rem;
@@ -294,9 +302,13 @@
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px var(--shadow-color);
-        }
+			transform: translateY(-8px) scale(1.02) !important;
+			box-shadow: 0 15px 35px rgba(42, 82, 152, 0.15) !important;
+		}
+		html.dark-mode .service-card:hover {
+			box-shadow: 0 15px 35px rgba(56, 189, 248, 0.25) !important;
+			border-color: rgba(56, 189, 248, 0.4) !important;
+		}
 
         .service-img {
             width: 100%;
@@ -758,7 +770,7 @@
 
 <!-- بداية جزء ٥: الهيكل البرمجي لـ HTML (شريط التنقل، الهيدر، شريط الصور، وكروت الخدمات) -->
 <body>
-
+	<div id="scrollProgress" style="position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(to right, #00f2fe, #2a5298); z-index: 99999; transition: width 0.1s ease;"></div>
 	<nav class="navbar" style="height: 60px !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 0 12px !important;">
 		<div class="navbar-content" style="display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100% !important; max-width: 1200px !important; height: 100% !important; margin: 0 auto !important;">
 			<div class="brand-logo" id="navLogo" style="margin: 0 !important; padding: 0 !important; display: flex !important; align-items: center !important; font-size: 1.4rem !important;">Barakat Group</div>
@@ -1285,6 +1297,12 @@
         // إعداد تفعيل العداد والظهور الانسيابي للعناصر بالتمرير
         document.addEventListener("DOMContentLoaded", () => {
             // فحص تفضيلات الكاش للوضع الداكن قبل التحميل
+			window.addEventListener("scroll", () => {
+				const pixels = window.scrollY;
+				const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+				const scrolled = (pixels / docHeight) * 100;
+				document.getElementById("scrollProgress").style.width = scrolled + "%";
+			});
 			toggleLanguage();
             const savedTheme = localStorage.getItem('theme');
             const htmlTag = document.getElementById('htmlTag');
